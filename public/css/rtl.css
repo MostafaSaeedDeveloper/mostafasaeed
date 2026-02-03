@@ -1,0 +1,8 @@
+html[dir="rtl"], html[dir="rtl"] body {
+    direction: rtl;
+}
+
+html[dir="rtl"] .navbar .navbar-nav {
+    margin-right: auto;
+    margin-left: 0;
+}
