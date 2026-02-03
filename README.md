@@ -30,6 +30,8 @@ php artisan storage:link
 php artisan serve
 ```
 
+> **Note:** The app expects a Vite build manifest in `public/build/manifest.json` when running without the dev server. Run `npm run build` (or `npm run dev`) to generate it.
+
 ## Admin Login
 
 - Email: `admin@example.com`
@@ -44,4 +46,3 @@ php artisan serve
 
 - Uploaded files are stored under `storage/app/public`.
 - Tailwind CSS automatically switches to RTL when Arabic is active.
-

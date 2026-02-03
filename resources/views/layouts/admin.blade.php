@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ __('messages.admin_panel') }} - {{ config('app.name', 'Mostafa Saeed') }}</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @php($viteEnabled = file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+    @if($viteEnabled)
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
 </head>
 <body class="bg-slate-100 text-slate-900">
     <div class="flex min-h-screen">
