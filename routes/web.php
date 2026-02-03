@@ -30,13 +30,13 @@ Route::post('/contact', [FrontendController::class, 'storeContact'])
     ->name('contact.store');
 Route::get('/sitemap.xml', [FrontendController::class, 'sitemap'])->name('sitemap');
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
-Route::prefix('admin')
+Route::prefix('dashboard')
     ->name('admin.')
     ->middleware(['auth', 'role:Owner|Content Manager|Accountant|CRM Manager'])
     ->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::resource('/services', ServiceController::class);
@@ -46,4 +46,9 @@ Route::prefix('admin')
         Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
         Route::get('/messages', [ContactMessageController::class, 'index'])->name('messages.index');
         Route::get('/messages/{message}', [ContactMessageController::class, 'show'])->name('messages.show');
+        Route::get('/customers', [\App\Http\Controllers\Admin\CustomerController::class, 'index'])->name('customers.index');
+        Route::get('/invoices', [\App\Http\Controllers\Admin\InvoiceController::class, 'index'])->name('invoices.index');
+        Route::get('/payments', [\App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('payments.index');
+        Route::get('/expenses', [\App\Http\Controllers\Admin\ExpenseController::class, 'index'])->name('expenses.index');
+        Route::get('/revenues', [\App\Http\Controllers\Admin\RevenueController::class, 'index'])->name('revenues.index');
     });

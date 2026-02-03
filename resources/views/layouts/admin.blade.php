@@ -25,9 +25,12 @@
                 <a class="nav-link" href="{{ route('admin.projects.index') }}">{{ __('app.projects') }}</a>
                 <a class="nav-link" href="{{ route('admin.clients.index') }}">{{ __('app.clients') }}</a>
                 <div class="mt-3 text-uppercase small text-muted">{{ __('app.crm') }}</div>
-                <a class="nav-link disabled" href="#">{{ __('app.customers') }}</a>
+                <a class="nav-link" href="{{ route('admin.customers.index') }}">{{ __('app.customers') }}</a>
                 <div class="mt-3 text-uppercase small text-muted">{{ __('app.accounting') }}</div>
-                <a class="nav-link disabled" href="#">{{ __('app.invoices') }}</a>
+                <a class="nav-link" href="{{ route('admin.invoices.index') }}">{{ __('app.invoices') }}</a>
+                <a class="nav-link" href="{{ route('admin.payments.index') }}">{{ __('app.payments') }}</a>
+                <a class="nav-link" href="{{ route('admin.expenses.index') }}">{{ __('app.expenses') }}</a>
+                <a class="nav-link" href="{{ route('admin.revenues.index') }}">{{ __('app.revenues') }}</a>
                 <div class="mt-3 text-uppercase small text-muted">{{ __('app.reports') }}</div>
                 <a class="nav-link disabled" href="#">{{ __('app.reports') }}</a>
                 <div class="mt-3 text-uppercase small text-muted">{{ __('app.settings') }}</div>
@@ -42,8 +45,8 @@
                 </form>
                 <div class="d-flex align-items-center gap-2">
                     <a href="{{ route('admin.projects.create') }}" class="btn btn-outline-primary btn-sm">+ {{ __('app.projects') }}</a>
-                    <button class="btn btn-outline-secondary btn-sm" disabled>+ {{ __('app.invoices') }}</button>
-                    <button class="btn btn-outline-secondary btn-sm" disabled>+ {{ __('app.expenses') }}</button>
+                    <a href="{{ route('admin.invoices.index') }}" class="btn btn-outline-secondary btn-sm">+ {{ __('app.invoices') }}</a>
+                    <a href="{{ route('admin.expenses.index') }}" class="btn btn-outline-secondary btn-sm">+ {{ __('app.expenses') }}</a>
                     <a href="{{ route('lang.switch', app()->getLocale() === 'ar' ? 'en' : 'ar') }}" class="btn btn-outline-secondary btn-sm">
                         {{ app()->getLocale() === 'ar' ? 'EN' : 'AR' }}
                     </a>

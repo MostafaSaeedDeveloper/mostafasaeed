@@ -26,9 +26,9 @@ php artisan serve
 
 ## Admin Login
 
-- URL: `/admin/dashboard`
-- Email: `admin@example.com`
-- Password: `password`
+- URL: `/dashboard`
+- Username: `mostafasaeed`
+- Password: `Mosta@2030`
 
 ## Notes
 

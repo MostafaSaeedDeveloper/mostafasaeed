@@ -40,8 +40,8 @@ class DatabaseSeeder extends Seeder
         Role::firstOrCreate(['name' => 'CRM Manager']);
 
         $admin = User::firstOrCreate(
-            ['email' => 'admin@example.com'],
-            ['name' => 'Admin User', 'password' => Hash::make('password')]
+            ['username' => 'mostafasaeed'],
+            ['name' => 'Mostafa Saeed', 'email' => 'admin@example.com', 'password' => Hash::make('Mosta@2030')]
         );
         $admin->assignRole($ownerRole);
 
