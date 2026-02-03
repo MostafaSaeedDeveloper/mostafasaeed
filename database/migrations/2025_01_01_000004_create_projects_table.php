@@ -23,7 +23,7 @@ return new class extends Migration
             $table->boolean('featured')->default(false);
             $table->string('status')->default('draft');
             $table->json('seo_meta')->nullable();
-            $table->foreignId('customer_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('customer_id')->nullable();
             $table->timestamps();
         });
     }
