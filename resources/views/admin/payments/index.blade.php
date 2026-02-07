@@ -1,35 +1,6 @@
 @extends('layouts.admin')
-
 @section('title', __('app.payments'))
-
 @section('content')
-<div class="card">
-    <div class="table-responsive">
-        <table class="table table-striped mb-0">
-            <thead>
-                <tr>
-                    <th>{{ __('app.customer') }}</th>
-                    <th>{{ __('app.invoice_number') }}</th>
-                    <th>{{ __('app.amount') }}</th>
-                    <th>{{ __('app.payment_method') }}</th>
-                    <th>{{ __('app.date') }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($payments as $payment)
-                    <tr>
-                        <td>{{ $payment->customer?->name }}</td>
-                        <td>{{ $payment->invoice?->invoice_number ? '#'.$payment->invoice->invoice_number : '-' }}</td>
-                        <td>{{ number_format($payment->amount, 2) }}</td>
-                        <td>{{ $payment->payment_method }}</td>
-                        <td>{{ optional($payment->date)->format('Y-m-d') }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</div>
-<div class="mt-3">
-    {{ $payments->links() }}
-</div>
+<div class="d-flex justify-content-between mb-3"><form method="GET" class="row g-2"><div class="col-auto"><select name="customer_id" class="form-select"><option value="">{{ __('app.customer') }}</option>@foreach($customers as $c)<option value="{{ $c->id }}" @selected(request('customer_id')==$c->id)>{{ $c->name }}</option>@endforeach</select></div><div class="col-auto"><select name="payment_method" class="form-select"><option value="">{{ __('app.payment_method') }}</option>@foreach(['cash','vodafone_cash','bank_transfer','paypal','stripe','other'] as $m)<option value="{{ $m }}" @selected(request('payment_method')===$m)>{{ $m }}</option>@endforeach</select></div><div class="col-auto"><input type="date" name="from" value="{{ request('from') }}" class="form-control"></div><div class="col-auto"><input type="date" name="to" value="{{ request('to') }}" class="form-control"></div><div class="col-auto"><button class="btn btn-outline-secondary">{{ __('app.filter') }}</button></div></form><a href="{{ route('admin.payments.create') }}" class="btn btn-primary">+ {{ __('app.payments') }}</a></div>
+<div class="card"><div class="table-responsive"><table class="table table-striped mb-0"><thead><tr><th>{{ __('app.customer') }}</th><th>{{ __('app.invoice_number') }}</th><th>{{ __('app.amount') }}</th><th>{{ __('app.payment_method') }}</th><th>{{ __('app.date') }}</th><th>{{ __('app.actions') }}</th></tr></thead><tbody>@foreach($payments as $payment)<tr><td>{{ $payment->customer?->name }}</td><td>{{ $payment->invoice?->invoice_number ? '#'.$payment->invoice->invoice_number : '-' }}</td><td>{{ number_format($payment->amount,2) }}</td><td>{{ $payment->payment_method }}</td><td>{{ optional($payment->date)->format('Y-m-d') }}</td><td class="d-flex gap-2"><a class="btn btn-sm btn-outline-primary" href="{{ route('admin.payments.edit',$payment) }}">{{ __('app.edit') }}</a><form method="POST" action="{{ route('admin.payments.destroy',$payment) }}">@csrf @method('DELETE')<button data-confirm="{{ __('app.confirm_delete') }}" class="btn btn-sm btn-outline-danger">{{ __('app.delete') }}</button></form></td></tr>@endforeach</tbody></table></div></div><div class="mt-3">{{ $payments->links() }}</div>
 @endsection

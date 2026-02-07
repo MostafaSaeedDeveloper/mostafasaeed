@@ -1,33 +1,6 @@
 @extends('layouts.admin')
-
 @section('title', __('app.expenses'))
-
 @section('content')
-<div class="card">
-    <div class="table-responsive">
-        <table class="table table-striped mb-0">
-            <thead>
-                <tr>
-                    <th>{{ __('app.category') }}</th>
-                    <th>{{ __('app.amount') }}</th>
-                    <th>{{ __('app.account') }}</th>
-                    <th>{{ __('app.date') }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($expenses as $expense)
-                    <tr>
-                        <td>{{ $expense->category?->name }}</td>
-                        <td>{{ number_format($expense->amount, 2) }}</td>
-                        <td>{{ $expense->account?->name }}</td>
-                        <td>{{ optional($expense->date)->format('Y-m-d') }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</div>
-<div class="mt-3">
-    {{ $expenses->links() }}
-</div>
+<div class="d-flex justify-content-between mb-3"><form method="GET" class="row g-2"><div class="col-auto"><select name="expense_category_id" class="form-select"><option value="">{{ __('app.category') }}</option>@foreach($categories as $cat)<option value="{{ $cat->id }}" @selected(request('expense_category_id')==$cat->id)>{{ $cat->name }}</option>@endforeach</select></div><div class="col-auto"><input type="date" name="from" value="{{ request('from') }}" class="form-control"></div><div class="col-auto"><input type="date" name="to" value="{{ request('to') }}" class="form-control"></div><div class="col-auto"><button class="btn btn-outline-secondary">{{ __('app.filter') }}</button></div></form><a href="{{ route('admin.expenses.create') }}" class="btn btn-primary">+ {{ __('app.expenses') }}</a></div>
+<div class="card"><div class="table-responsive"><table class="table table-striped mb-0"><thead><tr><th>{{ __('app.category') }}</th><th>{{ __('app.amount') }}</th><th>{{ __('app.account') }}</th><th>{{ __('app.date') }}</th><th>{{ __('app.actions') }}</th></tr></thead><tbody>@foreach($expenses as $expense)<tr><td>{{ $expense->category?->name }}</td><td>{{ number_format($expense->amount,2) }}</td><td>{{ $expense->account?->name }}</td><td>{{ optional($expense->date)->format('Y-m-d') }}</td><td class="d-flex gap-2"><a class="btn btn-sm btn-outline-primary" href="{{ route('admin.expenses.edit',$expense) }}">{{ __('app.edit') }}</a><form method="POST" action="{{ route('admin.expenses.destroy',$expense) }}">@csrf @method('DELETE')<button data-confirm="{{ __('app.confirm_delete') }}" class="btn btn-sm btn-outline-danger">{{ __('app.delete') }}</button></form></td></tr>@endforeach</tbody></table></div></div><div class="mt-3">{{ $expenses->links() }}</div>
 @endsection

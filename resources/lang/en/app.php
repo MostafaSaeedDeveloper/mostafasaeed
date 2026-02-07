@@ -131,4 +131,5 @@ return [
     'payment_method' => 'Payment Method',
     'date' => 'Date',
     'account' => 'Account',
+    'filter' => 'Filter',
 ];

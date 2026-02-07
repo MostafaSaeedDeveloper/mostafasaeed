@@ -131,4 +131,5 @@ return [
     'payment_method' => 'طريقة الدفع',
     'date' => 'التاريخ',
     'account' => 'الحساب',
+    'filter' => 'فلترة',
 ];

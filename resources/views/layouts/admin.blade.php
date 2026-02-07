@@ -18,24 +18,24 @@
         <aside class="bg-white border-end vh-100 p-3" style="width: 240px;">
             <h5 class="fw-bold mb-4">Mostafa CMS</h5>
             <nav class="nav flex-column">
-                <a class="nav-link" href="{{ route('admin.dashboard') }}">{{ __('app.dashboard') }}</a>
+                <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active fw-bold' : '' }}" href="{{ route('admin.dashboard') }}">{{ __('app.dashboard') }}</a>
                 <div class="mt-3 text-uppercase small text-muted">{{ __('app.cms') }}</div>
-                <a class="nav-link" href="{{ route('admin.profile.edit') }}">{{ __('app.profile') }}</a>
-                <a class="nav-link" href="{{ route('admin.services.index') }}">{{ __('app.services') }}</a>
-                <a class="nav-link" href="{{ route('admin.projects.index') }}">{{ __('app.projects') }}</a>
-                <a class="nav-link" href="{{ route('admin.clients.index') }}">{{ __('app.clients') }}</a>
+                <a class="nav-link {{ request()->routeIs('admin.profile*') ? 'active fw-bold' : '' }}" href="{{ route('admin.profile.edit') }}">{{ __('app.profile') }}</a>
+                <a class="nav-link {{ request()->routeIs('admin.services*') ? 'active fw-bold' : '' }}" href="{{ route('admin.services.index') }}">{{ __('app.services') }}</a>
+                <a class="nav-link {{ request()->routeIs('admin.projects*') ? 'active fw-bold' : '' }}" href="{{ route('admin.projects.index') }}">{{ __('app.projects') }}</a>
+                <a class="nav-link {{ request()->routeIs('admin.clients*') ? 'active fw-bold' : '' }}" href="{{ route('admin.clients.index') }}">{{ __('app.clients') }}</a>
                 <div class="mt-3 text-uppercase small text-muted">{{ __('app.crm') }}</div>
-                <a class="nav-link" href="{{ route('admin.customers.index') }}">{{ __('app.customers') }}</a>
+                <a class="nav-link {{ request()->routeIs('admin.customers*') ? 'active fw-bold' : '' }}" href="{{ route('admin.customers.index') }}">{{ __('app.customers') }}</a>
                 <div class="mt-3 text-uppercase small text-muted">{{ __('app.accounting') }}</div>
-                <a class="nav-link" href="{{ route('admin.invoices.index') }}">{{ __('app.invoices') }}</a>
-                <a class="nav-link" href="{{ route('admin.payments.index') }}">{{ __('app.payments') }}</a>
-                <a class="nav-link" href="{{ route('admin.expenses.index') }}">{{ __('app.expenses') }}</a>
-                <a class="nav-link" href="{{ route('admin.revenues.index') }}">{{ __('app.revenues') }}</a>
+                <a class="nav-link {{ request()->routeIs('admin.invoices*') ? 'active fw-bold' : '' }}" href="{{ route('admin.invoices.index') }}">{{ __('app.invoices') }}</a>
+                <a class="nav-link {{ request()->routeIs('admin.payments*') ? 'active fw-bold' : '' }}" href="{{ route('admin.payments.index') }}">{{ __('app.payments') }}</a>
+                <a class="nav-link {{ request()->routeIs('admin.expenses*') ? 'active fw-bold' : '' }}" href="{{ route('admin.expenses.index') }}">{{ __('app.expenses') }}</a>
+                <a class="nav-link {{ request()->routeIs('admin.revenues*') ? 'active fw-bold' : '' }}" href="{{ route('admin.revenues.index') }}">{{ __('app.revenues') }}</a>
                 <div class="mt-3 text-uppercase small text-muted">{{ __('app.reports') }}</div>
-                <a class="nav-link disabled" href="#">{{ __('app.reports') }}</a>
+                <a class="nav-link {{ request()->routeIs('admin.reports.*') ? 'active fw-bold' : '' }}" href="{{ route('admin.reports.index') }}">{{ __('app.reports') }}</a>
                 <div class="mt-3 text-uppercase small text-muted">{{ __('app.settings') }}</div>
-                <a class="nav-link" href="{{ route('admin.messages.index') }}">{{ __('app.messages') }}</a>
-                <a class="nav-link" href="{{ route('admin.settings.edit') }}">{{ __('app.site_settings') }}</a>
+                <a class="nav-link {{ request()->routeIs('admin.messages*') ? 'active fw-bold' : '' }}" href="{{ route('admin.messages.index') }}">{{ __('app.messages') }}</a>
+                <a class="nav-link {{ request()->routeIs('admin.settings*') ? 'active fw-bold' : '' }}" href="{{ route('admin.settings.edit') }}">{{ __('app.site_settings') }}</a>
             </nav>
         </aside>
         <div class="flex-grow-1">
@@ -45,8 +45,8 @@
                 </form>
                 <div class="d-flex align-items-center gap-2">
                     <a href="{{ route('admin.projects.create') }}" class="btn btn-outline-primary btn-sm">+ {{ __('app.projects') }}</a>
-                    <a href="{{ route('admin.invoices.index') }}" class="btn btn-outline-secondary btn-sm">+ {{ __('app.invoices') }}</a>
-                    <a href="{{ route('admin.expenses.index') }}" class="btn btn-outline-secondary btn-sm">+ {{ __('app.expenses') }}</a>
+                    <a href="{{ route('admin.invoices.create') }}" class="btn btn-outline-secondary btn-sm">+ {{ __('app.invoices') }}</a>
+                    <a href="{{ route('admin.expenses.create') }}" class="btn btn-outline-secondary btn-sm">+ {{ __('app.expenses') }}</a>
                     <a href="{{ route('lang.switch', app()->getLocale() === 'ar' ? 'en' : 'ar') }}" class="btn btn-outline-secondary btn-sm">
                         {{ app()->getLocale() === 'ar' ? 'EN' : 'AR' }}
                     </a>

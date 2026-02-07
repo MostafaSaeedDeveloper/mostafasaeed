@@ -13,5 +13,6 @@ class ContactMessage extends Model
         'message',
         'ip_address',
         'user_agent',
+        'status',
     ];
 }
