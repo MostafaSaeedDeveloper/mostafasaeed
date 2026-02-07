@@ -218,6 +218,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'New Lead',
             'service' => 'Web Development',
             'message' => 'Need a new website.',
+            'status' => 'new',
         ]);
     }
 }

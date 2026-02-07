@@ -1,38 +1,6 @@
 @extends('layouts.admin')
-
 @section('title', __('app.messages'))
-
 @section('content')
-<div class="card">
-    <div class="table-responsive">
-        <table class="table table-striped mb-0">
-            <thead>
-                <tr>
-                    <th>{{ __('app.name') }}</th>
-                    <th>{{ __('app.email') }}</th>
-                    <th>{{ __('app.service') }}</th>
-                    <th>{{ __('app.received_at') }}</th>
-                    <th>{{ __('app.actions') }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($messages as $message)
-                    <tr>
-                        <td>{{ $message->name }}</td>
-                        <td>{{ $message->email }}</td>
-                        <td>{{ $message->service }}</td>
-                        <td>{{ $message->created_at->format('Y-m-d') }}</td>
-                        <td>
-                            <a href="{{ route('admin.messages.show', $message) }}" class="btn btn-sm btn-outline-secondary">{{ __('app.view') }}</a>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<div class="mt-3">
-    {{ $messages->links() }}
-</div>
+<form class="row g-2 mb-3"><div class="col-auto"><input name="q" class="form-control" value="{{ request('q') }}" placeholder="{{ __('app.search') }}"></div><div class="col-auto"><select name="status" class="form-select"><option value="">{{ __('app.status') }}</option>@foreach(['new','read','replied','archived'] as $s)<option value="{{ $s }}" @selected(request('status')===$s)>{{ ucfirst($s) }}</option>@endforeach</select></div><div class="col-auto"><button class="btn btn-outline-secondary">{{ __('app.filter') }}</button></div></form>
+<div class="card"><div class="table-responsive"><table class="table table-striped mb-0"><thead><tr><th>{{ __('app.name') }}</th><th>{{ __('app.email') }}</th><th>{{ __('app.service') }}</th><th>{{ __('app.status') }}</th><th>{{ __('app.received_at') }}</th><th>{{ __('app.actions') }}</th></tr></thead><tbody>@foreach($messages as $message)<tr><td>{{ $message->name }}</td><td>{{ $message->email }}</td><td>{{ $message->service }}</td><td>{{ ucfirst($message->status) }}</td><td>{{ $message->created_at->format('Y-m-d H:i') }}</td><td><a href="{{ route('admin.messages.show',$message) }}" class="btn btn-sm btn-outline-primary">{{ __('app.view') }}</a></td></tr>@endforeach</tbody></table></div></div><div class="mt-3">{{ $messages->links() }}</div>
 @endsection

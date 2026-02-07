@@ -2,9 +2,15 @@
 
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ContactMessageController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ExpenseController;
+use App\Http\Controllers\Admin\InvoiceController;
+use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\Admin\RevenueController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\FrontendController;
@@ -42,13 +48,15 @@ Route::prefix('dashboard')
         Route::resource('/services', ServiceController::class);
         Route::resource('/projects', ProjectController::class);
         Route::resource('/clients', ClientController::class);
+        Route::resource('/customers', CustomerController::class);
+        Route::resource('/invoices', InvoiceController::class);
+        Route::resource('/payments', PaymentController::class);
+        Route::resource('/expenses', ExpenseController::class);
+        Route::resource('/revenues', RevenueController::class);
+        Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+        Route::patch('/messages/{message}/status', [ContactMessageController::class, 'updateStatus'])->name('messages.update-status');
         Route::get('/settings', [SettingController::class, 'edit'])->name('settings.edit');
         Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
         Route::get('/messages', [ContactMessageController::class, 'index'])->name('messages.index');
         Route::get('/messages/{message}', [ContactMessageController::class, 'show'])->name('messages.show');
-        Route::get('/customers', [\App\Http\Controllers\Admin\CustomerController::class, 'index'])->name('customers.index');
-        Route::get('/invoices', [\App\Http\Controllers\Admin\InvoiceController::class, 'index'])->name('invoices.index');
-        Route::get('/payments', [\App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('payments.index');
-        Route::get('/expenses', [\App\Http\Controllers\Admin\ExpenseController::class, 'index'])->name('expenses.index');
-        Route::get('/revenues', [\App\Http\Controllers\Admin\RevenueController::class, 'index'])->name('revenues.index');
     });
