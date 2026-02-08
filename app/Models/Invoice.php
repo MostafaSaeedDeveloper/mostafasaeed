@@ -19,6 +19,9 @@ class Invoice extends Model
         'discount',
         'tax',
         'total',
+        'paid_amount',
+        'due_amount',
+        'invoice_prefix',
         'notes',
     ];
 

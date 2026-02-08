@@ -1,2 +1,6 @@
 @extends('layouts.admin')
-@section('content')<div class="card p-3"><form method="POST" action="{{ route('admin.payments.update',$payment) }}">@method('PUT') @include('admin.payments.form')</form></div>@endsection
+@section('title', 'Edit Payment')
+@section('page_title', 'Edit Payment')
+@section('content')
+<form method="POST" action="{{ route('admin.payments.update',$payment) }}">@method('PUT') @include('admin.payments.form')</form>
+@endsection

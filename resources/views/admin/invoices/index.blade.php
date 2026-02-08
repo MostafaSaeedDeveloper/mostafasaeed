@@ -1,13 +1,20 @@
 @extends('layouts.admin')
 @section('title', __('app.invoices'))
+@section('page_title', 'Invoices')
+@section('breadcrumb')
+<ol class="breadcrumb float-sm-right"><li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li><li class="breadcrumb-item active">Invoices</li></ol>
+@endsection
 @section('content')
-<div class="d-flex justify-content-between mb-3">
-<form method="GET" class="row g-2">
-<div class="col-auto"><input name="q" class="form-control" value="{{ request('q') }}" placeholder="#"></div>
-<div class="col-auto"><select name="status" class="form-select"><option value="">{{ __('app.status') }}</option>@foreach(['draft','sent','paid','partially_paid','overdue','cancelled'] as $s)<option value="{{ $s }}" @selected(request('status')===$s)>{{ $s }}</option>@endforeach</select></div>
-<div class="col-auto"><button class="btn btn-outline-secondary">{{ __('app.filter') }}</button></div></form>
-<a href="{{ route('admin.invoices.create') }}" class="btn btn-primary">+ {{ __('app.invoices') }}</a></div>
-<div class="card"><div class="table-responsive"><table class="table table-striped mb-0"><thead><tr><th>{{ __('app.invoice_number') }}</th><th>{{ __('app.customer') }}</th><th>{{ __('app.total') }}</th><th>{{ __('app.status') }}</th><th>{{ __('app.due_date') }}</th><th>{{ __('app.actions') }}</th></tr></thead><tbody>
-@foreach($invoices as $invoice)<tr><td><a href="{{ route('admin.invoices.show',$invoice) }}">#{{ $invoice->invoice_number }}</a></td><td>{{ $invoice->customer?->name }}</td><td>{{ number_format($invoice->total,2) }}</td><td>{{ $invoice->status }}</td><td>{{ optional($invoice->due_date)->format('Y-m-d') }}</td><td class="d-flex gap-2"><a class="btn btn-sm btn-outline-primary" href="{{ route('admin.invoices.edit',$invoice) }}">{{ __('app.edit') }}</a><form method="POST" action="{{ route('admin.invoices.destroy',$invoice) }}">@csrf @method('DELETE')<button data-confirm="{{ __('app.confirm_delete') }}" class="btn btn-sm btn-outline-danger">{{ __('app.delete') }}</button></form></td></tr>@endforeach
-</tbody></table></div></div><div class="mt-3">{{ $invoices->links() }}</div>
+<div class="card">
+<div class="card-header">
+<form method="GET" class="row g-2 align-items-end">
+<div class="col-md-3"><label>Search</label><input name="q" class="form-control" value="{{ request('q') }}" placeholder="Invoice #"></div>
+<div class="col-md-3"><label>Status</label><select name="status" class="form-control"><option value="">All</option>@foreach(['draft','sent','paid','partially_paid','overdue','cancelled'] as $s)<option value="{{ $s }}" @selected(request('status')===$s)>{{ ucfirst(str_replace('_',' ',$s)) }}</option>@endforeach</select></div>
+<div class="col-md-4 d-flex gap-2"><button class="btn btn-outline-secondary">Filter</button><a href="{{ route('admin.invoices.create') }}" class="btn btn-primary">Add Invoice</a></div>
+</form>
+</div>
+<div class="card-body table-responsive"><table class="table table-hover datatable"><thead><tr><th>#</th><th>Customer</th><th>Total</th><th>Paid</th><th>Due</th><th>Status</th><th>Due Date</th><th>Actions</th></tr></thead><tbody>
+@foreach($invoices as $invoice)<tr><td><a href="{{ route('admin.invoices.show',$invoice) }}">{{ $invoice->invoice_prefix ?? 'INV-' }}{{ str_pad($invoice->invoice_number,6,'0',STR_PAD_LEFT) }}</a></td><td>{{ $invoice->customer?->name }}</td><td>{{ number_format($invoice->total,2) }}</td><td>{{ number_format($invoice->paid_amount ?? 0,2) }}</td><td>{{ number_format($invoice->due_amount ?? $invoice->total,2) }}</td><td><span class="badge badge-{{ in_array($invoice->status,['paid']) ? 'success' : (in_array($invoice->status,['overdue','cancelled']) ? 'danger':'warning') }}">{{ ucfirst(str_replace('_',' ',$invoice->status)) }}</span></td><td>{{ optional($invoice->due_date)->format('Y-m-d') }}</td><td class="d-flex gap-1"><a class="btn btn-sm btn-outline-primary" href="{{ route('admin.invoices.edit',$invoice) }}">Edit</a><a class="btn btn-sm btn-outline-secondary" href="{{ route('admin.invoices.pdf',$invoice) }}">PDF</a></td></tr>@endforeach
+</tbody></table></div>
+</div>
 @endsection

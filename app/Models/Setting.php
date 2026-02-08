@@ -18,6 +18,25 @@ class Setting extends Model
         'social_links',
         'default_seo',
         'base_currency_id',
+        'brand_name',
+        'favicon_path',
+        'tax_number',
+        'currency_format',
+        'timezone',
+        'date_format',
+        'invoice_prefix',
+        'invoice_start_number',
+        'default_due_days',
+        'invoice_terms',
+        'invoice_notes',
+        'invoice_template',
+        'tax_enabled',
+        'default_tax_rate',
+        'tax_inclusive',
+        'allow_item_discount',
+        'allow_invoice_discount',
+        'invoice_email_template',
+        'overdue_notifications_enabled',
     ];
 
     protected $casts = [
@@ -25,6 +44,11 @@ class Setting extends Model
         'contact_address' => 'array',
         'social_links' => 'array',
         'default_seo' => 'array',
+        'tax_enabled' => 'boolean',
+        'tax_inclusive' => 'boolean',
+        'allow_item_discount' => 'boolean',
+        'allow_invoice_discount' => 'boolean',
+        'overdue_notifications_enabled' => 'boolean',
     ];
 
     public function baseCurrency()
