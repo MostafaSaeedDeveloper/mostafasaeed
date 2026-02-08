@@ -8,6 +8,7 @@ use App\Models\Currency;
 use App\Models\Customer;
 use App\Models\Invoice;
 use App\Models\Payment;
+use App\Models\PaymentMethod;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -16,9 +17,9 @@ class PaymentController extends Controller
 {
     public function index(Request $request): View
     {
-        $payments = Payment::with(['customer', 'invoice'])
+        $payments = Payment::with(['customer', 'invoice', 'paymentMethod'])
             ->when($request->filled('customer_id'), fn ($query) => $query->where('customer_id', $request->integer('customer_id')))
-            ->when($request->filled('payment_method'), fn ($query) => $query->where('payment_method', $request->string('payment_method')->toString()))
+            ->when($request->filled('payment_method_id'), fn ($query) => $query->where('payment_method_id', $request->integer('payment_method_id')))
             ->when($request->filled('from'), fn ($query) => $query->whereDate('date', '>=', $request->date('from')))
             ->when($request->filled('to'), fn ($query) => $query->whereDate('date', '<=', $request->date('to')))
             ->latest()
@@ -26,8 +27,9 @@ class PaymentController extends Controller
             ->withQueryString();
 
         $customers = Customer::orderBy('name')->get();
+        $methods = PaymentMethod::where('is_active', true)->orderBy('name')->get();
 
-        return view('admin.payments.index', compact('payments', 'customers'));
+        return view('admin.payments.index', compact('payments', 'customers', 'methods'));
     }
 
     public function create(): View
@@ -76,23 +78,29 @@ class PaymentController extends Controller
             'invoices' => Invoice::orderByDesc('invoice_number')->get(),
             'currencies' => Currency::orderBy('code')->get(),
             'accounts' => Account::orderBy('name')->get(),
+            'methods' => PaymentMethod::where('is_active', true)->orderBy('name')->get(),
         ];
     }
 
     private function validated(Request $request): array
     {
-        return $request->validate([
+        $data = $request->validate([
             'customer_id' => ['nullable', 'exists:customers,id'],
             'invoice_id' => ['nullable', 'exists:invoices,id'],
             'amount' => ['required', 'numeric', 'min:0.01'],
             'currency_id' => ['nullable', 'exists:currencies,id'],
             'exchange_rate_to_base' => ['nullable', 'numeric', 'min:0.000001'],
-            'payment_method' => ['required', 'in:cash,vodafone_cash,bank_transfer,paypal,stripe,other'],
+            'payment_method_id' => ['required', 'exists:payment_methods,id'],
             'account_id' => ['nullable', 'exists:accounts,id'],
             'date' => ['required', 'date'],
             'reference' => ['nullable', 'string', 'max:255'],
             'notes' => ['nullable', 'string'],
         ]);
+
+        $method = PaymentMethod::find($data['payment_method_id']);
+        $data['payment_method'] = $method?->slug;
+
+        return $data;
     }
 
     private function syncInvoiceStatus(?Invoice $invoice): void
@@ -102,16 +110,20 @@ class PaymentController extends Controller
         }
 
         $paidAmount = (float) $invoice->payments()->sum('amount');
-        if ($paidAmount <= 0) {
-            $invoice->update(['status' => ($invoice->due_date && now()->gt($invoice->due_date)) ? 'overdue' : 'sent']);
-            return;
-        }
+        $status = 'sent';
 
         if ($paidAmount >= (float) $invoice->total) {
-            $invoice->update(['status' => 'paid']);
-            return;
+            $status = 'paid';
+        } elseif ($paidAmount > 0) {
+            $status = 'partially_paid';
+        } elseif ($invoice->due_date && now()->gt($invoice->due_date)) {
+            $status = 'overdue';
         }
 
-        $invoice->update(['status' => 'partially_paid']);
+        $invoice->update([
+            'status' => $status,
+            'paid_amount' => $paidAmount,
+            'due_amount' => max(((float) $invoice->total) - $paidAmount, 0),
+        ]);
     }
 }

@@ -13,6 +13,7 @@ class Payment extends Model
         'currency_id',
         'exchange_rate_to_base',
         'payment_method',
+        'payment_method_id',
         'account_id',
         'date',
         'reference',
@@ -36,6 +37,11 @@ class Payment extends Model
     public function currency()
     {
         return $this->belongsTo(Currency::class);
+    }
+
+    public function paymentMethod()
+    {
+        return $this->belongsTo(PaymentMethod::class);
     }
 
     public function account()

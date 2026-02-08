@@ -1,3 +1,6 @@
 @extends('layouts.admin')
-@section('title', __('app.invoices'))
-@section('content')<div class="card p-3"><form method="POST" action="{{ route('admin.invoices.store') }}">@include('admin.invoices.form')</form></div>@endsection
+@section('title', 'Create Invoice')
+@section('page_title', 'Create Invoice')
+@section('content')
+<form method="POST" action="{{ route('admin.invoices.store') }}">@include('admin.invoices.form')</form>
+@endsection
