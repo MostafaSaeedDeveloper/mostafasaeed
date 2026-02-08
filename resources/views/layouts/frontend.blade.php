@@ -16,15 +16,15 @@
     <link rel="stylesheet" href="{{ asset('css/rtl.css') }}">
     @stack('styles')
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+<body class="frontend-dark">
+    <nav class="navbar navbar-expand-lg sticky-top border-bottom border-secondary-subtle">
         <div class="container">
             <a class="navbar-brand fw-bold" href="{{ route('home') }}">Mostafa Saeed</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarMain">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2">
                     <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">{{ __('app.nav_home') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">{{ __('app.nav_about') }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('services') }}">{{ __('app.nav_services') }}</a></li>
@@ -45,9 +45,9 @@
         @yield('content')
     </main>
 
-    <footer class="bg-light py-4 border-top">
+    <footer class="py-4 border-top border-secondary-subtle">
         <div class="container text-center">
-            <p class="mb-0 text-muted">{{ __('app.footer_text') }}</p>
+            <p class="mb-0 text-secondary">{{ __('app.footer_text') }}</p>
         </div>
     </footer>
 

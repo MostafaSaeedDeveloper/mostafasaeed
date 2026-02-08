@@ -4,15 +4,14 @@
 
 @section('content')
 <section class="container">
-    <h1 class="h3 mb-4">{{ __('app.services') }}</h1>
+    <h1 class="section-title">Services</h1>
+    <p class="section-subtitle">Professional solutions with clean implementation and long-term reliability.</p>
     <div class="row g-3">
         @foreach($services as $service)
-            <div class="col-md-6">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $service->getTranslated('title') }}</h5>
-                        <p class="card-text text-muted">{{ $service->getTranslated('description') }}</p>
-                    </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="premium-card">
+                    <h2 class="h5">{{ $service['title'] }}</h2>
+                    <p class="text-secondary mb-0">{{ $service['description'] }}</p>
                 </div>
             </div>
         @endforeach
