@@ -14,8 +14,9 @@
 @section('content')
 <section class="container">
     <div class="mb-4">
+        <p class="small text-secondary mb-1">{{ $project->category ?: 'General' }}</p>
         <h1 class="h3">{{ $project->getTranslated('title') }}</h1>
-        <p class="text-muted">{{ $project->getTranslated('summary') }}</p>
+        <p class="text-secondary">{{ $project->getTranslated('summary') }}</p>
     </div>
 
     @if($project->main_image_path)
@@ -24,8 +25,10 @@
 
     <div class="row g-4">
         <div class="col-lg-8">
-            <h5>{{ __('app.case_study') }}</h5>
-            <p class="text-muted">{{ $project->getTranslated('case_study') }}</p>
+            <div class="premium-card">
+                <h5>Full Description</h5>
+                <p class="text-secondary mb-0">{{ $project->getTranslated('case_study') }}</p>
+            </div>
 
             @if($project->images->count())
                 <div class="row g-2 mt-3">
@@ -38,21 +41,18 @@
             @endif
         </div>
         <div class="col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <h6>{{ __('app.tech_stack') }}</h6>
-                    <div class="d-flex flex-wrap gap-2 mb-3">
-                        @foreach(($project->tech_stack ?? []) as $tech)
-                            <span class="badge bg-secondary">{{ $tech }}</span>
-                        @endforeach
-                    </div>
-                    @if($project->live_url)
-                        <a href="{{ $project->live_url }}" class="btn btn-primary w-100 mb-2" target="_blank">{{ __('app.live_demo') }}</a>
-                    @endif
-                    @if($project->repo_url)
-                        <a href="{{ $project->repo_url }}" class="btn btn-outline-secondary w-100" target="_blank">{{ __('app.view_repo') }}</a>
-                    @endif
+            <div class="premium-card">
+                <h6 class="mb-2">Service Type</h6>
+                <p class="text-secondary">{{ $project->category ?: 'General' }}</p>
+                <h6>{{ __('app.tech_stack') }}</h6>
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                    @foreach(($project->tech_stack ?? []) as $tech)
+                        <span class="badge">{{ $tech }}</span>
+                    @endforeach
                 </div>
+                @if($project->live_url)
+                    <a href="{{ $project->live_url }}" class="btn btn-primary w-100 mb-2" target="_blank">Project URL</a>
+                @endif
             </div>
         </div>
     </div>

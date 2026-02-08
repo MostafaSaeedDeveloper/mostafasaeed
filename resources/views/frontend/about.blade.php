@@ -9,23 +9,19 @@
             @if($profile?->profile_image_path)
                 <img src="{{ asset($profile->profile_image_path) }}" class="img-fluid rounded" alt="Profile">
             @else
-                <div class="bg-light border rounded p-5">{{ __('app.profile_placeholder') }}</div>
+                <div class="premium-card">Mostafa Saeed</div>
             @endif
         </div>
         <div class="col-lg-8">
-            <h1 class="h3">{{ __('app.about_me') }}</h1>
-            <p class="text-muted">{{ $profile?->getTranslated('bio') }}</p>
-            <h5 class="mt-4">{{ __('app.skills') }}</h5>
+            <h1 class="section-title">About Me</h1>
+            <p class="text-secondary">I deliver practical and scalable digital solutions backed by strong hands-on experience in Laravel, WordPress, and end-to-end frontend/backend development. My work is centered on building custom systems, improving performance, and supporting business growth through technical excellence.</p>
+            <p class="text-secondary">I also provide SEO optimization, social media management, and media buying support to align product development with marketing outcomes. My approach prioritizes clean execution, realistic planning, and long-term technical support to keep platforms stable and ready for scale.</p>
+            <h5 class="mt-4">Core Expertise</h5>
             <div class="d-flex flex-wrap gap-2">
-                @foreach(($profile?->skills ?? []) as $skill)
-                    <span class="badge bg-secondary">{{ $skill }}</span>
+                @foreach(['Laravel', 'WordPress', 'Frontend Development', 'Backend Development', 'SEO Optimization', 'Social Media Management', 'Media Buying', 'Custom Systems'] as $skill)
+                    <span class="badge">{{ $skill }}</span>
                 @endforeach
             </div>
-            @if($profile?->cv_path)
-                <div class="mt-4">
-                    <a href="{{ asset($profile->cv_path) }}" class="btn btn-outline-primary" target="_blank">{{ __('app.download_cv') }}</a>
-                </div>
-            @endif
         </div>
     </div>
 </section>

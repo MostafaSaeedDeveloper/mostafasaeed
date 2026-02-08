@@ -10,6 +10,7 @@ use App\Models\Project;
 use App\Models\Service;
 use App\Models\Setting;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class FrontendController extends Controller
@@ -17,12 +18,18 @@ class FrontendController extends Controller
     public function home(): View
     {
         $profile = Profile::first();
-        $services = Service::where('status', 'published')->orderBy('order')->limit(5)->get();
         $projects = Project::where('status', 'published')->latest()->limit(6)->get();
         $clients = Client::where('featured', true)->orderBy('order')->get();
         $settings = Setting::first();
 
-        return view('frontend.home', compact('profile', 'services', 'projects', 'clients', 'settings'));
+        return view('frontend.home', [
+            'profile' => $profile,
+            'projects' => $projects,
+            'clients' => $clients,
+            'settings' => $settings,
+            'services' => $this->portfolioServices(),
+            'experiences' => $this->experiences(),
+        ]);
     }
 
     public function about(): View
@@ -35,18 +42,32 @@ class FrontendController extends Controller
 
     public function services(): View
     {
-        $services = Service::where('status', 'published')->orderBy('order')->get();
         $settings = Setting::first();
 
-        return view('frontend.services', compact('services', 'settings'));
+        return view('frontend.services', [
+            'services' => $this->portfolioServices(),
+            'settings' => $settings,
+        ]);
     }
 
-    public function projects(): View
+    public function projects(Request $request): View
     {
-        $projects = Project::where('status', 'published')->latest()->get();
+        $query = Project::where('status', 'published')->latest();
+
+        if ($request->filled('service_type')) {
+            $query->where('category', $request->string('service_type')->toString());
+        }
+
+        $projects = $query->get();
+        $serviceTypes = Project::where('status', 'published')
+            ->whereNotNull('category')
+            ->where('category', '!=', '')
+            ->distinct()
+            ->orderBy('category')
+            ->pluck('category');
         $settings = Setting::first();
 
-        return view('frontend.projects', compact('projects', 'settings'));
+        return view('frontend.projects', compact('projects', 'settings', 'serviceTypes'));
     }
 
     public function projectShow(string $slug): View
@@ -98,5 +119,31 @@ class FrontendController extends Controller
         return response()
             ->view('frontend.sitemap', compact('projects'))
             ->header('Content-Type', 'application/xml');
+    }
+
+    private function portfolioServices(): array
+    {
+        return [
+            ['title' => 'Web Development', 'description' => 'Building robust websites and web applications with clean architecture and long-term maintainability.'],
+            ['title' => 'Custom Systems & Dashboards', 'description' => 'Designing tailored systems, admin dashboards, and workflows that match your exact business operations.'],
+            ['title' => 'SEO Optimization', 'description' => 'Improving technical SEO, structure, and content signals to help your business rank and scale organically.'],
+            ['title' => 'Social Media Management', 'description' => 'Planning and managing social content with a clear brand voice and measurable engagement goals.'],
+            ['title' => 'Media Buying', 'description' => 'Running focused paid campaigns with practical targeting, budget control, and performance-driven optimization.'],
+            ['title' => 'Graphic Design', 'description' => 'Creating modern visual assets and brand materials that align with your digital identity.'],
+            ['title' => 'Maintenance & Technical Support', 'description' => 'Providing reliable updates, troubleshooting, and proactive technical support for long-term stability.'],
+        ];
+    }
+
+    private function experiences(): array
+    {
+        return [
+            ['title' => 'Full Stack Web Developer', 'company' => 'Bishop Integrated Solutions', 'period' => '2021 – Present', 'description' => 'Leading end-to-end development of scalable business platforms, integrating backend architecture with practical user-focused frontends.'],
+            ['title' => 'Full Stack Web Developer', 'company' => 'Emtiaz Soft – UAE (Remote)', 'period' => 'Nov 2024 – Apr 2025', 'description' => 'Delivered remote full-stack implementations for client portals and internal tools with a focus on performance and maintainability.'],
+            ['title' => 'WordPress Developer', 'company' => 'Withaq – Saudi Arabia (Remote)', 'period' => '2019 – 2022', 'description' => 'Developed and customized WordPress websites for business use-cases, ensuring responsive UI, SEO-readiness, and reliable delivery cycles.'],
+            ['title' => 'WordPress Developer', 'company' => 'MWheba Agency', 'period' => '2019 – 2020', 'description' => 'Built and maintained WordPress projects for agency clients, handling theme customization and content-oriented performance improvements.'],
+            ['title' => 'WordPress Developer', 'company' => 'WEGO Station', 'period' => '2019', 'description' => 'Contributed to production websites and landing pages with a strong focus on consistent branding and clean implementation.'],
+            ['title' => 'WordPress Developer', 'company' => 'Mediabyte', 'period' => '2018', 'description' => 'Supported WordPress development workflows, implementing functional pages and optimizations aligned with project requirements.'],
+            ['title' => 'WordPress Developer', 'company' => 'Aaser Media', 'period' => '2017', 'description' => 'Started professional delivery of WordPress websites, collaborating on deployment, custom features, and technical issue resolution.'],
+        ];
     }
 }

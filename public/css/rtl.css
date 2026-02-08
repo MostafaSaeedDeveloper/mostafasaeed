@@ -1,3 +1,111 @@
+:root {
+    --brand-primary: #050A30;
+    --brand-surface: #0b1240;
+    --brand-surface-soft: #11194f;
+    --brand-border: rgba(255, 255, 255, 0.08);
+    --brand-text: #f4f6ff;
+    --brand-muted: #b6bdd7;
+}
+
+html,
+body {
+    background: radial-gradient(circle at top, #0f1a59 0%, var(--brand-primary) 38%, #03051b 100%);
+    color: var(--brand-text);
+    font-family: "Inter", "Segoe UI", Tahoma, sans-serif;
+}
+
+.frontend-dark .navbar,
+.frontend-dark footer,
+.premium-card {
+    background: rgba(11, 18, 64, 0.72);
+    backdrop-filter: blur(10px);
+}
+
+.frontend-dark .navbar-brand,
+.frontend-dark .nav-link,
+.frontend-dark .btn {
+    letter-spacing: 0.01em;
+}
+
+.frontend-dark .nav-link {
+    color: var(--brand-muted);
+    transition: color .25s ease;
+}
+
+.frontend-dark .nav-link:hover,
+.frontend-dark .nav-link.active {
+    color: #fff;
+}
+
+.frontend-dark .btn-primary,
+.frontend-dark .bg-primary {
+    background-color: var(--brand-primary) !important;
+    border-color: #29358a !important;
+}
+
+.frontend-dark .btn-outline-primary {
+    color: #dee4ff;
+    border-color: #4f5cb4;
+}
+
+.frontend-dark .btn-outline-primary:hover {
+    background-color: #1a2570;
+    color: #fff;
+}
+
+.premium-card {
+    border: 1px solid var(--brand-border);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    height: 100%;
+}
+
+.section-title {
+    font-weight: 700;
+    margin-bottom: .5rem;
+}
+
+.section-subtitle {
+    color: var(--brand-muted);
+    margin-bottom: 1.5rem;
+}
+
+.text-muted,
+.text-secondary {
+    color: var(--brand-muted) !important;
+}
+
+.card,
+.badge,
+.form-control,
+.form-select {
+    background-color: var(--brand-surface);
+    color: var(--brand-text);
+    border-color: var(--brand-border);
+}
+
+.card-title,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #ffffff;
+}
+
+.filter-chip {
+    border: 1px solid #3d4ba8;
+    color: #d8deff;
+    background: transparent;
+}
+
+.filter-chip.active,
+.filter-chip:hover {
+    background: #1a2570;
+    color: white;
+}
+
 html[dir="rtl"], html[dir="rtl"] body {
     direction: rtl;
 }
