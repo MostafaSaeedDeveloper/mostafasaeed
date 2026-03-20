@@ -232,7 +232,7 @@
                         </a>
                         <a href="service-details.html" class="service-card-v2 tmponhover tmp-scroll-trigger tmp-fade-in animation-order-5">
                             <h2 class="service-card-num"><span>05.</span>Experience Timeline</h2>
-                            <p class="service-para">Full Stack Web Developer (2021 – Present), Emtiaz Soft (Nov 2024 – Apr 2025), Withaq (2019 – 2022).</p>
+                            <p class="service-para">Bishop Integrated Solutions (2021 – Present), Emtiaz Soft (Nov 2024 – Apr 2025), Withaq (2019 – 2022), MWheba Agency (2019 – 2020), WEGO Station (2019), Mediabyte (2018), Aaser Media (2017).</p>
                         </a>
                         <a href="service-details.html" class="service-card-v2 tmponhover tmp-scroll-trigger tmp-fade-in animation-order-6">
                             <h2 class="service-card-num"><span>06.</span>Education & Certificates</h2>
@@ -422,6 +422,36 @@
                                     <h2 class="ex-name">Emtiaz Soft, UAE (Remote)</h2>
                                     <h3 class="ex-title">Full Stack Web Developer</h3>
                                     <p class="ex-para">Nov 2024 – Apr 2025 | Delivered remote full stack solutions and business websites for Gulf-region clients.</p>
+                                </div>
+                                <div class="experience-content tmp-scroll-trigger tmp-fade-in animation-order-3">
+                                    <p class="ex-subtitle">experience</p>
+                                    <h2 class="ex-name">Withaq, Saudi Arabia (Remote)</h2>
+                                    <h3 class="ex-title">WordPress Developer</h3>
+                                    <p class="ex-para">2019 – 2022 | Developed WordPress websites and client-ready solutions for remote Saudi projects.</p>
+                                </div>
+                                <div class="experience-content tmp-scroll-trigger tmp-fade-in animation-order-4">
+                                    <p class="ex-subtitle">experience</p>
+                                    <h2 class="ex-name">MWheba Agency</h2>
+                                    <h3 class="ex-title">WordPress Developer</h3>
+                                    <p class="ex-para">2019 – 2020 | Built and maintained WordPress business websites and landing pages.</p>
+                                </div>
+                                <div class="experience-content tmp-scroll-trigger tmp-fade-in animation-order-5">
+                                    <p class="ex-subtitle">experience</p>
+                                    <h2 class="ex-name">WEGO Station</h2>
+                                    <h3 class="ex-title">WordPress Developer</h3>
+                                    <p class="ex-para">2019 | Delivered WordPress implementations and content-driven web pages.</p>
+                                </div>
+                                <div class="experience-content tmp-scroll-trigger tmp-fade-in animation-order-6">
+                                    <p class="ex-subtitle">experience</p>
+                                    <h2 class="ex-name">Mediabyte</h2>
+                                    <h3 class="ex-title">WordPress Developer</h3>
+                                    <p class="ex-para">2018 | Worked on WordPress websites focused on business presentation and usability.</p>
+                                </div>
+                                <div class="experience-content tmp-scroll-trigger tmp-fade-in animation-order-7">
+                                    <p class="ex-subtitle">experience</p>
+                                    <h2 class="ex-name">Aaser Media</h2>
+                                    <h3 class="ex-title">WordPress Developer</h3>
+                                    <p class="ex-para">2017 | Started delivering WordPress projects and digital web presence solutions.</p>
                                 </div>
                             </div>
                         </div>
