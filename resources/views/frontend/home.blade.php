@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Reeni is a modern personal portfolio template for designers, developers, content writer, cleaner, programmer, fashion designer, model, Influencer and freelancers. Fully responsive, SEO-friendly, Bootstrap and easy to customize.">
+    <meta name="description" content="Mostafa Saeed is a Full Stack Web Developer, WordPress Developer, SEO Specialist, and Media Buyer based in Alexandria, Egypt.">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.svg') }}">
-    <title>Home 07 Reeni - Personal Portfolio HTML Template | Freelancer & Developer Portfolio</title>
+    <title>Mostafa Saeed | Full Stack Web Developer Projects</title>
     <!-- Bootstrap min css -->
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/fontawesome.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/swiper.css') }}">
@@ -16,6 +16,13 @@
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/bootstrap.min.css') }}">
     <!-- custom css -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <style>
+        :root { --mostafa-brand: #CFE7FF; }
+        .theme-gradient, .subtitle, .ex-subtitle, .custom-title span, .ft-title, .service-card-num span { color: var(--mostafa-brand) !important; }
+        .tmp-btn, .tmp-btn:hover, .newsletter-form-1 .form-icon { background: var(--mostafa-brand) !important; color: #0f172a !important; }
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link, .social-link a:hover, .tmp-arrow-icon-btn, .contact-get-in-touch-wrap, .education-experience-card:hover { border-color: var(--mostafa-brand) !important; }
+        .social-link a, .primary-menu .nav-link.current, .copy-right-para a, .ft-link a:hover { color: var(--mostafa-brand) !important; }
+    </style>
 </head>
 
 <body class="index-seven">
@@ -44,7 +51,7 @@
                                     <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
                                     <polyline points="2 17 12 22 22 17"></polyline>
                                     <polyline points="2 12 12 17 22 12"></polyline>
-                                </svg>Portfolio</a></li>
+                                </svg>Projects</a></li>
                         <li class="nav-item"><a class="nav-link smoth-animation" href="#resume"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users">
                                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                                     <circle cx="9" cy="7" r="4"></circle>
@@ -59,12 +66,12 @@
                                     <circle cx="9" cy="21" r="1"></circle>
                                     <circle cx="20" cy="21" r="1"></circle>
                                     <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>Pricing</a></li>
-                        <li class="nav-item"><a class="nav-link smoth-animation" href="#blog"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image">
+                                </svg>Certificates</a></li>
+                        <li class="nav-item"><a class="nav-link smoth-animation" href="#experience"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image">
                                     <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                                     <circle cx="8.5" cy="8.5" r="1.5"></circle>
                                     <polyline points="21 15 16 10 5 21"></polyline>
-                                </svg>Blog</a></li>
+                                </svg>Experience</a></li>
                         <li class="nav-item"><a class="nav-link smoth-animation" href="#contacts"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle">
                                     <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
                                     </path>
@@ -73,12 +80,12 @@
                 </nav>
                 <div class="footer">
                     <div class="social-share-style-1">
-                        <span class="title">Find With Me</span>
+                        <span class="title">Contact</span>
                         <div class="social-link">
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="mailto:mostafasaeed.developer@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+                            <a href="https://mostafasaeed.com" target="_blank"><i class="fa-solid fa-globe"></i></a>
+                            <a href="tel:01003770730"><i class="fa-solid fa-phone"></i></a>
+                            <a href="#contacts"><i class="fa-solid fa-location-dot"></i></a>
                         </div>
                     </div>
                 </div>
@@ -95,7 +102,7 @@
             <div class="col-6">
                 <div class="logo">
                     <a href="{{ route('home') }}">
-                        <img src="{{ asset('assets/images/logo/white-logo-reeni.png') }}" alt="Reeni - Personal Portfolio HTML Template for developers and freelancers">
+                        <img src="{{ asset('assets/images/logo/white-logo-reeni.png') }}" alt="Mostafa Saeed Portfolio">
                     </a>
                 </div>
             </div>
@@ -116,8 +123,8 @@
             <div class="header-top">
                 <div class="logo">
                     <a href="{{ route('home') }}" class="logo-area">
-                        <img class="logo-dark" src="{{ asset('assets/images/logo/white-logo-reeni.png') }}" alt="Reeni - Personal Portfolio HTML Template for developers and freelancers">
-                        <img class="logo-white" src="{{ asset('assets/images/logo/logo-white.png') }}" alt="Reeni - Personal Portfolio HTML Template for developers and freelancers">
+                        <img class="logo-dark" src="{{ asset('assets/images/logo/white-logo-reeni.png') }}" alt="Mostafa Saeed Portfolio">
+                        <img class="logo-white" src="{{ asset('assets/images/logo/logo-white.png') }}" alt="Mostafa Saeed Portfolio">
                     </a>
 
                 </div>
@@ -130,21 +137,21 @@
             <ul class="tmp-mainmenu onepagenav-click">
                 <li><a class="smoth-animation" href="#home">Home</a></li>
                 <li><a class="smoth-animation" href="#features">Features</a></li>
-                <li><a class="smoth-animation" href="#portfolio">Portfolio</a></li>
+                <li><a class="smoth-animation" href="#portfolio">Projects</a></li>
                 <li><a class="smoth-animation" href="#resume">Resume</a></li>
                 <li><a class="smoth-animation" href="#clients">Clients</a></li>
-                <li><a class="smoth-animation" href="#pricing">Pricing</a></li>
-                <li><a class="smoth-animation" href="#blog">blog</a></li>
+                <li><a class="smoth-animation" href="#pricing">Certificates</a></li>
+                <li><a class="smoth-animation" href="#experience">experience</a></li>
                 <li><a class="smoth-animation" href="#contacts">Contact</a></li>
             </ul>
 
             <div class="social-share-style-1 mt--40">
-                <span class="title">find with me</span>
+                <span class="title">contact me</span>
                 <div class="social-link">
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="mailto:info@mostafasaeed.com"><i class="fa-regular fa-envelope"></i></a>
+                    <a href="https://mostafasaeed.com" target="_blank"><i class="fa-solid fa-globe"></i></a>
+                    <a href="tel:01003770730"><i class="fa-solid fa-phone"></i></a>
+                    <a href="#contacts"><i class="fa-solid fa-location-dot"></i></a>
                 </div>
             </div>
 
@@ -161,8 +168,8 @@
                         <div class="col-lg-6 order-lg-2">
                             <div class="banner-right-content">
                                 <img class="tmp-scroll-trigger tmp-zoom-in animation-order-1" src="{{ asset('assets/images/banner/banner-user-image-02.png') }}" alt="banner-img">
-                                <h2 class="banner-big-text-1 up-down">WEB DESIGNER</h2>
-                                <h2 class="banner-big-text-2 up-down-2">WEB DESIGNER</h2>
+                                <h2 class="banner-big-text-1 up-down">MOSTAFA SAEED</h2>
+                                <h2 class="banner-big-text-2 up-down-2">MOSTAFA SAEED</h2>
                             </div>
                         </div>
                         <div class="col-lg-6 order-lg-1">
@@ -170,27 +177,23 @@
                                 <span class="sub-title tmp-scroll-trigger tmp-fade-in animation-order-1">Hello</span>
                                 <h1 class="title mt--5  tmp-scroll-trigger tmp-fade-in animation-order-2">
                                     i’m
-                                    Jane Cooper <br> A
+                                    Mostafa Saeed <br> A
                                     <span class="header-caption">
                                         <span class="cd-headline clip is-full-width">
                                             <span class="cd-words-wrapper">
-                                                <b class="is-visible theme-gradient">Web Designer</b>
-                                                <b class="is-hidden theme-gradient">Web Developer</b>
-                                                <b class="is-hidden theme-gradient">UI/UX Designer</b>
-                                                <b class="is-hidden theme-gradient">Freelancer</b>
-                                                <b class="is-hidden theme-gradient">Content Writer</b>
+                                                <b class="is-visible theme-gradient">Full Stack Web Developer</b>
+                                                <b class="is-hidden theme-gradient">WordPress Developer</b>
+                                                <b class="is-hidden theme-gradient">SEO Specialist</b>
+                                                <b class="is-hidden theme-gradient">Media Buyer</b>
                                             </span>
                                     </span>
                                     </span>
                                 </h1>
-                                <p class="disc tmp-scroll-trigger tmp-fade-in animation-order-3"> A personal portfolio
-                                    is a
-                                    collection of your work, achievements, and skills
-                                    that highlights your abilities and professional growth. It serves as </p>
+                                <p class="disc tmp-scroll-trigger tmp-fade-in animation-order-3"> Full Stack Web Developer | WordPress Developer | SEO Specialist | Media Buyer based in Alexandria, Egypt. I build custom websites, WordPress solutions, SEO-ready experiences, and high-performing advertising funnels.</p>
                                 <div class="button-area-banner-one tmp-scroll-trigger tmp-fade-in animation-order-4">
                                     <a class="tmp-btn hover-icon-reverse radius-round smoth-animation" href="#portfolio">
                                         <span class="icon-reverse-wrapper">
-                                            <span class="btn-text">View Portfolio</span>
+                                            <span class="btn-text">View Projects</span>
                                         <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
                                         <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
                                         </span>
@@ -210,53 +213,48 @@
                 <div class="row">
                     <div class="col-lg-6 col-sm-6">
                         <a href="service-details.html" class="service-card-v2 tmponhover tmp-scroll-trigger tmp-fade-in animation-order-1">
-                            <h2 class="service-card-num"><span>01.</span>Success Architects</h2>
-                            <p class="service-para">Business consulting consultants provide expert advice and guida the a
-                                businesses to help theme their performance efficiency</p>
+                            <h2 class="service-card-num"><span>01.</span>Web Development (PHP & Laravel)</h2>
+                            <p class="service-para">Custom websites, web apps, and APIs tailored for business growth.</p>
                         </a>
                         <a href="service-details.html" class="service-card-v2 tmponhover tmp-scroll-trigger tmp-fade-in animation-order-2">
-                            <h2 class="service-card-num"><span>02.</span>Success Architects</h2>
-                            <p class="service-para">App consulting consultants provide expert advice and guida the a
-                                businesses to help theme their performance efficiency</p>
+                            <h2 class="service-card-num"><span>02.</span>WordPress Development</h2>
+                            <p class="service-para">WordPress themes, plugins, WooCommerce stores, and speed optimization.</p>
                         </a>
                         <a href="service-details.html" class="service-card-v2 tmponhover tmp-scroll-trigger tmp-fade-in animation-order-3">
-                            <h2 class="service-card-num"><span>03.</span>Success Architects</h2>
-                            <p class="service-para">I specialize in creating solutions that are not only visually engaging but also align with business goals. From [list services, e.g., branding,</p>
+                            <h2 class="service-card-num"><span>03.</span>SEO Optimization</h2>
+                            <p class="service-para">On-page SEO, technical SEO, keyword research, and ranking improvement.</p>
                         </a>
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <a href="service-details.html" class="service-card-v2 tmponhover tmp-scroll-trigger tmp-fade-in animation-order-4">
-                            <h2 class="service-card-num"><span>04.</span>Ui/visual Design</h2>
-                            <p class="service-para">I’m proud of what I’ve accomplished and excited to share my journey with you. I’m proud of what I’ve accomplished and excited to.</p>
+                            <h2 class="service-card-num"><span>04.</span>Media Buying</h2>
+                            <p class="service-para">Facebook Ads, Google Ads, campaign management, and conversion-focused funnels.</p>
                         </a>
                         <a href="service-details.html" class="service-card-v2 tmponhover tmp-scroll-trigger tmp-fade-in animation-order-5">
-                            <h2 class="service-card-num"><span>05.</span>Branding Design</h2>
-                            <p class="service-para">Interested in working together? Let’s bring your ideas to life! Contact me, and let’s start building something amazing.</p>
+                            <h2 class="service-card-num"><span>05.</span>Experience Timeline</h2>
+                            <p class="service-para">Bishop Integrated Solutions (2021 – Present), Emtiaz Soft (Nov 2024 – Apr 2025), Withaq (2019 – 2022), MWheba Agency (2019 – 2020), WEGO Station (2019), Mediabyte (2018), Aaser Media (2017).</p>
                         </a>
                         <a href="service-details.html" class="service-card-v2 tmponhover tmp-scroll-trigger tmp-fade-in animation-order-6">
-                            <h2 class="service-card-num"><span>06.</span>Motion Design</h2>
-                            <p class="service-para">Feel free to browse through my recent projects. Each one showcases my approach and dedication to detail, creativity, and.</p>
+                            <h2 class="service-card-num"><span>06.</span>Education & Certificates</h2>
+                            <p class="service-para">Bachelor's in GIS, Alexandria University (2013 – 2017) | Smouha Academy, MOZ, Eduonix, Route Academy.</p>
                         </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Tpm Latest Portfolio Area Start -->
+        <!-- Tpm Latest Projects Area Start -->
         <div class="latest-portfolio-area custom-column-grid tmp-section-gapTop" id="portfolio">
             <div class="container">
                 <div class="section-head mb--60">
                     <div class="section-sub-title center-title tmp-scroll-trigger tmp-fade-in animation-order-1">
-                        <span class="subtitle">Latest Portfolio</span>
+                        <span class="subtitle">Latest Projects</span>
                     </div>
                     <h2 class="title split-collab tmp-scroll-trigger tmp-fade-in animation-order-2">Transforming Ideas
                         into
-                        <br> Exceptional
+                        <br> Effective Digital Solutions
                     </h2>
-                    <p class="description section-sm tmp-scroll-trigger tmp-fade-in animation-order-3">Business
-                        consulting
-                        consultants provide expert advice and guida
-                        businesses to help them improve their performance, efficiency, and organizational</p>
+                    <p class="description section-sm tmp-scroll-trigger tmp-fade-in animation-order-3">Recent portfolio projects across Laravel, WordPress, SEO, and media buying.</p>
                 </div>
 
                 <div class="row">
@@ -271,9 +269,8 @@
                             </div>
                             <div class="portfolio-card-content-wrap">
                                 <div class="content-left">
-                                    <h3 class="portfolio-card-title"><a class="link" href="project-details.html">Digital
-                                            Transformation Advisors</a></h3>
-                                    <p class="portfoli-card-para">Development Coaches</p>
+                                    <h3 class="portfolio-card-title"><a class="link" href="project-details.html">Custom Laravel Ordering Platform</a></h3>
+                                    <p class="portfoli-card-para">Laravel Development</p>
                                 </div>
                                 <a href="project-details.html" class="tmp-arrow-icon-btn">
                                     <div class="btn-inner">
@@ -296,8 +293,8 @@
                             </div>
                             <div class="portfolio-card-content-wrap">
                                 <div class="content-left">
-                                    <h3 class="portfolio-card-title"><a class="link" href="project-details.html">My work is driven by the belief that thoughtful.</a></h3>
-                                    <p class="portfoli-card-para">Development App</p>
+                                    <h3 class="portfolio-card-title"><a class="link" href="project-details.html">WordPress Healthcare Website</a></h3>
+                                    <p class="portfoli-card-para">WordPress Development</p>
                                 </div>
                                 <a href="project-details.html" class="tmp-arrow-icon-btn">
                                     <div class="btn-inner">
@@ -320,7 +317,7 @@
                             </div>
                             <div class="portfolio-card-content-wrap">
                                 <div class="content-left">
-                                    <h3 class="portfolio-card-title"><a class="link" href="project-details.html">In this portfolio, you’ll find a curated selection</a></h3>
+                                    <h3 class="portfolio-card-title"><a class="link" href="project-details.html">SEO Growth Campaign</a></h3>
                                     <p class="portfoli-card-para">Web Design</p>
                                 </div>
                                 <a href="project-details.html" class="tmp-arrow-icon-btn">
@@ -344,7 +341,7 @@
                             </div>
                             <div class="portfolio-card-content-wrap">
                                 <div class="content-left">
-                                    <h3 class="portfolio-card-title"><a class="link" href="project-details.html">I’ve had the privilege of working with various</a></h3>
+                                    <h3 class="portfolio-card-title"><a class="link" href="project-details.html">Media Buying Funnel</a></h3>
                                     <p class="portfoli-card-para">App Development</p>
                                 </div>
                                 <a href="project-details.html" class="tmp-arrow-icon-btn">
@@ -359,7 +356,7 @@
                 </div>
             </div>
         </div>
-        <!-- Tpm Latest Portfolio Area End -->
+        <!-- Tpm Latest Projects Area End -->
 
         <!-- Tpm Education Experience Area Start -->
         <section class="education-experience tmp-section-gapTop" id="resume">
@@ -372,10 +369,7 @@
                         Creativity
                         <br> through
                     </h2>
-                    <p class="description section-sm tmp-scroll-trigger tmp-fade-in animation-order-3">Business
-                        consulting
-                        consultants provide expert advice and guida
-                        businesses to help them improve their performance, efficiency, and organizational</p>
+                    <p class="description section-sm tmp-scroll-trigger tmp-fade-in animation-order-3">Recent portfolio projects across Laravel, WordPress, SEO, and media buying.</p>
                 </div>
                 <h2 class="custom-title mb-32 tmp-scroll-trigger tmp-fade-in animation-order-1">Education <span><img
                             src="{{ asset('assets/images/custom-line/custom-line.png') }}" alt="custom-line"></span>
@@ -383,31 +377,30 @@
                 <div class="row g-5">
                     <div class="col-lg-6 col-sm-6">
                         <div class="education-experience-card tmponhover tmp-scroll-trigger tmp-fade-in animation-order-1">
-                            <h4 class="edu-sub-title">Trainer Marketing</h4>
-                            <h2 class="edu-title">2005-2009</h2>
-                            <p class="edu-para">A personal portfolio is a curated collection of an individual's professional
-                                work, showcasing their skills, experience A personal portfolio.</p>
+                            <h4 class="edu-sub-title">Alexandria University</h4>
+                            <h2 class="edu-title">2013-2017</h2>
+                            <p class="edu-para">Bachelor's in Geographic Information System (GIS), Faculty of Arts, Alexandria University (2013 – 2017).</p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="education-experience-card tmponhover tmp-scroll-trigger tmp-fade-in animation-order-2">
-                            <h4 class="edu-sub-title">Assistant Director</h4>
-                            <h2 class="edu-title">2010-2014</h2>
-                            <p class="edu-para">Each project here showcases my commitment to excellence and adaptability, tailored to meet each client’s unique needs.</p>
+                            <h4 class="edu-sub-title">Smouha Academy</h4>
+                            <h2 class="edu-title">2016</h2>
+                            <p class="edu-para">Computer Hardware & Software Certificate.</p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="education-experience-card tmponhover tmp-scroll-trigger tmp-fade-in animation-order-3">
-                            <h4 class="edu-sub-title">Design Assistant</h4>
-                            <h2 class="edu-title">2008-2012</h2>
-                            <p class="edu-para">I’ve had the privilege of working with various clients, from startups to established companies, helping bring their visions to life.</p>
+                            <h4 class="edu-sub-title">MOZ / Eduonix / Route</h4>
+                            <h2 class="edu-title">2018-2021</h2>
+                            <p class="edu-para">SEO Training Course (2018), PHP & MySQL Development (2019), Backend Development Diploma (2021).</p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="education-experience-card tmponhover tmp-scroll-trigger tmp-fade-in animation-order-4">
-                            <h4 class="edu-sub-title">Design Assistant</h4>
-                            <h2 class="edu-title">2008-2012</h2>
-                            <p class="edu-para">Each project here showcases my commitment to excellence and adaptability, tailored to meet each client’s unique needs a personal.</p>
+                            <h4 class="edu-sub-title">MOZ / Eduonix / Route</h4>
+                            <h2 class="edu-title">2018-2021</h2>
+                            <p class="edu-para">Continuous learning across SEO, backend development, and business-driven web delivery.</p>
                         </div>
                     </div>
                 </div>
@@ -420,16 +413,45 @@
 
                                 <div class="experience-content tmp-scroll-trigger tmp-fade-in animation-order-1">
                                     <p class="ex-subtitle">experience</p>
-                                    <h2 class="ex-name">Soft Tech (2 Years)</h2>
-                                    <h3 class="ex-title">UI/UX Designer</h3>
-                                    <p class="ex-para">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                        desi dolore eu fugiat nulla pariatu Duis aute irure.</p>
+                                    <h2 class="ex-name">Bishop Integrated Solutions</h2>
+                                    <h3 class="ex-title">Full Stack Web Developer</h3>
+                                    <p class="ex-para">2021 – Present | Building Laravel systems, WordPress websites, SEO-ready projects, and client-focused digital solutions.</p>
                                 </div>
                                 <div class="experience-content tmp-scroll-trigger tmp-fade-in animation-order-2">
                                     <p class="ex-subtitle">experience</p>
-                                    <h2 class="ex-name">ModernTech (3 Years)</h2>
-                                    <h3 class="ex-title">App Developer</h3>
-                                    <p class="ex-para">In this portfolio, you’ll find a curated selection of projects that highlight my skills in [Main Areas, e.g., responsive web design.</p>
+                                    <h2 class="ex-name">Emtiaz Soft, UAE (Remote)</h2>
+                                    <h3 class="ex-title">Full Stack Web Developer</h3>
+                                    <p class="ex-para">Nov 2024 – Apr 2025 | Delivered remote full stack solutions and business websites for Gulf-region clients.</p>
+                                </div>
+                                <div class="experience-content tmp-scroll-trigger tmp-fade-in animation-order-3">
+                                    <p class="ex-subtitle">experience</p>
+                                    <h2 class="ex-name">Withaq, Saudi Arabia (Remote)</h2>
+                                    <h3 class="ex-title">WordPress Developer</h3>
+                                    <p class="ex-para">2019 – 2022 | Developed WordPress websites and client-ready solutions for remote Saudi projects.</p>
+                                </div>
+                                <div class="experience-content tmp-scroll-trigger tmp-fade-in animation-order-4">
+                                    <p class="ex-subtitle">experience</p>
+                                    <h2 class="ex-name">MWheba Agency</h2>
+                                    <h3 class="ex-title">WordPress Developer</h3>
+                                    <p class="ex-para">2019 – 2020 | Built and maintained WordPress business websites and landing pages.</p>
+                                </div>
+                                <div class="experience-content tmp-scroll-trigger tmp-fade-in animation-order-5">
+                                    <p class="ex-subtitle">experience</p>
+                                    <h2 class="ex-name">WEGO Station</h2>
+                                    <h3 class="ex-title">WordPress Developer</h3>
+                                    <p class="ex-para">2019 | Delivered WordPress implementations and content-driven web pages.</p>
+                                </div>
+                                <div class="experience-content tmp-scroll-trigger tmp-fade-in animation-order-6">
+                                    <p class="ex-subtitle">experience</p>
+                                    <h2 class="ex-name">Mediabyte</h2>
+                                    <h3 class="ex-title">WordPress Developer</h3>
+                                    <p class="ex-para">2018 | Worked on WordPress websites focused on business presentation and usability.</p>
+                                </div>
+                                <div class="experience-content tmp-scroll-trigger tmp-fade-in animation-order-7">
+                                    <p class="ex-subtitle">experience</p>
+                                    <h2 class="ex-name">Aaser Media</h2>
+                                    <h3 class="ex-title">WordPress Developer</h3>
+                                    <p class="ex-para">2017 | Started delivering WordPress projects and digital web presence solutions.</p>
                                 </div>
                             </div>
                         </div>
@@ -451,42 +473,42 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
                         <div class="support-company-logo tmp-scroll-trigger tmp-fade-in animation-order-1">
-                            <img src="{{ asset('assets/images/our-supported-company/company-logo-1.svg') }}" alt="Reeni - Personal Portfolio HTML Template">
+                            <img src="{{ asset('assets/images/our-supported-company/company-logo-1.svg') }}" alt="Mostafa Saeed Portfolio">
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
                         <div class="support-company-logo tmp-scroll-trigger tmp-fade-in animation-order-2">
-                            <img src="{{ asset('assets/images/our-supported-company/company-logo-2.svg') }}" alt="Reeni - Personal Portfolio HTML Template">
+                            <img src="{{ asset('assets/images/our-supported-company/company-logo-2.svg') }}" alt="Mostafa Saeed Portfolio">
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
                         <div class="support-company-logo tmp-scroll-trigger tmp-fade-in animation-order-3">
-                            <img src="{{ asset('assets/images/our-supported-company/company-logo-3.svg') }}" alt="Reeni - Personal Portfolio HTML Template">
+                            <img src="{{ asset('assets/images/our-supported-company/company-logo-3.svg') }}" alt="Mostafa Saeed Portfolio">
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
                         <div class="support-company-logo tmp-scroll-trigger tmp-fade-in animation-order-4">
-                            <img src="{{ asset('assets/images/our-supported-company/company-logo-4.svg') }}" alt="Reeni - Personal Portfolio HTML Template">
+                            <img src="{{ asset('assets/images/our-supported-company/company-logo-4.svg') }}" alt="Mostafa Saeed Portfolio">
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
                         <div class="support-company-logo tmp-scroll-trigger tmp-fade-in animation-order-5">
-                            <img src="{{ asset('assets/images/our-supported-company/company-logo-5.svg') }}" alt="Reeni - Personal Portfolio HTML Template">
+                            <img src="{{ asset('assets/images/our-supported-company/company-logo-5.svg') }}" alt="Mostafa Saeed Portfolio">
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
                         <div class="support-company-logo tmp-scroll-trigger tmp-fade-in animation-order-6">
-                            <img src="{{ asset('assets/images/our-supported-company/company-logo-6.svg') }}" alt="Reeni - Personal Portfolio HTML Template">
+                            <img src="{{ asset('assets/images/our-supported-company/company-logo-6.svg') }}" alt="Mostafa Saeed Portfolio">
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
                         <div class="support-company-logo tmp-scroll-trigger tmp-fade-in animation-order-7">
-                            <img src="{{ asset('assets/images/our-supported-company/company-logo-7.svg') }}" alt="Reeni - Personal Portfolio HTML Template">
+                            <img src="{{ asset('assets/images/our-supported-company/company-logo-7.svg') }}" alt="Mostafa Saeed Portfolio">
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
                         <div class="support-company-logo tmp-scroll-trigger tmp-fade-in animation-order-8">
-                            <img src="{{ asset('assets/images/our-supported-company/company-logo-8.svg') }}" alt="Reeni - Personal Portfolio HTML Template">
+                            <img src="{{ asset('assets/images/our-supported-company/company-logo-8.svg') }}" alt="Mostafa Saeed Portfolio">
                         </div>
                     </div>
                 </div>
@@ -541,7 +563,7 @@
                                 </ul>
                             </div>
                             <div class="tmp-button-here">
-                                <a class="tmp-btn hover-icon-reverse btn-border btn-md radius-round" href="contact.html">
+                                <a class="tmp-btn hover-icon-reverse btn-border btn-md radius-round" href="{{ route('contact') }}">
                                     <span class="icon-reverse-wrapper">
                     <span class="btn-text">Get Started</span>
                                     <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
@@ -601,7 +623,7 @@
                                 </ul>
                             </div>
                             <div class="tmp-button-here">
-                                <a class="tmp-btn hover-icon-reverse btn-md radius-round" href="contact.html">
+                                <a class="tmp-btn hover-icon-reverse btn-md radius-round" href="{{ route('contact') }}">
                                     <span class="icon-reverse-wrapper">
                     <span class="btn-text">Get Started</span>
                                     <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
@@ -645,7 +667,7 @@
                                 </ul>
                             </div>
                             <div class="tmp-button-here">
-                                <a class="tmp-btn hover-icon-reverse btn-border btn-md radius-round" href="contact.html">
+                                <a class="tmp-btn hover-icon-reverse btn-border btn-md radius-round" href="{{ route('contact') }}">
                                     <span class="icon-reverse-wrapper">
                     <span class="btn-text">Get Started</span>
                                     <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
@@ -660,72 +682,72 @@
         </section>
         <!-- Tpm My Price plan End -->
 
-        <!-- Tpm Blog and news Area Start -->
-        <section class="blog-and-news-are tmp-section-gapTop" id="blog">
+        <!-- Tpm Experience and news Area Start -->
+        <section class="experience-and-news-are tmp-section-gapTop" id="experience">
             <div class="container">
                 <div class="section-head mb--40">
                     <div class="section-sub-title center-title tmp-scroll-trigger tmp-fade-in animation-order-1">
-                        <span class="subtitle">Blog and News</span>
+                        <span class="subtitle">Experience and News</span>
                     </div>
                     <h2 class="title split-collab tmp-scroll-trigger tmp-fade-in animation-order-2">Elevating Personal
-                        Branding the <br> through Powerful Portfolios</h2>
+                        Branding the <br> through Powerful Projectss</h2>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="blog-card tmp-hover-link tmp-scroll-trigger tmp-fade-in animation-order-1">
+                        <div class="experience-card tmp-hover-link tmp-scroll-trigger tmp-fade-in animation-order-1">
                             <div class="img-box">
-                                <a href="blog-details.html">
-                                    <img class="img-primary hidden-on-mobile" src="{{ asset('assets/images/blog/blog-img-4.jpg') }}" alt="Blog Thumbnail">
-                                    <img class="img-secondary" src="{{ asset('assets/images/blog/blog-img-4.jpg') }}" alt="BLog Thumbnail">
+                                <a href="experience-details.html">
+                                    <img class="img-primary hidden-on-mobile" src="{{ asset('assets/images/experience/experience-img-4.jpg') }}" alt="Experience Thumbnail">
+                                    <img class="img-secondary" src="{{ asset('assets/images/experience/experience-img-4.jpg') }}" alt="BLog Thumbnail">
                                 </a>
-                                <ul class="blog-tags">
+                                <ul class="experience-tags">
                                     <li><span class="tag-icon"><i class="fa-regular fa-user"></i></span>Mesbah</li>
                                     <li><span class="tag-icon"><i class="fa-solid fa-calendar-days"></i></span>April 10</li>
                                 </ul>
                             </div>
-                            <div class="blog-content-wrap">
-                                <h3 class="blog-title v2"><a class="link" href="blog-details.html">Let’s bring your ideas to life! Contact me, and let’s</a></h3>
-                                <a href="blog-details.html" class="read-more-btn v2">Read More <span
+                            <div class="experience-content-wrap">
+                                <h3 class="experience-title v2"><a class="link" href="experience-details.html">Let’s bring your ideas to life! Contact me, and let’s</a></h3>
+                                <a href="experience-details.html" class="read-more-btn v2">Read More <span
                     class="read-more-icon"><i class="fa-solid fa-angle-right"></i></span></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="blog-card tmp-hover-link tmp-scroll-trigger tmp-fade-in animation-order-2">
+                        <div class="experience-card tmp-hover-link tmp-scroll-trigger tmp-fade-in animation-order-2">
                             <div class="img-box">
-                                <a href="blog-details.html">
-                                    <img class="img-primary hidden-on-mobile" src="{{ asset('assets/images/blog/blog-img-5.jpg') }}" alt="Blog Thumbnail">
-                                    <img class="img-secondary" src="{{ asset('assets/images/blog/blog-img-5.jpg') }}" alt="BLog Thumbnail">
+                                <a href="experience-details.html">
+                                    <img class="img-primary hidden-on-mobile" src="{{ asset('assets/images/experience/experience-img-5.jpg') }}" alt="Experience Thumbnail">
+                                    <img class="img-secondary" src="{{ asset('assets/images/experience/experience-img-5.jpg') }}" alt="BLog Thumbnail">
                                 </a>
-                                <ul class="blog-tags">
+                                <ul class="experience-tags">
                                     <li><span class="tag-icon"><i class="fa-regular fa-user"></i></span>Mesbah</li>
                                     <li><span class="tag-icon"><i class="fa-solid fa-calendar-days"></i></span>April 10</li>
                                 </ul>
                             </div>
-                            <div class="blog-content-wrap">
-                                <h3 class="blog-title v2"><a class="link" href="blog-details.html">Inspiring the World, One Project at a
+                            <div class="experience-content-wrap">
+                                <h3 class="experience-title v2"><a class="link" href="experience-details.html">Inspiring the World, One Project at a
                                         Time for the
                                         man</a></h3>
-                                <a href="blog-details.html" class="read-more-btn v2">Read More <span
+                                <a href="experience-details.html" class="read-more-btn v2">Read More <span
                     class="read-more-icon"><i class="fa-solid fa-angle-right"></i></span></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="blog-card tmp-hover-link tmp-scroll-trigger tmp-fade-in animation-order-3">
+                        <div class="experience-card tmp-hover-link tmp-scroll-trigger tmp-fade-in animation-order-3">
                             <div class="img-box">
-                                <a href="blog-details.html">
-                                    <img class="img-primary hidden-on-mobile" src="{{ asset('assets/images/blog/blog-img-6.jpg') }}" alt="Blog Thumbnail">
-                                    <img class="img-secondary" src="{{ asset('assets/images/blog/blog-img-6.jpg') }}" alt="BLog Thumbnail">
+                                <a href="experience-details.html">
+                                    <img class="img-primary hidden-on-mobile" src="{{ asset('assets/images/experience/experience-img-6.jpg') }}" alt="Experience Thumbnail">
+                                    <img class="img-secondary" src="{{ asset('assets/images/experience/experience-img-6.jpg') }}" alt="BLog Thumbnail">
                                 </a>
-                                <ul class="blog-tags">
+                                <ul class="experience-tags">
                                     <li><span class="tag-icon"><i class="fa-regular fa-user"></i></span>Mesbah</li>
                                     <li><span class="tag-icon"><i class="fa-solid fa-calendar-days"></i></span>April 10</li>
                                 </ul>
                             </div>
-                            <div class="blog-content-wrap">
-                                <h3 class="blog-title v2"><a class="link" href="blog-details.html">Each one showcases my approach and dedication man</a></h3>
-                                <a href="blog-details.html" class="read-more-btn v2">Read More <span
+                            <div class="experience-content-wrap">
+                                <h3 class="experience-title v2"><a class="link" href="experience-details.html">Each one showcases my approach and dedication man</a></h3>
+                                <a href="experience-details.html" class="read-more-btn v2">Read More <span
                     class="read-more-icon"><i class="fa-solid fa-angle-right"></i></span></a>
                             </div>
                         </div>
@@ -733,7 +755,7 @@
                 </div>
             </div>
         </section>
-        <!-- Tpm Blog and news Area End -->
+        <!-- Tpm Experience and news Area End -->
 
         <!-- Tpm Get In touch start -->
         <section class="get-in-touch-area tmp-section-gap" id="contacts">
@@ -746,18 +768,16 @@
                                     <div class="section-sub-title tmp-scroll-trigger tmp-fade-in animation-order-1">
                                         <span class="subtitle">GET IN TOUCH</span>
                                     </div>
-                                    <h2 class="title split-collab tmp-scroll-trigger tmp-fade-in animation-order-2">Elevate your brand with Me </h2>
-                                    <p class="description tmp-scroll-trigger tmp-fade-in animation-order-3">ished fact that a reader will be
-                                        distrol acted bioiiy desig
-                                        ished fact that a reader will acted ished fact that a reader will be distrol
-                                        acted </p>
+                                    <h2 class="title split-collab tmp-scroll-trigger tmp-fade-in animation-order-2">Let’s build your next project</h2>
+                                    <p class="description tmp-scroll-trigger tmp-fade-in animation-order-3">Email: mostafasaeed.developer@gmail.com / info@mostafasaeed.com | Phone: 01003770730 | Location: Alexandria, Egypt</p>
                                 </div>
                             </div>
                             <div class="col-lg-7">
                                 <div class="contact-inner">
                                     <div class="contact-form">
                                         <div id="form-messages" class="error"></div>
-                                        <form class="tmp-dynamic-form" id="contact-form" method="POST" action="mailer.php">
+                                        <form class="tmp-dynamic-form" id="contact-form" method="POST" action="{{ route('contact.store') }}">
+                                            @csrf
                                             <div class="contact-form-wrapper row">
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
@@ -767,7 +787,7 @@
 
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
-                                                        <input class="input-field" id="contact-phone" placeholder="Phone Number" type="tel" required>
+                                                        <input class="input-field" id="contact-phone" name="phone" placeholder="Phone Number" type="tel" value="01003770730">
                                                     </div>
                                                 </div>
 
@@ -779,7 +799,7 @@
 
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
-                                                        <input class="input-field" type="text" id="subject" name="subject" placeholder="Subject">
+                                                        <input class="input-field" type="text" id="subject" name="service" placeholder="Service Needed">
                                                     </div>
                                                 </div>
 
@@ -793,7 +813,7 @@
                                                     <div class="tmp-button-here">
                                                         <button class="tmp-btn hover-icon-reverse radius-round w-100" name="submit" type="submit" id="submit">
                                                             <span class="icon-reverse-wrapper">
-                                        <span class="btn-text">Appointment Now</span>
+                                        <span class="btn-text">Send Message</span>
                                                             <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
                                                             <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
                                                             </span>
@@ -822,12 +842,12 @@
                             <div class="single-footer-wrapper border-right mr--20">
                                 <div class="logo">
                                     <a href="{{ route('home') }}">
-                                        <img src="{{ asset('assets/images/logo/white-logo-reeni.png') }}" alt="Reeni - Personal Portfolio HTML Template for developers and freelancers">
+                                        <img src="{{ asset('assets/images/logo/white-logo-reeni.png') }}" alt="Mostafa Saeed Portfolio">
                                     </a>
                                 </div>
-                                <p class="description"><span>Get Ready</span> To Create Great</p>
+                                <p class="description"><span>Ready</span> to Build Great Digital Work</p>
                                 <form action="#" class="newsletter-form-1 mt--40">
-                                    <input type="email" placeholder="Email Adress">
+                                    <input type="email" placeholder="Your Email Address">
                                     <span class="form-icon"><i class="fa-regular fa-envelope"></i></span>
                                 </form>
                             </div>
@@ -837,19 +857,19 @@
                                 <h5 class="ft-title">Quick Link</h5>
                                 <ul class="ft-link tmp-link-animation">
                                     <li>
-                                        <a href="about.html">About Me</a>
+                                        <a href="{{ route('about') }}">About Mostafa</a>
                                     </li>
                                     <li>
-                                        <a href="service.html">Service</a>
+                                        <a href="{{ route('services') }}">Services</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html">Contact Me</a>
+                                        <a href="{{ route('contact') }}">Contact</a>
                                     </li>
                                     <li>
-                                        <a href="blog.html">Blog Post</a>
+                                        <a href="#experience">Experience</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html">Pricing</a>
+                                        <a href="#pricing">Certificates</a>
                                     </li>
                                 </ul>
                             </div>
@@ -858,15 +878,15 @@
                             <div class="single-footer-wrapper contact-wrap">
                                 <h5 class="ft-title">Contact </h5>
                                 <ul class="ft-link tmp-link-animation">
-                                    <li><span class="ft-icon"><i class="fa-solid fa-envelope"></i></span><a href="#">example@gmail.com</a></li>
-                                    <li><span class="ft-icon"><i class="fa-solid fa-location-dot"></i></span>3891 Ranchview Dr. Richardson</li>
-                                    <li><span class="ft-icon"><i class="fa-solid fa-phone"></i></span><a href="#">01245789321</a></li>
+                                    <li><span class="ft-icon"><i class="fa-solid fa-envelope"></i></span><a href="mailto:mostafasaeed.developer@gmail.com">mostafasaeed.developer@gmail.com</a></li>
+                                    <li><span class="ft-icon"><i class="fa-solid fa-location-dot"></i></span>Alexandria, Egypt</li>
+                                    <li><span class="ft-icon"><i class="fa-solid fa-phone"></i></span><a href="#">01003770730</a></li>
                                 </ul>
                                 <div class="social-link footer">
-                                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                    <a href="mailto:info@mostafasaeed.com"><i class="fa-regular fa-envelope"></i></a>
+                                    <a href="https://mostafasaeed.com" target="_blank"><i class="fa-solid fa-globe"></i></a>
+                                    <a href="tel:01003770730"><i class="fa-solid fa-phone"></i></a>
+                                    <a href="#contacts"><i class="fa-solid fa-location-dot"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -879,15 +899,15 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="main-wrapper">
-                            <p class="copy-right-para tmp-link-animation"> ©<a href="https://themeforest.net/user/inversweb/portfolio" target="_blank">InversWeb </a>
+                            <p class="copy-right-para tmp-link-animation"> ©<a href="https://mostafasaeed.com" target="_blank">Mostafa Saeed </a>
                                 <script>
                                     document.write(new Date().getFullYear())
                                 </script> | All Rights Reserved
                             </p>
                             <ul class="tmp-link-animation">
-                                <li><a href="#">Trams & Condition</a></li>
+                                <li><a href="#">Terms & Conditions</a></li>
                                 <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
+                                <li><a href="{{ route('contact') }}">Contact Me</a></li>
                             </ul>
                         </div>
                     </div>
@@ -966,7 +986,7 @@
 
     <div class="demo-button-wrapper">
         <div class="buy-theme">
-            <a href="https://themeforest.net/item/reeni-personal-portfolio-html-template/56387656" target="_blank">
+            <a href="https://mostafasaeed.com" target="_blank">
                 <div class="theme-wrapper">
                     <div>
                         <svg width="22" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -995,8 +1015,8 @@
                     <button class="demo-close-btn"><span><i class="fa-sharp fa-light fa-xmark"></i></span></button>
                 </div>
                 <div class="demo-top text-center">
-                    <h4 class="title">Reeni</h4>
-                    <p class="subtitle">A personal portfolio website is your digital resume—a place to showcase your work,
+                    <h4 class="title">Mostafa Saeed</h4>
+                    <p class="subtitle">Full Stack Web Developer | WordPress Developer | SEO Specialist | Media Buyer.
                         skills, and achievements.</p>
                 </div>
                 <ul class="popuptab-area nav nav-tabs" id="popuptab" role="tablist">
@@ -1018,7 +1038,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="{{ route('home') }}">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-1.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-1.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1039,7 +1059,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-02.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-2.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-2.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1060,7 +1080,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-03.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-3.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-3.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1081,7 +1101,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-04.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-4.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-4.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1102,7 +1122,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-05.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-5.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-5.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1123,7 +1143,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-06.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-6.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-6.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1144,7 +1164,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-07.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-7.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-7.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1165,7 +1185,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-08.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-8.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-8.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1186,7 +1206,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-09.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-9.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-9.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1207,7 +1227,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-10.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-10.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-10.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1228,7 +1248,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-11.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-11.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-11.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1249,7 +1269,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-12.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-12.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-12.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1270,7 +1290,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-13.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-13.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-13.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1291,7 +1311,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-14.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-14.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-14.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1312,7 +1332,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-15.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-15.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-15.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1332,7 +1352,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-16.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-16.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-16.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1352,7 +1372,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-17.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-17.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-17.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1372,7 +1392,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-18.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-18.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-18.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1392,7 +1412,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-19.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-19.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-19.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1412,7 +1432,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-20.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-20.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-20.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1432,7 +1452,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-21.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-21.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-21.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1453,7 +1473,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-22.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-22.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-22.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1474,7 +1494,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-23.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-23.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-23.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1495,7 +1515,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-24.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-24.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-24.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1516,7 +1536,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="#">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/coming-soon.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/coming-soon.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1536,7 +1556,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="#">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/coming-soon.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/coming-soon.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1556,7 +1576,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="#">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/coming-soon.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/coming-soon.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1588,7 +1608,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-1-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-1-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1609,7 +1629,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-02-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-2-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-2-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1630,7 +1650,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-03-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-3-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-3-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1651,7 +1671,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-04-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-4-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-4-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1672,7 +1692,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-05-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-5-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-5-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1693,7 +1713,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-06-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-6-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-6-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1714,7 +1734,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-07-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-7-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-7-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1735,7 +1755,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-08-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-8-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-8-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1756,7 +1776,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-09-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-9-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-9-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1777,7 +1797,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-10-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-10-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-10-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1798,7 +1818,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-11-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-11-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-11-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1819,7 +1839,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-12-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-12-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-12-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1839,7 +1859,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-13-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-13-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-13-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1860,7 +1880,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-14-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-14-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-14-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1881,7 +1901,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-15-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-15-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-15-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1901,7 +1921,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-16-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-16-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-16-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1921,7 +1941,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-17-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-17-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-17-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                     <span class="overlay-text">View Demo <i
                                                             class="feather-external-link"></i></span>
@@ -1941,7 +1961,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-18-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-18-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-18-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                 <span class="overlay-text">View Demo <i
                                                         class="feather-external-link"></i></span>
@@ -1961,7 +1981,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-19-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-19-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-19-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                 <span class="overlay-text">View Demo <i
                                                         class="feather-external-link"></i></span>
@@ -1981,7 +2001,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-20-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-20-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-20-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                 <span class="overlay-text">View Demo <i
                                                         class="feather-external-link"></i></span>
@@ -2001,7 +2021,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-21-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-21-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-21-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                 <span class="overlay-text">View Demo <i
                                                         class="feather-external-link"></i></span>
@@ -2021,7 +2041,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-22-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-22-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-22-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                 <span class="overlay-text">View Demo <i
                                                         class="feather-external-link"></i></span>
@@ -2042,7 +2062,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-23-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-23-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-23-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                 <span class="overlay-text">View Demo <i
                                                         class="feather-external-link"></i></span>
@@ -2062,7 +2082,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="index-24-white.html">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-24-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-24-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                 <span class="overlay-text">View Demo <i
                                                         class="feather-external-link"></i></span>
@@ -2083,7 +2103,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="#">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/coming-soon-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/coming-soon-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                 <span class="overlay-text">View Demo <i
                                                         class="feather-external-link"></i></span>
@@ -2103,7 +2123,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="#">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/coming-soon-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/coming-soon-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                 <span class="overlay-text">View Demo <i
                                                         class="feather-external-link"></i></span>
@@ -2123,7 +2143,7 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <a href="#">
-                                                    <img class="w-100" src="{{ asset('assets/images/demo/coming-soon-white.png') }}" alt="Personal Portfolio">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/coming-soon-white.png') }}" alt="Personal Projects">
                                                     <span class="overlay-content">
                                                 <span class="overlay-text">View Demo <i
                                                         class="feather-external-link"></i></span>

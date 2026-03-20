@@ -9,7 +9,7 @@
             @if($profile?->profile_image_path)
                 <img src="{{ asset($profile->profile_image_path) }}" class="img-fluid rounded" alt="Profile">
             @else
-                <div class="bg-light border rounded p-5">{{ __('app.profile_placeholder') }}</div>
+                <div class="bg-light border rounded p-5">Mostafa Saeed</div>
             @endif
         </div>
         <div class="col-lg-8">

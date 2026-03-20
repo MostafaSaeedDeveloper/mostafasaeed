@@ -1,11 +1,6 @@
 @extends('layouts.admin')
-
-@section('title', __('app.add_project'))
-
+@section('title', 'Create Project')
+@section('page_title', 'Create Project')
 @section('content')
-<form method="POST" action="{{ route('admin.projects.store') }}" class="card p-4" enctype="multipart/form-data">
-    @csrf
-    @include('admin.projects.form')
-    <button class="btn btn-primary">{{ __('app.save') }}</button>
-</form>
+<form method="POST" action="{{ route('admin.projects.store') }}" class="card p-4">@include('admin.projects.form')<div class="mt-3"><button class="btn btn-primary">Save Project</button></div></form>
 @endsection

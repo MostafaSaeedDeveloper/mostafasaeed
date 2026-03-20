@@ -1,20 +1,21 @@
 @extends('layouts.admin')
-@section('title', __('app.invoices'))
+@section('title', 'Invoices')
 @section('page_title', 'Invoices')
-@section('breadcrumb')
-<ol class="breadcrumb float-sm-right"><li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li><li class="breadcrumb-item active">Invoices</li></ol>
-@endsection
 @section('content')
 <div class="card">
-<div class="card-header">
-<form method="GET" class="row g-2 align-items-end">
-<div class="col-md-3"><label>Search</label><input name="q" class="form-control" value="{{ request('q') }}" placeholder="Invoice #"></div>
-<div class="col-md-3"><label>Status</label><select name="status" class="form-control"><option value="">All</option>@foreach(['draft','sent','paid','partially_paid','overdue','cancelled'] as $s)<option value="{{ $s }}" @selected(request('status')===$s)>{{ ucfirst(str_replace('_',' ',$s)) }}</option>@endforeach</select></div>
-<div class="col-md-4 d-flex gap-2"><button class="btn btn-outline-secondary">Filter</button><a href="{{ route('admin.invoices.create') }}" class="btn btn-primary">Add Invoice</a></div>
-</form>
+    <div class="card-header d-flex justify-content-between align-items-end gap-3">
+        <form method="GET" class="row g-2 w-100">
+            <div class="col-md-5"><input type="text" name="q" class="form-control" placeholder="Search by invoice or client" value="{{ request('q') }}"></div>
+            <div class="col-md-3"><select name="status" class="form-select"><option value="">All statuses</option>@foreach(['draft','sent','paid','overdue','cancelled'] as $status)<option value="{{ $status }}" @selected(request('status')===$status)>{{ ucfirst($status) }}</option>@endforeach</select></div>
+            <div class="col-md-2"><button class="btn btn-outline-secondary">Filter</button></div>
+        </form>
+        <a href="{{ route('admin.invoices.create') }}" class="btn btn-primary">Add Invoice</a>
+    </div>
+    <div class="table-responsive"><table class="table mb-0"><thead><tr><th>Invoice</th><th>Client</th><th>Project</th><th>Total</th><th>Status</th><th>Due</th><th>Actions</th></tr></thead><tbody>
+        @foreach($invoices as $invoice)
+        <tr><td>{{ $invoice->formatted_number }}</td><td>{{ $invoice->client?->name }}</td><td>{{ $invoice->project?->getTranslated('title') }}</td><td>{{ number_format($invoice->total,2) }} {{ $invoice->currency }}</td><td>{{ ucfirst($invoice->status) }}</td><td>{{ optional($invoice->due_date)->format('Y-m-d') }}</td><td class="d-flex gap-2"><a href="{{ route('admin.invoices.show',$invoice) }}" class="btn btn-sm btn-outline-dark">Show</a><a href="{{ route('admin.invoices.edit',$invoice) }}" class="btn btn-sm btn-outline-primary">Edit</a><form method="POST" action="{{ route('admin.invoices.destroy',$invoice) }}">@csrf @method('DELETE')<button class="btn btn-sm btn-outline-danger">Delete</button></form></td></tr>
+        @endforeach
+    </tbody><tfoot><tr><th colspan="3">Page totals</th><th>{{ number_format($totals['grand_total'],2) }}</th><th></th><th></th><th></th></tr></tfoot></table></div>
 </div>
-<div class="card-body table-responsive"><table class="table table-hover datatable"><thead><tr><th>#</th><th>Customer</th><th>Total</th><th>Paid</th><th>Due</th><th>Status</th><th>Due Date</th><th>Actions</th></tr></thead><tbody>
-@foreach($invoices as $invoice)<tr><td><a href="{{ route('admin.invoices.show',$invoice) }}">{{ $invoice->invoice_prefix ?? 'INV-' }}{{ str_pad($invoice->invoice_number,6,'0',STR_PAD_LEFT) }}</a></td><td>{{ $invoice->customer?->name }}</td><td>{{ number_format($invoice->total,2) }}</td><td>{{ number_format($invoice->paid_amount ?? 0,2) }}</td><td>{{ number_format($invoice->due_amount ?? $invoice->total,2) }}</td><td><span class="badge badge-{{ in_array($invoice->status,['paid']) ? 'success' : (in_array($invoice->status,['overdue','cancelled']) ? 'danger':'warning') }}">{{ ucfirst(str_replace('_',' ',$invoice->status)) }}</span></td><td>{{ optional($invoice->due_date)->format('Y-m-d') }}</td><td class="d-flex gap-1"><a class="btn btn-sm btn-outline-primary" href="{{ route('admin.invoices.edit',$invoice) }}">Edit</a><a class="btn btn-sm btn-outline-secondary" href="{{ route('admin.invoices.pdf',$invoice) }}">PDF</a></td></tr>@endforeach
-</tbody></table></div>
-</div>
+<div class="mt-3">{{ $invoices->links() }}</div>
 @endsection

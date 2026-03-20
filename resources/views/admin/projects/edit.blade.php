@@ -1,12 +1,6 @@
 @extends('layouts.admin')
-
-@section('title', __('app.edit_project'))
-
+@section('title', 'Edit Project')
+@section('page_title', 'Edit Project')
 @section('content')
-<form method="POST" action="{{ route('admin.projects.update', $project) }}" class="card p-4" enctype="multipart/form-data">
-    @csrf
-    @method('PUT')
-    @include('admin.projects.form', ['project' => $project])
-    <button class="btn btn-primary">{{ __('app.save') }}</button>
-</form>
+<form method="POST" action="{{ route('admin.projects.update', $project) }}" class="card p-4">@method('PUT') @include('admin.projects.form')<div class="mt-3"><button class="btn btn-primary">Update Project</button></div></form>
 @endsection

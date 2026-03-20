@@ -2,36 +2,25 @@
 
 namespace Database\Seeders;
 
-use App\Models\Account;
+use App\Models\Activity;
 use App\Models\Client;
-use App\Models\ContactMessage;
 use App\Models\Currency;
 use App\Models\Customer;
 use App\Models\Expense;
-use App\Models\ExpenseCategory;
-use App\Models\IncomeCategory;
 use App\Models\Invoice;
 use App\Models\InvoiceItem;
 use App\Models\Payment;
 use App\Models\Profile;
 use App\Models\Project;
-use App\Models\ProjectImage;
-use App\Models\Revenue;
 use App\Models\Service;
 use App\Models\Setting;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
         $ownerRole = Role::firstOrCreate(['name' => 'Owner']);
@@ -39,186 +28,162 @@ class DatabaseSeeder extends Seeder
         Role::firstOrCreate(['name' => 'Content Manager']);
         Role::firstOrCreate(['name' => 'CRM Manager']);
 
-        $admin = User::firstOrCreate(
-            ['username' => 'mostafasaeed'],
-            ['name' => 'Mostafa Saeed', 'email' => 'admin@example.com', 'password' => Hash::make('Mosta@2030')]
+        $user = User::updateOrCreate(
+            ['email' => 'admin@mostafasaeed.com'],
+            ['name' => 'Mostafa Saeed', 'username' => 'mostafasaeed', 'password' => Hash::make('password')]
         );
-        $admin->assignRole($ownerRole);
+        $user->syncRoles([$ownerRole]);
 
-        $egp = Currency::firstOrCreate(['code' => 'EGP'], ['symbol' => 'EGP', 'is_base' => true, 'exchange_rate' => 1]);
-        $usd = Currency::firstOrCreate(['code' => 'USD'], ['symbol' => '$', 'exchange_rate' => 0.032]);
-        $eur = Currency::firstOrCreate(['code' => 'EUR'], ['symbol' => '€', 'exchange_rate' => 0.03]);
+        $egp = Currency::firstOrCreate(['code' => 'EGP'], ['symbol' => 'EGP', 'is_base' => true, 'exchange_rate' => 1, 'enabled' => true]);
 
-        $cash = Account::firstOrCreate(['name' => 'Cash'], ['type' => 'cash', 'currency_id' => $egp->id]);
-        $bank = Account::firstOrCreate(['name' => 'Bank'], ['type' => 'bank', 'currency_id' => $egp->id]);
-
-        $expenseCategory = ExpenseCategory::firstOrCreate(['name' => 'Marketing']);
-        $incomeCategory = IncomeCategory::firstOrCreate(['name' => 'Projects']);
-
-        Setting::firstOrCreate([], [
+        Setting::updateOrCreate(['id' => 1], [
             'site_name' => ['en' => 'Mostafa Saeed', 'ar' => 'مصطفى سعيد'],
-            'contact_email' => 'hello@example.com',
-            'contact_phone' => '+20 100 000 0000',
-            'default_seo' => [
-                'title' => ['en' => 'Mostafa Saeed', 'ar' => 'مصطفى سعيد'],
-                'description' => ['en' => 'Personal website and portfolio', 'ar' => 'موقع شخصي وبورتفوليو'],
-            ],
+            'brand_name' => 'Mostafa Saeed',
+            'contact_email' => 'info@mostafasaeed.com',
+            'contact_phone' => '01003770730',
+            'contact_address' => ['en' => 'Alexandria, Egypt', 'ar' => 'الإسكندرية، مصر'],
+            'default_seo' => ['title' => ['en' => 'Mostafa Saeed', 'ar' => 'مصطفى سعيد'], 'description' => ['en' => 'Full Stack Web Developer | WordPress Developer | SEO Specialist | Media Buyer', 'ar' => 'مطور ويب شامل | ووردبريس | سيو | ميديا باير']],
             'base_currency_id' => $egp->id,
+            'invoice_prefix' => 'INV-',
+            'default_tax_rate' => 14,
         ]);
 
-        Profile::firstOrCreate([], [
+        Profile::updateOrCreate(['id' => 1], [
             'name' => 'Mostafa Saeed',
-            'titles' => ['en' => 'FullStack Web Developer', 'ar' => 'مطور ويب شامل'],
-            'bio' => ['en' => 'Senior developer specializing in Laravel and WordPress.', 'ar' => 'مطوّر خبير متخصص في لارافيل ووردبريس.'],
-            'skills' => ['Laravel', 'WordPress', 'SEO', 'Media Buying'],
+            'titles' => ['en' => 'Full Stack Web Developer | WordPress Developer | SEO Specialist | Media Buyer', 'ar' => 'مطور ويب شامل | مطور ووردبريس | متخصص سيو | ميديا باير'],
+            'bio' => ['en' => 'Full Stack Web Developer with strong experience in PHP, Laravel, WordPress, SEO, and media buying.', 'ar' => 'مطور ويب شامل بخبرة قوية في PHP وLaravel وWordPress والسيو والميديا باينج.'],
+            'skills' => ['PHP & MySQL 90%', 'WordPress 95%', 'Laravel 85%', 'Bootstrap & jQuery 88%', 'SEO 80%', 'HTML & CSS 95%', 'Adobe Photoshop 70%', 'Hosting Management 85%'],
         ]);
 
-        Service::firstOrCreate(['title->en' => 'Web Development'], [
-            'title' => ['en' => 'Web Development', 'ar' => 'تطوير المواقع'],
-            'short_description' => ['en' => 'Modern websites and apps.', 'ar' => 'مواقع وتطبيقات حديثة.'],
-            'description' => ['en' => 'Building high performance web applications.', 'ar' => 'بناء تطبيقات ويب عالية الأداء.'],
-            'order' => 1,
-            'status' => 'published',
-        ]);
-
-        Service::firstOrCreate(['title->en' => 'SEO'], [
-            'title' => ['en' => 'SEO', 'ar' => 'تحسين محركات البحث'],
-            'short_description' => ['en' => 'Rank higher on search.', 'ar' => 'تحسين ترتيبك في البحث.'],
-            'description' => ['en' => 'Search engine optimization and audits.', 'ar' => 'تحسين محركات البحث والتدقيق.'],
-            'order' => 2,
-            'status' => 'published',
-        ]);
-
-        Service::firstOrCreate(['title->en' => 'Social Media Management'], [
-            'title' => ['en' => 'Social Media Management', 'ar' => 'إدارة وسائل التواصل'],
-            'short_description' => ['en' => 'Content plans and growth.', 'ar' => 'خطط محتوى ونمو.'],
-            'description' => ['en' => 'Social media strategy and analytics.', 'ar' => 'استراتيجية وإحصائيات التواصل.'],
-            'order' => 3,
-            'status' => 'published',
-        ]);
-
-        Service::firstOrCreate(['title->en' => 'Media Buying'], [
-            'title' => ['en' => 'Media Buying', 'ar' => 'شراء الوسائط'],
-            'short_description' => ['en' => 'Optimized ad campaigns.', 'ar' => 'حملات إعلانية محسنة.'],
-            'description' => ['en' => 'Paid ads across platforms.', 'ar' => 'إعلانات مدفوعة عبر المنصات.'],
-            'order' => 4,
-            'status' => 'published',
-        ]);
-
-        Service::firstOrCreate(['title->en' => 'Data Entry'], [
-            'title' => ['en' => 'Data Entry', 'ar' => 'إدخال البيانات'],
-            'short_description' => ['en' => 'Accurate data processing.', 'ar' => 'إدخال بيانات بدقة.'],
-            'description' => ['en' => 'Fast and reliable data entry.', 'ar' => 'إدخال بيانات سريع وموثوق.'],
-            'order' => 5,
-            'status' => 'published',
-        ]);
-
-        $customers = [
-            Customer::firstOrCreate(['email' => 'client@example.com'], [
-                'name' => 'Acme Co.',
-                'company_name' => 'Acme Co.',
-                'phone' => '+20 111 111 1111',
-                'default_currency_id' => $egp->id,
-            ]),
-            Customer::firstOrCreate(['email' => 'hello@northwind.test'], [
-                'name' => 'Northwind',
-                'company_name' => 'Northwind',
-                'phone' => '+20 222 222 2222',
-                'default_currency_id' => $usd->id,
-            ]),
-            Customer::firstOrCreate(['email' => 'contact@contoso.test'], [
-                'name' => 'Contoso',
-                'company_name' => 'Contoso',
-                'phone' => '+20 333 333 3333',
-                'default_currency_id' => $eur->id,
-            ]),
+        $services = [
+            ['Web Development (PHP & Laravel)', 'Custom websites, web apps, APIs'],
+            ['WordPress Development', 'Themes, plugins, WooCommerce, and speed optimization'],
+            ['SEO Optimization', 'On-page SEO, technical SEO, keyword research, and ranking growth'],
+            ['Media Buying', 'Facebook Ads, Google Ads, and campaign management'],
         ];
-
-        $projectsData = [
-            ['slug' => 'ecommerce-platform', 'title_en' => 'Ecommerce Platform', 'title_ar' => 'منصة تجارة إلكترونية', 'status' => 'published'],
-            ['slug' => 'corporate-website', 'title_en' => 'Corporate Website', 'title_ar' => 'موقع شركة', 'status' => 'published'],
-            ['slug' => 'booking-system', 'title_en' => 'Booking System', 'title_ar' => 'نظام حجوزات', 'status' => 'draft'],
-            ['slug' => 'portfolio-brand', 'title_en' => 'Portfolio Brand', 'title_ar' => 'هوية بصرية', 'status' => 'published'],
-            ['slug' => 'seo-campaign', 'title_en' => 'SEO Campaign', 'title_ar' => 'حملة سيو', 'status' => 'published'],
-            ['slug' => 'media-buying', 'title_en' => 'Media Buying Dashboard', 'title_ar' => 'لوحة شراء الوسائط', 'status' => 'draft'],
-        ];
-
-        foreach ($projectsData as $index => $data) {
-            $project = Project::firstOrCreate(['slug' => $data['slug']], [
-                'title' => ['en' => $data['title_en'], 'ar' => $data['title_ar']],
-                'summary' => ['en' => 'Project summary', 'ar' => 'ملخص المشروع'],
-                'case_study' => ['en' => 'Project case study', 'ar' => 'دراسة حالة المشروع'],
-                'tech_stack' => ['Laravel', 'Bootstrap', 'MySQL'],
-                'category' => 'Web',
-                'featured' => $index < 2,
-                'status' => $data['status'],
-                'customer_id' => $customers[$index % 3]->id,
-            ]);
-
-            ProjectImage::firstOrCreate(['project_id' => $project->id, 'path' => '/uploads/projects/gallery/sample-'.$project->id.'.jpg']);
-        }
-
-        $clients = ['Acme Co.', 'Northwind', 'Contoso', 'Globex', 'Initech', 'Umbrella'];
-        foreach ($clients as $index => $clientName) {
-            Client::firstOrCreate(['name' => $clientName], [
-                'featured' => $index < 4,
+        foreach ($services as $index => [$title, $desc]) {
+            Service::updateOrCreate(['title->en' => $title], [
+                'title' => ['en' => $title, 'ar' => $title],
+                'short_description' => ['en' => $desc, 'ar' => $desc],
+                'description' => ['en' => $desc, 'ar' => $desc],
                 'order' => $index + 1,
+                'status' => 'published',
             ]);
         }
 
-        $invoice = Invoice::firstOrCreate(['invoice_number' => 1000], [
-            'customer_id' => $customers[0]->id,
-            'issue_date' => now()->subDays(10),
-            'due_date' => now()->addDays(10),
-            'currency_id' => $egp->id,
-            'exchange_rate_to_base' => 1,
-            'status' => 'sent',
-            'subtotal' => 10000,
-            'discount' => 0,
-            'tax' => 0,
-            'total' => 10000,
-        ]);
+        $clientsData = [
+            ['name' => 'Ahmed Hassan', 'email' => 'ahmed.hassan@deltafoods.eg', 'phone' => '01011111111', 'company' => 'Delta Foods', 'country' => 'Egypt', 'address' => 'Smouha, Alexandria', 'notes' => 'Needs WooCommerce and SEO support.'],
+            ['name' => 'Mona Adel', 'email' => 'mona.adel@cairomed.eg', 'phone' => '01022222222', 'company' => 'Cairo Med', 'country' => 'Egypt', 'address' => 'Nasr City, Cairo', 'notes' => 'Healthcare landing pages and ads.'],
+            ['name' => 'Karim Fawzy', 'email' => 'karim@horizontravel.eg', 'phone' => '01033333333', 'company' => 'Horizon Travel', 'country' => 'Egypt', 'address' => 'Gleem, Alexandria', 'notes' => 'SEO and lead generation campaigns.'],
+            ['name' => 'Nour ElDin', 'email' => 'nour@estatehub.eg', 'phone' => '01044444444', 'company' => 'Estate Hub', 'country' => 'Egypt', 'address' => 'New Cairo, Cairo', 'notes' => 'Laravel CRM dashboard.'],
+            ['name' => 'Yasmine Samir', 'email' => 'yasmine@fashionhouse.eg', 'phone' => '01055555555', 'company' => 'Fashion House', 'country' => 'Egypt', 'address' => 'Stanley, Alexandria', 'notes' => 'Brand website and Meta ads.'],
+        ];
+        $clients = collect($clientsData)->map(fn ($data, $i) => Client::updateOrCreate(['email' => $data['email']], $data + ['featured' => $i < 4, 'order' => $i + 1]));
+        $customers = $clients->mapWithKeys(function ($client) use ($egp) {
+            $customer = Customer::updateOrCreate(
+                ['email' => $client->email ?: 'client-'.$client->id.'@mostafasaeed.test'],
+                [
+                    'name' => $client->name,
+                    'company_name' => $client->company,
+                    'phone' => $client->phone,
+                    'address' => $client->address,
+                    'country' => $client->country,
+                    'notes' => $client->notes,
+                    'default_currency_id' => $egp->id,
+                    'status' => 'active',
+                ]
+            );
 
-        InvoiceItem::firstOrCreate(['invoice_id' => $invoice->id, 'name' => 'Web Development'], [
-            'qty' => 1,
-            'unit_price' => 10000,
-            'line_total' => 10000,
-        ]);
+            return [$client->id => $customer];
+        });
 
-        Payment::firstOrCreate(['invoice_id' => $invoice->id], [
-            'customer_id' => $customers[0]->id,
-            'amount' => 3000,
-            'currency_id' => $egp->id,
-            'exchange_rate_to_base' => 1,
-            'payment_method' => 'Bank',
-            'account_id' => $bank->id,
-            'date' => now()->subDays(2),
-        ]);
+        $projects = [
+            ['client_id' => $clients[0]->id, 'title' => 'Custom Laravel Ordering Platform', 'slug' => 'custom-laravel-ordering-platform', 'description' => 'Laravel based ordering and operations dashboard.', 'category' => 'laravel', 'status' => 'completed', 'budget' => 35000, 'start_date' => now()->subMonths(5), 'end_date' => now()->subMonths(3)],
+            ['client_id' => $clients[1]->id, 'title' => 'WordPress Healthcare Website', 'slug' => 'wordpress-healthcare-website', 'description' => 'WordPress website with booking-ready service pages.', 'category' => 'wordpress', 'status' => 'in_progress', 'budget' => 18000, 'start_date' => now()->subMonths(2), 'end_date' => now()->addMonth()],
+            ['client_id' => $clients[2]->id, 'title' => 'SEO Growth Campaign', 'slug' => 'seo-growth-campaign', 'description' => 'Technical SEO and keyword expansion campaign.', 'category' => 'seo', 'status' => 'pending', 'budget' => 12000, 'start_date' => now()->startOfMonth(), 'end_date' => now()->addMonths(2)],
+            ['client_id' => $clients[4]->id, 'title' => 'Media Buying Funnel', 'slug' => 'media-buying-funnel', 'description' => 'Paid media landing pages and conversion tracking.', 'category' => 'media_buying', 'status' => 'completed', 'budget' => 22000, 'start_date' => now()->subMonths(4), 'end_date' => now()->subMonths(2)],
+        ];
+        $projectModels = collect($projects)->map(function ($project) use ($customers) {
+            return Project::updateOrCreate(['slug' => $project['slug']], [
+                'client_id' => $project['client_id'],
+                'customer_id' => $customers[$project['client_id']]->id,
+                'title' => ['en' => $project['title'], 'ar' => $project['title']],
+                'summary' => ['en' => $project['description'], 'ar' => $project['description']],
+                'case_study' => ['en' => $project['description'], 'ar' => $project['description']],
+                'description' => $project['description'],
+                'tech_stack' => ['PHP', 'Laravel', 'WordPress', 'SEO'],
+                'category' => $project['category'],
+                'status' => $project['status'],
+                'budget' => $project['budget'],
+                'start_date' => $project['start_date'],
+                'end_date' => $project['end_date'],
+            ]);
+        });
 
-        Expense::firstOrCreate(['notes' => 'Hosting'], [
-            'date' => now()->subDays(5),
-            'expense_category_id' => $expenseCategory->id,
-            'amount' => 500,
-            'currency_id' => $egp->id,
-            'exchange_rate_to_base' => 1,
-            'account_id' => $cash->id,
-            'vendor' => 'Hosting Provider',
-        ]);
+        $invoiceBase = ((int) now()->year) * 1000;
+        $invoicePayloads = [
+            ['invoice_number' => $invoiceBase + 1, 'client_id' => $clients[0]->id, 'project_id' => $projectModels[0]->id, 'status' => 'paid', 'issue_date' => now()->subDays(20), 'due_date' => now()->subDays(10)],
+            ['invoice_number' => $invoiceBase + 2, 'client_id' => $clients[1]->id, 'project_id' => $projectModels[1]->id, 'status' => 'sent', 'issue_date' => now()->subDays(12), 'due_date' => now()->addDays(3)],
+            ['invoice_number' => $invoiceBase + 3, 'client_id' => $clients[2]->id, 'project_id' => $projectModels[2]->id, 'status' => 'draft', 'issue_date' => now()->subDays(8), 'due_date' => now()->addDays(7)],
+            ['invoice_number' => $invoiceBase + 4, 'client_id' => $clients[3]->id, 'project_id' => null, 'status' => 'overdue', 'issue_date' => now()->subDays(30), 'due_date' => now()->subDays(5)],
+            ['invoice_number' => $invoiceBase + 5, 'client_id' => $clients[4]->id, 'project_id' => $projectModels[3]->id, 'status' => 'paid', 'issue_date' => now()->subDays(15), 'due_date' => now()->subDays(2)],
+        ];
 
-        Revenue::firstOrCreate(['source' => 'Consulting'], [
-            'date' => now()->subDays(3),
-            'income_category_id' => $incomeCategory->id,
-            'amount' => 2000,
-            'currency_id' => $egp->id,
-            'exchange_rate_to_base' => 1,
-            'account_id' => $cash->id,
-        ]);
+        foreach ($invoicePayloads as $index => $payload) {
+            $subtotal = [28000, 15000, 9000, 11000, 17500][$index];
+            $taxPercent = 14;
+            $taxAmount = $subtotal * $taxPercent / 100;
+            $total = $subtotal + $taxAmount;
+            $paid = in_array($payload['status'], ['paid']) ? $total : 0;
 
-        ContactMessage::firstOrCreate(['email' => 'lead@example.com'], [
-            'name' => 'New Lead',
-            'service' => 'Web Development',
-            'message' => 'Need a new website.',
-            'status' => 'new',
-        ]);
+            $invoice = Invoice::updateOrCreate(['invoice_number' => $payload['invoice_number']], $payload + [
+                'customer_id' => $customers[$payload['client_id']]->id,
+                'currency' => 'EGP',
+                'subtotal' => $subtotal,
+                'tax_percent' => $taxPercent,
+                'tax_amount' => $taxAmount,
+                'tax' => $taxAmount,
+                'total' => $total,
+                'paid_amount' => $paid,
+                'due_amount' => max($total - $paid, 0),
+                'notes' => 'Thank you for your business.',
+            ]);
+
+            InvoiceItem::updateOrCreate(['invoice_id' => $invoice->id, 'description' => 'Project milestone payment'], [
+                'quantity' => 1,
+                'unit_price' => $subtotal,
+                'total' => $subtotal,
+            ]);
+
+            if ($payload['status'] === 'paid') {
+                Payment::updateOrCreate(['invoice_id' => $invoice->id], [
+                    'customer_id' => $customers[$payload['client_id']]->id,
+                    'amount' => $total,
+                    'payment_date' => now()->subDays(1),
+                    'date' => now()->subDays(1),
+                    'method' => 'Bank Transfer',
+                    'payment_method' => 'Bank Transfer',
+                    'notes' => 'Paid in full.',
+                ]);
+            }
+        }
+
+        foreach ([
+            ['title' => 'Hosting Renewal', 'amount' => 2200, 'category' => 'Hosting', 'expense_date' => now()->subDays(9), 'notes' => 'Annual VPS renewal'],
+            ['title' => 'Meta Ads Budget', 'amount' => 4500, 'category' => 'Advertising', 'expense_date' => now()->subDays(5), 'notes' => 'Lead generation campaign'],
+            ['title' => 'Design Assets', 'amount' => 850, 'category' => 'Software', 'expense_date' => now()->subDays(2), 'notes' => 'Premium templates and stock items'],
+        ] as $expense) {
+            Expense::updateOrCreate(['title' => $expense['title']], $expense + ['date' => $expense['expense_date']]);
+        }
+
+        foreach ([
+            ['type' => 'invoice', 'description' => sprintf('Invoice INV-%s-001 created', now()->year)],
+            ['type' => 'payment', 'description' => sprintf('Payment received for INV-%s-001', now()->year)],
+            ['type' => 'expense', 'description' => 'Expense added: Hosting Renewal'],
+            ['type' => 'project', 'description' => 'New project created: WordPress Healthcare Website'],
+            ['type' => 'client', 'description' => 'New client added: Ahmed Hassan'],
+        ] as $activity) {
+            Activity::create($activity + ['created_at' => now()->subMinutes(rand(1, 600))]);
+        }
     }
 }

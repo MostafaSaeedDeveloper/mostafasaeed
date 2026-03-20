@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Expense extends Model
 {
     protected $fillable = [
+        'title',
         'date',
+        'expense_date',
         'expense_category_id',
+        'category',
         'amount',
         'currency_id',
         'exchange_rate_to_base',
@@ -20,9 +23,10 @@ class Expense extends Model
 
     protected $casts = [
         'date' => 'date',
+        'expense_date' => 'date',
     ];
 
-    public function category()
+    public function categoryRelation()
     {
         return $this->belongsTo(ExpenseCategory::class, 'expense_category_id');
     }
