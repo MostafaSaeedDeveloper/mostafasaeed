@@ -37,7 +37,7 @@ class PaymentController extends Controller
             'payment_method' => $data['method'],
         ]));
         $this->syncInvoiceStatus($invoice);
-        Activity::create(['type' => 'payment', 'description' => "Payment received for {$invoice->invoice_number}", 'created_at' => now()]);
+        Activity::create(['type' => 'payment', 'description' => "Payment received for {$invoice->formatted_number}", 'created_at' => now()]);
 
         return redirect()->route('admin.payments.index')->with('success', __('app.saved_successfully'));
     }

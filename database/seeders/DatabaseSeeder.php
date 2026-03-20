@@ -120,12 +120,13 @@ class DatabaseSeeder extends Seeder
             ]);
         });
 
+        $invoiceBase = ((int) now()->year) * 1000;
         $invoicePayloads = [
-            ['invoice_number' => 'INV-'.now()->year.'-001', 'client_id' => $clients[0]->id, 'project_id' => $projectModels[0]->id, 'status' => 'paid', 'issue_date' => now()->subDays(20), 'due_date' => now()->subDays(10)],
-            ['invoice_number' => 'INV-'.now()->year.'-002', 'client_id' => $clients[1]->id, 'project_id' => $projectModels[1]->id, 'status' => 'sent', 'issue_date' => now()->subDays(12), 'due_date' => now()->addDays(3)],
-            ['invoice_number' => 'INV-'.now()->year.'-003', 'client_id' => $clients[2]->id, 'project_id' => $projectModels[2]->id, 'status' => 'draft', 'issue_date' => now()->subDays(8), 'due_date' => now()->addDays(7)],
-            ['invoice_number' => 'INV-'.now()->year.'-004', 'client_id' => $clients[3]->id, 'project_id' => null, 'status' => 'overdue', 'issue_date' => now()->subDays(30), 'due_date' => now()->subDays(5)],
-            ['invoice_number' => 'INV-'.now()->year.'-005', 'client_id' => $clients[4]->id, 'project_id' => $projectModels[3]->id, 'status' => 'paid', 'issue_date' => now()->subDays(15), 'due_date' => now()->subDays(2)],
+            ['invoice_number' => $invoiceBase + 1, 'client_id' => $clients[0]->id, 'project_id' => $projectModels[0]->id, 'status' => 'paid', 'issue_date' => now()->subDays(20), 'due_date' => now()->subDays(10)],
+            ['invoice_number' => $invoiceBase + 2, 'client_id' => $clients[1]->id, 'project_id' => $projectModels[1]->id, 'status' => 'sent', 'issue_date' => now()->subDays(12), 'due_date' => now()->addDays(3)],
+            ['invoice_number' => $invoiceBase + 3, 'client_id' => $clients[2]->id, 'project_id' => $projectModels[2]->id, 'status' => 'draft', 'issue_date' => now()->subDays(8), 'due_date' => now()->addDays(7)],
+            ['invoice_number' => $invoiceBase + 4, 'client_id' => $clients[3]->id, 'project_id' => null, 'status' => 'overdue', 'issue_date' => now()->subDays(30), 'due_date' => now()->subDays(5)],
+            ['invoice_number' => $invoiceBase + 5, 'client_id' => $clients[4]->id, 'project_id' => $projectModels[3]->id, 'status' => 'paid', 'issue_date' => now()->subDays(15), 'due_date' => now()->subDays(2)],
         ];
 
         foreach ($invoicePayloads as $index => $payload) {
@@ -176,8 +177,8 @@ class DatabaseSeeder extends Seeder
         }
 
         foreach ([
-            ['type' => 'invoice', 'description' => 'Invoice INV-'.now()->year.'-001 created'],
-            ['type' => 'payment', 'description' => 'Payment received for INV-'.now()->year.'-001'],
+            ['type' => 'invoice', 'description' => sprintf('Invoice INV-%s-001 created', now()->year)],
+            ['type' => 'payment', 'description' => sprintf('Payment received for INV-%s-001', now()->year)],
             ['type' => 'expense', 'description' => 'Expense added: Hosting Renewal'],
             ['type' => 'project', 'description' => 'New project created: WordPress Healthcare Website'],
             ['type' => 'client', 'description' => 'New client added: Ahmed Hassan'],

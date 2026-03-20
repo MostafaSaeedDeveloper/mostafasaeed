@@ -69,6 +69,19 @@ class Invoice extends Model
 
     public function getFormattedNumberAttribute(): string
     {
-        return (str_contains((string) $this->invoice_number, 'INV-') ? '' : 'INV-').$this->invoice_number;
+        $number = (string) $this->invoice_number;
+
+        if (str_starts_with($number, 'INV-')) {
+            return $number;
+        }
+
+        if (strlen($number) >= 7) {
+            $year = substr($number, 0, 4);
+            $sequence = substr($number, 4);
+
+            return sprintf('INV-%s-%03d', $year, (int) $sequence);
+        }
+
+        return sprintf('INV-%s-%03d', now()->format('Y'), (int) $number);
     }
 }

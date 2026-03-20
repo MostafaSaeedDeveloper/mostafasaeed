@@ -24,9 +24,13 @@ class InvoiceController extends Controller
         $query = Invoice::with(['client', 'project', 'payments'])
             ->when($request->filled('q'), function ($query) use ($request) {
                 $search = $request->string('q')->toString();
-                $query->where(function ($q) use ($search): void {
-                    $q->where('invoice_number', 'like', "%{$search}%")
-                        ->orWhereHas('client', fn ($clientQuery) => $clientQuery->where('name', 'like', "%{$search}%"));
+                $numericSearch = preg_replace('/\D+/', '', $search);
+                $query->where(function ($q) use ($search, $numericSearch): void {
+                    $q->where('invoice_number', 'like', "%{$search}%");
+                    if ($numericSearch !== '') {
+                        $q->orWhere('invoice_number', 'like', "%{$numericSearch}%");
+                    }
+                    $q->orWhereHas('client', fn ($clientQuery) => $clientQuery->where('name', 'like', "%{$search}%"));
                 });
             })
             ->when($request->filled('status'), fn ($query) => $query->where('status', $request->string('status')));
@@ -65,7 +69,7 @@ class InvoiceController extends Controller
             ]));
             $this->syncItems($invoice, $request);
             $this->refreshTotals($invoice);
-            Activity::create(['type' => 'invoice', 'description' => "Invoice created: {$invoice->invoice_number}", 'created_at' => now()]);
+            Activity::create(['type' => 'invoice', 'description' => "Invoice created: {$invoice->formatted_number}", 'created_at' => now()]);
         });
 
         return redirect()->route('admin.invoices.index')->with('success', __('app.saved_successfully'));
@@ -151,7 +155,7 @@ class InvoiceController extends Controller
     {
         $invoice->load(['client', 'project', 'items', 'payments']);
         return Pdf::loadView('admin.invoices.pdf', ['invoice' => $invoice, 'settings' => Setting::first()])
-            ->download($invoice->invoice_number.'.pdf');
+            ->download($invoice->formatted_number.'.pdf');
     }
 
     public function projectsByClient(Client $client): JsonResponse
@@ -236,14 +240,14 @@ class InvoiceController extends Controller
         )->id;
     }
 
-    private function generateInvoiceNumber(): string
+    private function generateInvoiceNumber(): int
     {
-        $year = now()->format('Y');
-        $latest = Invoice::where('invoice_number', 'like', "INV-{$year}-%")
-            ->orderByDesc('invoice_number')
-            ->value('invoice_number');
-        $next = $latest ? ((int) substr($latest, -3)) + 1 : 1;
+        $year = (int) now()->format('Y');
+        $base = $year * 1000;
+        $latest = (int) Invoice::whereBetween('invoice_number', [$base, $base + 999])
+            ->max('invoice_number');
+        $next = $latest > 0 ? ($latest - $base) + 1 : 1;
 
-        return sprintf('INV-%s-%03d', $year, $next);
+        return $base + $next;
     }
 }
