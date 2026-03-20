@@ -16,12 +16,15 @@ class Payment extends Model
         'payment_method_id',
         'account_id',
         'date',
+        'payment_date',
+        'method',
         'reference',
         'notes',
     ];
 
     protected $casts = [
         'date' => 'date',
+        'payment_date' => 'date',
     ];
 
     public function customer()

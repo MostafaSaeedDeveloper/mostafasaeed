@@ -1,89 +1,15 @@
-@php($project = $project ?? new \App\Models\Project())
+@csrf
 <div class="row g-3">
-    <div class="col-md-6">
-        <label class="form-label">{{ __('app.title_en') }}</label>
-        <input type="text" name="title_en" class="form-control" value="{{ old('title_en', $project->title['en'] ?? '') }}" required>
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">{{ __('app.title_ar') }}</label>
-        <input type="text" name="title_ar" class="form-control" value="{{ old('title_ar', $project->title['ar'] ?? '') }}" required>
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">{{ __('app.slug') }}</label>
-        <input type="text" name="slug" class="form-control" value="{{ old('slug', $project->slug ?? '') }}" required>
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">{{ __('app.category') }}</label>
-        <input type="text" name="category" class="form-control" value="{{ old('category', $project->category ?? '') }}">
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">{{ __('app.summary_en') }}</label>
-        <textarea name="summary_en" class="form-control">{{ old('summary_en', $project->summary['en'] ?? '') }}</textarea>
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">{{ __('app.summary_ar') }}</label>
-        <textarea name="summary_ar" class="form-control">{{ old('summary_ar', $project->summary['ar'] ?? '') }}</textarea>
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">{{ __('app.case_study_en') }}</label>
-        <textarea name="case_study_en" class="form-control">{{ old('case_study_en', $project->case_study['en'] ?? '') }}</textarea>
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">{{ __('app.case_study_ar') }}</label>
-        <textarea name="case_study_ar" class="form-control">{{ old('case_study_ar', $project->case_study['ar'] ?? '') }}</textarea>
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">{{ __('app.tech_stack') }} (comma separated)</label>
-        <input type="text" name="tech_stack" class="form-control" value="{{ old('tech_stack', isset($project) ? implode(', ', $project->tech_stack ?? []) : '') }}">
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">{{ __('app.main_image') }}</label>
-        <input type="file" name="main_image" class="form-control">
-        @if(!empty($project->main_image_path))
-            <small class="text-muted">{{ $project->main_image_path }}</small>
-        @endif
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">{{ __('app.gallery') }}</label>
-        <input type="file" name="gallery[]" class="form-control" multiple>
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">{{ __('app.status') }}</label>
-        <select name="status" class="form-select">
-            <option value="published" @selected(old('status', $project->status ?? '') === 'published')>{{ __('app.published') }}</option>
-            <option value="draft" @selected(old('status', $project->status ?? '') === 'draft')>{{ __('app.draft') }}</option>
-        </select>
-    </div>
-    @php($featuredValue = (int) old('featured', $project->featured ? 1 : 0))
-    <div class="col-md-6">
-        <label class="form-label">{{ __('app.featured') }}</label>
-        <select name="featured" class="form-select">
-            <option value="1" @selected($featuredValue === 1)>{{ __('app.yes') }}</option>
-            <option value="0" @selected($featuredValue === 0)>{{ __('app.no') }}</option>
-        </select>
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">{{ __('app.live_url') }}</label>
-        <input type="text" name="live_url" class="form-control" value="{{ old('live_url', $project->live_url ?? '') }}">
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">{{ __('app.repo_url') }}</label>
-        <input type="text" name="repo_url" class="form-control" value="{{ old('repo_url', $project->repo_url ?? '') }}">
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">{{ __('app.seo_title_en') }}</label>
-        <input type="text" name="seo_title_en" class="form-control" value="{{ old('seo_title_en', $project->seo_meta['title']['en'] ?? '') }}">
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">{{ __('app.seo_title_ar') }}</label>
-        <input type="text" name="seo_title_ar" class="form-control" value="{{ old('seo_title_ar', $project->seo_meta['title']['ar'] ?? '') }}">
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">{{ __('app.seo_description_en') }}</label>
-        <textarea name="seo_description_en" class="form-control">{{ old('seo_description_en', $project->seo_meta['description']['en'] ?? '') }}</textarea>
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">{{ __('app.seo_description_ar') }}</label>
-        <textarea name="seo_description_ar" class="form-control">{{ old('seo_description_ar', $project->seo_meta['description']['ar'] ?? '') }}</textarea>
-    </div>
+    <div class="col-md-6"><label class="form-label">Title (EN)</label><input type="text" name="title_en" class="form-control" value="{{ old('title_en', $project->title['en'] ?? '') }}" required></div>
+    <div class="col-md-6"><label class="form-label">Title (AR)</label><input type="text" name="title_ar" class="form-control" value="{{ old('title_ar', $project->title['ar'] ?? '') }}" required></div>
+    <div class="col-md-6"><label class="form-label">Client</label><select name="client_id" class="form-select" required>@foreach($clients as $client)<option value="{{ $client->id }}" @selected(old('client_id', $project->client_id)==$client->id)>{{ $client->name }}</option>@endforeach</select></div>
+    <div class="col-md-6"><label class="form-label">Category</label><select name="category" class="form-select" required>@foreach(['laravel','wordpress','seo','media_buying','other'] as $category)<option value="{{ $category }}" @selected(old('category', $project->category)===$category)>{{ ucfirst(str_replace('_',' ', $category)) }}</option>@endforeach</select></div>
+    <div class="col-md-6"><label class="form-label">Status</label><select name="status" class="form-select" required>@foreach(['pending','in_progress','completed','cancelled'] as $status)<option value="{{ $status }}" @selected(old('status', $project->status)===$status)>{{ ucfirst(str_replace('_',' ', $status)) }}</option>@endforeach</select></div>
+    <div class="col-md-6"><label class="form-label">Slug</label><input type="text" name="slug" class="form-control" value="{{ old('slug', $project->slug) }}"></div>
+    <div class="col-md-6"><label class="form-label">Start Date</label><input type="date" name="start_date" class="form-control" value="{{ old('start_date', optional($project->start_date)->format('Y-m-d')) }}"></div>
+    <div class="col-md-6"><label class="form-label">End Date</label><input type="date" name="end_date" class="form-control" value="{{ old('end_date', optional($project->end_date)->format('Y-m-d')) }}"></div>
+    <div class="col-md-6"><label class="form-label">Budget</label><input type="number" step="0.01" name="budget" class="form-control" value="{{ old('budget', $project->budget) }}"></div>
+    <div class="col-md-6"><label class="form-label">Tech Stack</label><input type="text" name="tech_stack" class="form-control" value="{{ old('tech_stack', implode(', ', $project->tech_stack ?? [])) }}"></div>
+    <div class="col-12"><label class="form-label">Description</label><textarea name="description" class="form-control">{{ old('description', $project->description) }}</textarea></div>
+    <div class="col-12"><label class="form-label">Notes</label><textarea name="notes" class="form-control">{{ old('notes', $project->notes) }}</textarea></div>
 </div>

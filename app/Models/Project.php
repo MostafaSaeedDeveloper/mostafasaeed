@@ -4,14 +4,18 @@ namespace App\Models;
 
 use App\Models\Concerns\HasTranslations;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
 {
     use HasTranslations;
+    use SoftDeletes;
 
     protected $fillable = [
+        'client_id',
         'title',
         'slug',
+        'description',
         'summary',
         'case_study',
         'tech_stack',
@@ -22,6 +26,10 @@ class Project extends Model
         'metrics',
         'featured',
         'status',
+        'start_date',
+        'end_date',
+        'budget',
+        'notes',
         'seo_meta',
         'customer_id',
     ];
@@ -34,6 +42,9 @@ class Project extends Model
         'metrics' => 'array',
         'featured' => 'boolean',
         'seo_meta' => 'array',
+        'start_date' => 'date',
+        'end_date' => 'date',
+        'budget' => 'decimal:2',
     ];
 
     public function images()
@@ -44,5 +55,15 @@ class Project extends Model
     public function customer()
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
     }
 }

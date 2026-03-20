@@ -1,7 +1,13 @@
 @extends('layouts.admin')
-@section('title', __('app.reports'))
+@section('title', 'Reports')
+@section('page_title', 'Reports')
 @section('content')
-<form class="row g-2 mb-3"><div class="col-auto"><input type="date" name="from" value="{{ $from }}" class="form-control"></div><div class="col-auto"><input type="date" name="to" value="{{ $to }}" class="form-control"></div><div class="col-auto"><button class="btn btn-outline-secondary">{{ __('app.filter') }}</button></div></form>
-<div class="row g-3 mb-3"><div class="col-md-3"><div class="card p-3"><small>{{ __('app.monthly_revenue') }}</small><h4>{{ number_format($revenue,2) }}</h4></div></div><div class="col-md-3"><div class="card p-3"><small>{{ __('app.monthly_expenses') }}</small><h4>{{ number_format($expenses,2) }}</h4></div></div><div class="col-md-3"><div class="card p-3"><small>{{ __('app.net_profit') }}</small><h4>{{ number_format($netProfit,2) }}</h4></div></div><div class="col-md-3"><div class="card p-3"><small>{{ __('app.unpaid_invoices') }}</small><h4>{{ $unpaidInvoices }}</h4></div></div></div>
-<div class="card"><div class="card-header">Top Clients</div><ul class="list-group list-group-flush">@forelse($topClients as $client)<li class="list-group-item d-flex justify-content-between"><span>{{ $client->customer_name }}</span><span>{{ number_format($client->total_amount,2) }}</span></li>@empty<li class="list-group-item text-muted">-</li>@endforelse</ul></div>
+<div class="row g-3 mb-4"><div class="col-lg-8"><div class="card"><div class="card-header">Current Year Summary</div><div class="table-responsive"><table class="table mb-0"><thead><tr><th>Month</th><th>Revenue</th><th>Expenses</th><th>Net Profit</th></tr></thead><tbody>@foreach($rows as $row)<tr><td>{{ $row['label'] }}</td><td>{{ number_format($row['revenue'],2) }}</td><td>{{ number_format($row['expenses'],2) }}</td><td>{{ number_format($row['net'],2) }}</td></tr>@endforeach</tbody></table></div></div></div><div class="col-lg-4"><div class="card"><div class="card-header">Top Clients by Revenue</div><ul class="list-group list-group-flush">@forelse($topClients as $client)<li class="list-group-item d-flex justify-content-between"><span>{{ $client->name }}</span><span>{{ number_format($client->revenue,2) }}</span></li>@empty<li class="list-group-item text-muted">No revenue yet.</li>@endforelse</ul></div></div></div>
+<div class="card"><div class="card-body"><canvas id="reportsChart" height="120"></canvas></div></div>
 @endsection
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+new Chart(document.getElementById('reportsChart'), {type:'line',data:{labels:@json($rows->pluck('label')),datasets:[{label:'Revenue',data:@json($rows->pluck('revenue')),borderColor:'#198754'},{label:'Expenses',data:@json($rows->pluck('expenses')),borderColor:'#dc3545'},{label:'Net Profit',data:@json($rows->pluck('net')),borderColor:'#0d6efd'}]}});
+</script>
+@endpush

@@ -5,36 +5,36 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Expense;
 use App\Models\Invoice;
-use App\Models\Payment;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class ReportController extends Controller
 {
-    public function index(Request $request): View
+    public function index(): View
     {
-        $from = $request->date('from')?->startOfDay() ?? now()->startOfMonth();
-        $to = $request->date('to')?->endOfDay() ?? now()->endOfMonth();
+        $year = now()->year;
+        $rows = collect(range(1, 12))->map(function (int $month) use ($year) {
+            $revenue = (float) Invoice::where('status', 'paid')->whereYear('issue_date', $year)->whereMonth('issue_date', $month)->sum('total');
+            $expenses = (float) Expense::whereYear(DB::raw('COALESCE(expense_date, date)'), $year)->whereMonth(DB::raw('COALESCE(expense_date, date)'), $month)->sum('amount');
+            return [
+                'label' => now()->startOfYear()->month($month)->format('F'),
+                'revenue' => $revenue,
+                'expenses' => $expenses,
+                'net' => $revenue - $expenses,
+            ];
+        });
 
-        $revenue = Payment::whereBetween('date', [$from, $to])->sum('amount');
-        $expenses = Expense::whereBetween('date', [$from, $to])->sum('amount');
-        $unpaidInvoices = Invoice::whereIn('status', ['sent', 'partially_paid', 'overdue'])->count();
-        $topClients = Payment::query()
-            ->selectRaw('customers.name as customer_name, SUM(payments.amount) as total_amount')
-            ->join('customers', 'customers.id', '=', 'payments.customer_id')
-            ->whereBetween('payments.date', [$from, $to])
-            ->groupBy('customers.name')
-            ->orderByDesc('total_amount')
+        $topClients = Invoice::query()
+            ->selectRaw('clients.name, SUM(invoices.total) as revenue')
+            ->join('clients', 'clients.id', '=', 'invoices.client_id')
+            ->where('invoices.status', 'paid')
+            ->groupBy('clients.name')
+            ->orderByDesc('revenue')
             ->limit(5)
             ->get();
 
         return view('admin.reports.index', [
-            'from' => $from->toDateString(),
-            'to' => $to->toDateString(),
-            'revenue' => $revenue,
-            'expenses' => $expenses,
-            'netProfit' => $revenue - $expenses,
-            'unpaidInvoices' => $unpaidInvoices,
+            'rows' => $rows,
             'topClients' => $topClients,
         ]);
     }

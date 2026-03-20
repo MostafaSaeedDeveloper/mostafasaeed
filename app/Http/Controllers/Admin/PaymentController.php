@@ -3,59 +3,53 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Account;
-use App\Models\Currency;
-use App\Models\Customer;
+use App\Models\Activity;
 use App\Models\Invoice;
 use App\Models\Payment;
-use App\Models\PaymentMethod;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class PaymentController extends Controller
 {
-    public function index(Request $request): View
+    public function index(): View
     {
-        $payments = Payment::with(['customer', 'invoice', 'paymentMethod'])
-            ->when($request->filled('customer_id'), fn ($query) => $query->where('customer_id', $request->integer('customer_id')))
-            ->when($request->filled('payment_method_id'), fn ($query) => $query->where('payment_method_id', $request->integer('payment_method_id')))
-            ->when($request->filled('from'), fn ($query) => $query->whereDate('date', '>=', $request->date('from')))
-            ->when($request->filled('to'), fn ($query) => $query->whereDate('date', '<=', $request->date('to')))
-            ->latest()
-            ->paginate(20)
-            ->withQueryString();
+        $payments = Payment::with('invoice.client')->latest('payment_date')->paginate(10);
 
-        $customers = Customer::orderBy('name')->get();
-        $methods = PaymentMethod::where('is_active', true)->orderBy('name')->get();
-
-        return view('admin.payments.index', compact('payments', 'customers', 'methods'));
+        return view('admin.payments.index', compact('payments'));
     }
 
     public function create(): View
     {
-        return view('admin.payments.create', $this->formData(new Payment(['date' => now()->toDateString()])));
+        return view('admin.payments.create', [
+            'payment' => new Payment(['payment_date' => now()->toDateString()]),
+            'invoices' => Invoice::with('client')->orderByDesc('issue_date')->get(),
+        ]);
     }
 
     public function store(Request $request): RedirectResponse
     {
-        $payment = Payment::create($this->validated($request));
-        $this->syncInvoiceStatus($payment->invoice);
+        $data = $this->validated($request);
+        $invoice = Invoice::findOrFail($data['invoice_id']);
+        $payment = Payment::create(array_merge($data, [
+            'customer_id' => null,
+            'date' => $data['payment_date'],
+            'payment_method' => $data['method'],
+        ]));
+        $this->syncInvoiceStatus($invoice);
+        Activity::create(['type' => 'payment', 'description' => "Payment received for {$invoice->invoice_number}", 'created_at' => now()]);
 
         return redirect()->route('admin.payments.index')->with('success', __('app.saved_successfully'));
     }
 
     public function edit(Payment $payment): View
     {
-        return view('admin.payments.edit', $this->formData($payment));
+        return view('admin.payments.edit', ['payment' => $payment, 'invoices' => Invoice::with('client')->orderByDesc('issue_date')->get()]);
     }
 
     public function update(Request $request, Payment $payment): RedirectResponse
     {
-        $previousInvoice = $payment->invoice;
-        $payment->update($this->validated($request));
-
-        $this->syncInvoiceStatus($previousInvoice);
+        $payment->update(array_merge($this->validated($request), ['date' => $request->input('payment_date'), 'payment_method' => $request->input('method')]));
         $this->syncInvoiceStatus($payment->invoice);
 
         return redirect()->route('admin.payments.index')->with('success', __('app.saved_successfully'));
@@ -70,37 +64,15 @@ class PaymentController extends Controller
         return redirect()->route('admin.payments.index')->with('success', __('app.deleted_successfully'));
     }
 
-    private function formData(Payment $payment): array
-    {
-        return [
-            'payment' => $payment,
-            'customers' => Customer::orderBy('name')->get(),
-            'invoices' => Invoice::orderByDesc('invoice_number')->get(),
-            'currencies' => Currency::orderBy('code')->get(),
-            'accounts' => Account::orderBy('name')->get(),
-            'methods' => PaymentMethod::where('is_active', true)->orderBy('name')->get(),
-        ];
-    }
-
     private function validated(Request $request): array
     {
-        $data = $request->validate([
-            'customer_id' => ['nullable', 'exists:customers,id'],
-            'invoice_id' => ['nullable', 'exists:invoices,id'],
+        return $request->validate([
+            'invoice_id' => ['required', 'exists:invoices,id'],
             'amount' => ['required', 'numeric', 'min:0.01'],
-            'currency_id' => ['nullable', 'exists:currencies,id'],
-            'exchange_rate_to_base' => ['nullable', 'numeric', 'min:0.000001'],
-            'payment_method_id' => ['required', 'exists:payment_methods,id'],
-            'account_id' => ['nullable', 'exists:accounts,id'],
-            'date' => ['required', 'date'],
-            'reference' => ['nullable', 'string', 'max:255'],
+            'payment_date' => ['required', 'date'],
+            'method' => ['required', 'string', 'max:255'],
             'notes' => ['nullable', 'string'],
         ]);
-
-        $method = PaymentMethod::find($data['payment_method_id']);
-        $data['payment_method'] = $method?->slug;
-
-        return $data;
     }
 
     private function syncInvoiceStatus(?Invoice $invoice): void
@@ -110,16 +82,7 @@ class PaymentController extends Controller
         }
 
         $paidAmount = (float) $invoice->payments()->sum('amount');
-        $status = 'sent';
-
-        if ($paidAmount >= (float) $invoice->total) {
-            $status = 'paid';
-        } elseif ($paidAmount > 0) {
-            $status = 'partially_paid';
-        } elseif ($invoice->due_date && now()->gt($invoice->due_date)) {
-            $status = 'overdue';
-        }
-
+        $status = $paidAmount >= (float) $invoice->total ? 'paid' : ($invoice->due_date && now()->gt($invoice->due_date) ? 'overdue' : 'sent');
         $invoice->update([
             'status' => $status,
             'paid_amount' => $paidAmount,

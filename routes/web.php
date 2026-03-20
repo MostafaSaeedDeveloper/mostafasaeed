@@ -39,7 +39,7 @@ Route::get('/sitemap.xml', [FrontendController::class, 'sitemap'])->name('sitema
 
 Auth::routes(['register' => false]);
 
-Route::prefix('dashboard')
+Route::prefix('admin')
     ->name('admin.')
     ->middleware(['auth', 'role:Owner|Content Manager|Accountant|CRM Manager'])
     ->group(function () {
@@ -53,6 +53,9 @@ Route::prefix('dashboard')
         Route::resource('/invoices', InvoiceController::class);
         Route::post('/invoices/{invoice}/mark-sent', [InvoiceController::class, 'markSent'])->name('invoices.mark-sent');
         Route::post('/invoices/{invoice}/duplicate', [InvoiceController::class, 'duplicate'])->name('invoices.duplicate');
+        Route::post('/invoices/{invoice}/mark-paid', [InvoiceController::class, 'markPaid'])->name('invoices.mark-paid');
+        Route::post('/invoices/{invoice}/mark-overdue', [InvoiceController::class, 'markOverdue'])->name('invoices.mark-overdue');
+        Route::get('/clients/{client}/projects', [InvoiceController::class, 'projectsByClient'])->name('clients.projects');
         Route::get('/invoices/{invoice}/pdf', [InvoiceController::class, 'downloadPdf'])->name('invoices.pdf');
         Route::resource('/payments', PaymentController::class);
         Route::resource('/payment-methods', PaymentMethodController::class)->except(['show']);
