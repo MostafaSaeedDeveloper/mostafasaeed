@@ -8,12 +8,6 @@
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
-    <div class="row g-3 mb-4">
-        <div class="col-md-3"><div class="border rounded p-3 h-100"><strong>Email</strong><div>mostafasaeed.developer@gmail.com<br>info@mostafasaeed.com</div></div></div>
-        <div class="col-md-3"><div class="border rounded p-3 h-100"><strong>Phone</strong><div>01003770730</div></div></div>
-        <div class="col-md-3"><div class="border rounded p-3 h-100"><strong>Location</strong><div>Alexandria, Egypt</div></div></div>
-        <div class="col-md-3"><div class="border rounded p-3 h-100"><strong>Website</strong><div>mostafasaeed.com</div></div></div>
-    </div>
     <form method="POST" action="{{ route('contact.store') }}" class="row g-3">
         @csrf
         <div class="col-md-6">

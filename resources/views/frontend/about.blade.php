@@ -14,7 +14,7 @@
         </div>
         <div class="col-lg-8">
             <h1 class="h3">{{ __('app.about_me') }}</h1>
-            <p class="text-muted">{{ $profile?->getTranslated('bio') }} Based in Alexandria, Egypt, I help businesses with Laravel development, WordPress builds, SEO optimization, and media buying.</p>
+            <p class="text-muted">{{ $profile?->getTranslated('bio') }}</p>
             <h5 class="mt-4">{{ __('app.skills') }}</h5>
             <div class="d-flex flex-wrap gap-2">
                 @foreach(($profile?->skills ?? []) as $skill)

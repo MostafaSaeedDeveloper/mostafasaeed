@@ -1,106 +1,2287 @@
-@extends('layouts.frontend')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('title', 'Mostafa Saeed | Full Stack Web Developer')
-@section('meta_description', 'Mostafa Saeed is a Full Stack Web Developer, WordPress Developer, SEO Specialist, and Media Buyer based in Alexandria, Egypt.')
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mostafa Saeed is a Full Stack Web Developer, WordPress Developer, SEO Specialist, and Media Buyer based in Alexandria, Egypt.">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.svg') }}">
+    <title>Mostafa Saeed | Full Stack Web Developer Projects</title>
+    <!-- Bootstrap min css -->
+    <link rel="stylesheet" href="{{ asset('assets/css/vendor/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/swiper.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/odometer.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/vendor/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/vendor/bootstrap.min.css') }}">
+    <!-- custom css -->
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+</head>
 
-@section('content')
-<section class="container py-5">
-    <div class="row align-items-center g-4">
-        <div class="col-lg-7">
-            <span class="text-primary fw-semibold">Hello, I'm</span>
-            <h1 class="display-5 fw-bold mt-2">Mostafa Saeed</h1>
-            <h2 class="h3 text-muted mb-3">A <span id="typed-role" class="text-dark fw-semibold">Full Stack Web Developer</span></h2>
-            <p class="lead">Full Stack Web Developer | WordPress Developer | SEO Specialist | Media Buyer based in Alexandria, Egypt. I build custom websites, Laravel applications, WordPress solutions, SEO-ready experiences, and high-performing ad funnels.</p>
-            <div class="d-flex flex-wrap gap-2">
-                <a href="{{ route('projects') }}" class="btn btn-primary">View Projects</a>
-                <a href="{{ route('contact') }}" class="btn btn-outline-primary">Contact Me</a>
-            </div>
-            <div class="mt-4 small text-muted">
-                <div><strong>Email:</strong> mostafasaeed.developer@gmail.com / info@mostafasaeed.com</div>
-                <div><strong>Phone:</strong> 01003770730</div>
-                <div><strong>Website:</strong> mostafasaeed.com</div>
-                <div><strong>Location:</strong> Alexandria, Egypt</div>
-            </div>
-        </div>
-        <div class="col-lg-5">
-            <div class="card shadow-sm"><div class="card-body">
-                <h3 class="h5 mb-3">Core Skills</h3>
-                @foreach ([
-                    'PHP & MySQL' => 90,
-                    'WordPress' => 95,
-                    'Laravel' => 85,
-                    'Bootstrap & jQuery' => 88,
-                    'SEO' => 80,
-                    'HTML & CSS' => 95,
-                    'Adobe Photoshop' => 70,
-                    'Hosting Management' => 85,
-                ] as $skill => $percent)
-                    <div class="mb-3">
-                        <div class="d-flex justify-content-between"><span>{{ $skill }}</span><span>{{ $percent }}%</span></div>
-                        <div class="progress" role="progressbar"><div class="progress-bar" style="width: {{ $percent }}%"></div></div>
+<body class="index-seven">
+
+
+
+    <div class="d-none d-xl-block header-style-2 header-left">
+        <header class="tmp-header-area d-flex align-items-start flex-column header-left-sticky">
+            <div class="inner-wrapper">
+                <div class="logo-area">
+                    <a href="{{ route('home') }}">
+                        <img src="{{ asset('assets/images/banner/header-left-user.jpg') }}" alt="personal-logo">
+                    </a>
+                </div>
+                <nav id="sideNavs" class="mainmenu-nav navbar-example2 onepagenav">
+                    <ul class="primary-menu nav nav-pills">
+                        <li class="nav-item current"><a class="nav-link smoth-animation" href="#home"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg> Home</a></li>
+                        <li class="nav-item"><a class="nav-link smoth-animation" href="#features"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                </svg>Features</a></li>
+                        <li class="nav-item"><a class="nav-link smoth-animation" href="#portfolio"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers">
+                                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                    <polyline points="2 17 12 22 22 17"></polyline>
+                                    <polyline points="2 12 12 17 22 12"></polyline>
+                                </svg>Projects</a></li>
+                        <li class="nav-item"><a class="nav-link smoth-animation" href="#resume"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>Resume</a></li>
+                        <li class="nav-item"><a class="nav-link smoth-animation" href="#clients"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>Clients</a></li>
+                        <li class="nav-item"><a class="nav-link smoth-animation" href="#pricing"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>Certificates</a></li>
+                        <li class="nav-item"><a class="nav-link smoth-animation" href="#experience"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                    <polyline points="21 15 16 10 5 21"></polyline>
+                                </svg>Experience</a></li>
+                        <li class="nav-item"><a class="nav-link smoth-animation" href="#contacts"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle">
+                                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                    </path>
+                                </svg>Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="footer">
+                    <div class="social-share-style-1">
+                        <span class="title">Contact Me</span>
+                        <div class="social-link">
+                            <a href="mailto:mostafasaeed.developer@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+                            <a href="https://mostafasaeed.com" target="_blank"><i class="fa-solid fa-globe"></i></a>
+                            <a href="tel:01003770730"><i class="fa-solid fa-phone"></i></a>
+                            <a href="#contacts"><i class="fa-solid fa-location-dot"></i></a>
+                        </div>
                     </div>
-                @endforeach
-            </div></div>
-        </div>
-    </div>
-</section>
-
-<section class="container py-4">
-    <div class="row g-4">
-        <div class="col-lg-6">
-            <div class="card h-100"><div class="card-body">
-                <h3 class="h4">Services</h3>
-                <ul class="mb-0">
-                    <li><strong>Web Development (PHP & Laravel):</strong> Custom websites, web apps, and APIs.</li>
-                    <li><strong>WordPress Development:</strong> Themes, plugins, WooCommerce, and speed optimization.</li>
-                    <li><strong>SEO Optimization:</strong> On-page SEO, technical SEO, keyword research, and ranking improvement.</li>
-                    <li><strong>Media Buying:</strong> Facebook Ads, Google Ads, and campaign management.</li>
-                </ul>
-            </div></div>
-        </div>
-        <div class="col-lg-6">
-            <div class="card h-100"><div class="card-body">
-                <h3 class="h4">Experience Timeline</h3>
-                <ul class="mb-0">
-                    <li>Bishop Integrated Solutions — Full Stack Web Developer (2021 – Present)</li>
-                    <li>Emtiaz Soft, UAE (Remote) — Full Stack Web Developer (Nov 2024 – Apr 2025)</li>
-                    <li>Withaq, Saudi Arabia (Remote) — WordPress Developer (2019 – 2022)</li>
-                    <li>MWheba Agency — WordPress Developer (2019 – 2020)</li>
-                    <li>WEGO Station — WordPress Developer (2019)</li>
-                    <li>Mediabyte — WordPress Developer (2018)</li>
-                    <li>Aaser Media — WordPress Developer (2017)</li>
-                </ul>
-            </div></div>
-        </div>
-    </div>
-</section>
-
-<section class="container py-4">
-    <div class="row g-4">
-        <div class="col-lg-4"><div class="card h-100"><div class="card-body"><h3 class="h5">Education</h3><p class="mb-0">Bachelor's in Geographic Information System (GIS)<br>Faculty of Arts, Alexandria University (2013 – 2017)</p></div></div></div>
-        <div class="col-lg-8"><div class="card h-100"><div class="card-body"><h3 class="h5">Certificates</h3><ul class="mb-0"><li>Computer Hardware & Software — Smouha Academy (2016)</li><li>SEO Training Course — MOZ (2018)</li><li>PHP & MySQL Development — Eduonix Learning Solutions (2019)</li><li>Backend Development Diploma — Route Academy (2021)</li></ul></div></div></div>
-    </div>
-</section>
-
-<section class="container py-4">
-    <h3 class="h4 mb-3">Recent Projects</h3>
-    <div class="row g-3">
-        @foreach($projects as $project)
-            <div class="col-md-4">
-                <div class="card h-100"><div class="card-body"><h4 class="h6">{{ $project->getTranslated('title') }}</h4><p class="text-muted">{{ $project->description ?: $project->getTranslated('summary') }}</p><a href="{{ route('projects.show', $project->slug) }}" class="btn btn-sm btn-outline-primary">View Details</a></div></div>
+                </div>
             </div>
-        @endforeach
+        </header>
     </div>
-</section>
-@endsection
 
-@push('scripts')
-<script>
-const roles = ["Full Stack Web Developer", "WordPress Developer", "SEO Specialist", "Media Buyer"];
-let roleIndex = 0;
-setInterval(() => {
-    roleIndex = (roleIndex + 1) % roles.length;
-    document.getElementById('typed-role').textContent = roles[roleIndex];
-}, 1800);
-</script>
-@endpush
+
+
+
+    <!-- Header Mobile Bar  -->
+    <div class="tmp-responsive-header-style d-block d-xl-none header--sticky">
+        <div class="row align-items-center">
+            <div class="col-6">
+                <div class="logo">
+                    <a href="{{ route('home') }}">
+                        <img src="{{ asset('assets/images/logo/white-logo-reeni.png') }}" alt="Mostafa Saeed Portfolio">
+                    </a>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="header-right text-end">
+                    <div class="tmp-side-collups-area d-flex justify-content-end">
+                        <button class="tmp-menu-bars humberger_menu_active"><i class="fa-regular fa-bars-staggered"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Mobile Bar  -->
+
+
+    <div class="tmp-popup-mobile-menu">
+        <div class="inner">
+            <div class="header-top">
+                <div class="logo">
+                    <a href="{{ route('home') }}" class="logo-area">
+                        <img class="logo-dark" src="{{ asset('assets/images/logo/white-logo-reeni.png') }}" alt="Mostafa Saeed Portfolio">
+                        <img class="logo-white" src="{{ asset('assets/images/logo/logo-white.png') }}" alt="Mostafa Saeed Portfolio">
+                    </a>
+
+                </div>
+                <div class="close-menu">
+                    <button class="close-button tmp-round-action-btn">
+                        <i class="fa-sharp fa-light fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+            <ul class="tmp-mainmenu onepagenav-click">
+                <li><a class="smoth-animation" href="#home">Home</a></li>
+                <li><a class="smoth-animation" href="#features">Features</a></li>
+                <li><a class="smoth-animation" href="#portfolio">Projects</a></li>
+                <li><a class="smoth-animation" href="#resume">Resume</a></li>
+                <li><a class="smoth-animation" href="#clients">Clients</a></li>
+                <li><a class="smoth-animation" href="#pricing">Certificates</a></li>
+                <li><a class="smoth-animation" href="#experience">experience</a></li>
+                <li><a class="smoth-animation" href="#contacts">Contact</a></li>
+            </ul>
+
+            <div class="social-share-style-1 mt--40">
+                <span class="title">contact me</span>
+                <div class="social-link">
+                    <a href="mailto:info@mostafasaeed.com"><i class="fa-regular fa-envelope"></i></a>
+                    <a href="https://mostafasaeed.com" target="_blank"><i class="fa-solid fa-globe"></i></a>
+                    <a href="tel:01003770730"><i class="fa-solid fa-phone"></i></a>
+                    <a href="#contacts"><i class="fa-solid fa-location-dot"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="page-with-left-header">
+
+        <!-- tmp banner area start -->
+        <div class="tmp-banner-one-area" id="home">
+            <div class="container">
+                <div class="banner-one-main-wrapper">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 order-lg-2">
+                            <div class="banner-right-content">
+                                <img class="tmp-scroll-trigger tmp-zoom-in animation-order-1" src="{{ asset('assets/images/banner/banner-user-image-02.png') }}" alt="banner-img">
+                                <h2 class="banner-big-text-1 up-down">MOSTAFA SAEED</h2>
+                                <h2 class="banner-big-text-2 up-down-2">MOSTAFA SAEED</h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 order-lg-1">
+                            <div class="inner">
+                                <span class="sub-title tmp-scroll-trigger tmp-fade-in animation-order-1">Hello</span>
+                                <h1 class="title mt--5  tmp-scroll-trigger tmp-fade-in animation-order-2">
+                                    i’m
+                                    Mostafa Saeed <br> A
+                                    <span class="header-caption">
+                                        <span class="cd-headline clip is-full-width">
+                                            <span class="cd-words-wrapper">
+                                                <b class="is-visible theme-gradient">Full Stack Web Developer</b>
+                                                <b class="is-hidden theme-gradient">WordPress Developer</b>
+                                                <b class="is-hidden theme-gradient">SEO Specialist</b>
+                                                <b class="is-hidden theme-gradient">Media Buyer</b>
+                                            </span>
+                                    </span>
+                                    </span>
+                                </h1>
+                                <p class="disc tmp-scroll-trigger tmp-fade-in animation-order-3"> Full Stack Web Developer | WordPress Developer | SEO Specialist | Media Buyer based in Alexandria, Egypt. I build custom websites, WordPress solutions, SEO-ready experiences, and high-performing advertising funnels.</p>
+                                <div class="button-area-banner-one tmp-scroll-trigger tmp-fade-in animation-order-4">
+                                    <a class="tmp-btn hover-icon-reverse radius-round smoth-animation" href="#portfolio">
+                                        <span class="icon-reverse-wrapper">
+                                            <span class="btn-text">View Projects</span>
+                                        <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
+                                        <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="particles-js"></div>
+        </div>
+        <!-- tmp banner area end -->
+
+        <section class="latest-service-area tmp-section-gapTop" id="features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6">
+                        <a href="service-details.html" class="service-card-v2 tmponhover tmp-scroll-trigger tmp-fade-in animation-order-1">
+                            <h2 class="service-card-num"><span>01.</span>Web Development (PHP & Laravel)</h2>
+                            <p class="service-para">Custom websites, web apps, and APIs tailored for business growth.</p>
+                        </a>
+                        <a href="service-details.html" class="service-card-v2 tmponhover tmp-scroll-trigger tmp-fade-in animation-order-2">
+                            <h2 class="service-card-num"><span>02.</span>WordPress Development</h2>
+                            <p class="service-para">WordPress themes, plugins, WooCommerce stores, and speed optimization.</p>
+                        </a>
+                        <a href="service-details.html" class="service-card-v2 tmponhover tmp-scroll-trigger tmp-fade-in animation-order-3">
+                            <h2 class="service-card-num"><span>03.</span>SEO Optimization</h2>
+                            <p class="service-para">On-page SEO, technical SEO, keyword research, and ranking improvement.</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <a href="service-details.html" class="service-card-v2 tmponhover tmp-scroll-trigger tmp-fade-in animation-order-4">
+                            <h2 class="service-card-num"><span>04.</span>Media Buying</h2>
+                            <p class="service-para">Facebook Ads, Google Ads, campaign management, and conversion-focused funnels.</p>
+                        </a>
+                        <a href="service-details.html" class="service-card-v2 tmponhover tmp-scroll-trigger tmp-fade-in animation-order-5">
+                            <h2 class="service-card-num"><span>05.</span>Experience Timeline</h2>
+                            <p class="service-para">Bishop Integrated Solutions (2021 – Present), Emtiaz Soft (Nov 2024 – Apr 2025), Withaq (2019 – 2022).</p>
+                        </a>
+                        <a href="service-details.html" class="service-card-v2 tmponhover tmp-scroll-trigger tmp-fade-in animation-order-6">
+                            <h2 class="service-card-num"><span>06.</span>Education & Certificates</h2>
+                            <p class="service-para">Bachelor's in GIS, Alexandria University (2013 – 2017) | Smouha Academy, MOZ, Eduonix, Route Academy.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tpm Latest Projects Area Start -->
+        <div class="latest-portfolio-area custom-column-grid tmp-section-gapTop" id="portfolio">
+            <div class="container">
+                <div class="section-head mb--60">
+                    <div class="section-sub-title center-title tmp-scroll-trigger tmp-fade-in animation-order-1">
+                        <span class="subtitle">Latest Projects</span>
+                    </div>
+                    <h2 class="title split-collab tmp-scroll-trigger tmp-fade-in animation-order-2">Transforming Ideas
+                        into
+                        <br> Effective Digital Solutions
+                    </h2>
+                    <p class="description section-sm tmp-scroll-trigger tmp-fade-in animation-order-3">Recent portfolio projects across Laravel, WordPress, SEO, and media buying.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="latest-portfolio-card tmp-hover-link tmp-scroll-trigger tmp-fade-in animation-order-1">
+                            <div class="portfoli-card-img">
+                                <div class="img-box v2">
+                                    <a class="tmp-scroll-trigger tmp-zoom-in animation-order-1" href="project-details.html">
+                                        <img class="w-100" src="{{ asset('assets/images/latest-portfolio/portfoli-img-1.jpg') }}" alt="Thumbnail">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="portfolio-card-content-wrap">
+                                <div class="content-left">
+                                    <h3 class="portfolio-card-title"><a class="link" href="project-details.html">Custom Laravel Ordering Platform</a></h3>
+                                    <p class="portfoli-card-para">Laravel Development</p>
+                                </div>
+                                <a href="project-details.html" class="tmp-arrow-icon-btn">
+                                    <div class="btn-inner">
+                                        <i class="tmp-icon fa-solid fa-arrow-up-right"></i>
+                                        <i class="tmp-icon-bottom fa-solid fa-arrow-up-right"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="latest-portfolio-card tmp-hover-link tmp-scroll-trigger tmp-fade-in animation-order-2">
+                            <div class="portfoli-card-img">
+                                <div class="img-box v2">
+                                    <a class="tmp-scroll-trigger tmp-zoom-in animation-order-1" href="project-details.html">
+                                        <img class="w-100" src="{{ asset('assets/images/latest-portfolio/portfoli-img-2.jpg') }}" alt="Thumbnail">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="portfolio-card-content-wrap">
+                                <div class="content-left">
+                                    <h3 class="portfolio-card-title"><a class="link" href="project-details.html">WordPress Healthcare Website</a></h3>
+                                    <p class="portfoli-card-para">WordPress Development</p>
+                                </div>
+                                <a href="project-details.html" class="tmp-arrow-icon-btn">
+                                    <div class="btn-inner">
+                                        <i class="tmp-icon fa-solid fa-arrow-up-right"></i>
+                                        <i class="tmp-icon-bottom fa-solid fa-arrow-up-right"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="latest-portfolio-card tmp-hover-link tmp-scroll-trigger tmp-fade-in animation-order-3">
+                            <div class="portfoli-card-img">
+                                <div class="img-box v2">
+                                    <a class="tmp-scroll-trigger tmp-zoom-in animation-order-1" href="project-details.html">
+                                        <img class="w-100" src="{{ asset('assets/images/latest-portfolio/portfoli-img-3.jpg') }}" alt="Thumbnail">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="portfolio-card-content-wrap">
+                                <div class="content-left">
+                                    <h3 class="portfolio-card-title"><a class="link" href="project-details.html">SEO Growth Campaign</a></h3>
+                                    <p class="portfoli-card-para">Web Design</p>
+                                </div>
+                                <a href="project-details.html" class="tmp-arrow-icon-btn">
+                                    <div class="btn-inner">
+                                        <i class="tmp-icon fa-solid fa-arrow-up-right"></i>
+                                        <i class="tmp-icon-bottom fa-solid fa-arrow-up-right"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="latest-portfolio-card tmp-hover-link tmp-scroll-trigger tmp-fade-in animation-order-4">
+                            <div class="portfoli-card-img">
+                                <div class="img-box v2">
+                                    <a class="tmp-scroll-trigger tmp-zoom-in animation-order-1" href="project-details.html">
+                                        <img class="w-100" src="{{ asset('assets/images/latest-portfolio/portfoli-img-4.jpg') }}" alt="Thumbnail">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="portfolio-card-content-wrap">
+                                <div class="content-left">
+                                    <h3 class="portfolio-card-title"><a class="link" href="project-details.html">Media Buying Funnel</a></h3>
+                                    <p class="portfoli-card-para">App Development</p>
+                                </div>
+                                <a href="project-details.html" class="tmp-arrow-icon-btn">
+                                    <div class="btn-inner">
+                                        <i class="tmp-icon fa-solid fa-arrow-up-right"></i>
+                                        <i class="tmp-icon-bottom fa-solid fa-arrow-up-right"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Tpm Latest Projects Area End -->
+
+        <!-- Tpm Education Experience Area Start -->
+        <section class="education-experience tmp-section-gapTop" id="resume">
+            <div class="container">
+                <div class="section-head mb--50">
+                    <div class="section-sub-title center-title tmp-scroll-trigger tmp-fade-in animation-order-1">
+                        <span class="subtitle">Education & Experience</span>
+                    </div>
+                    <h2 class="title split-collab tmp-scroll-trigger tmp-fade-in animation-order-2">Empowering
+                        Creativity
+                        <br> through
+                    </h2>
+                    <p class="description section-sm tmp-scroll-trigger tmp-fade-in animation-order-3">Recent portfolio projects across Laravel, WordPress, SEO, and media buying.</p>
+                </div>
+                <h2 class="custom-title mb-32 tmp-scroll-trigger tmp-fade-in animation-order-1">Education <span><img
+                            src="{{ asset('assets/images/custom-line/custom-line.png') }}" alt="custom-line"></span>
+                </h2>
+                <div class="row g-5">
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="education-experience-card tmponhover tmp-scroll-trigger tmp-fade-in animation-order-1">
+                            <h4 class="edu-sub-title">Trainer Marketing</h4>
+                            <h2 class="edu-title">2005-2009</h2>
+                            <p class="edu-para">Bachelor's in Geographic Information System (GIS), Faculty of Arts, Alexandria University (2013 – 2017).</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="education-experience-card tmponhover tmp-scroll-trigger tmp-fade-in animation-order-2">
+                            <h4 class="edu-sub-title">Assistant Director</h4>
+                            <h2 class="edu-title">2010-2014</h2>
+                            <p class="edu-para">Each project here showcases my commitment to excellence and adaptability, tailored to meet each client’s unique needs.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="education-experience-card tmponhover tmp-scroll-trigger tmp-fade-in animation-order-3">
+                            <h4 class="edu-sub-title">Design Assistant</h4>
+                            <h2 class="edu-title">2008-2012</h2>
+                            <p class="edu-para">Media Buying Funnel clients, from startups to established companies, helping bring their visions to life.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="education-experience-card tmponhover tmp-scroll-trigger tmp-fade-in animation-order-4">
+                            <h4 class="edu-sub-title">Design Assistant</h4>
+                            <h2 class="edu-title">2008-2012</h2>
+                            <p class="edu-para">Each project here showcases my commitment to excellence and adaptability, tailored to meet each client’s unique needs a personal.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="experiences-wrapper">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="experiences-wrap-left-content">
+                                <h2 class="custom-title mb-32 tmp-scroll-trigger tmp-fade-in animation-order-1">Experiences <span><img
+                            src="{{ asset('assets/images/custom-line/custom-line.png') }}" alt="custom-line"></span></h2>
+
+                                <div class="experience-content tmp-scroll-trigger tmp-fade-in animation-order-1">
+                                    <p class="ex-subtitle">experience</p>
+                                    <h2 class="ex-name">Soft Tech (2 Years)</h2>
+                                    <h3 class="ex-title">Bishop Integrated Solutions</h3>
+                                    <p class="ex-para">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                                        desi dolore eu fugiat nulla pariatu Duis aute irure.</p>
+                                </div>
+                                <div class="experience-content tmp-scroll-trigger tmp-fade-in animation-order-2">
+                                    <p class="ex-subtitle">experience</p>
+                                    <h2 class="ex-name">ModernTech (3 Years)</h2>
+                                    <h3 class="ex-title">App Developer</h3>
+                                    <p class="ex-para">SEO Growth Campaign of projects that highlight my skills in [Main Areas, e.g., responsive web design.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="experiences-wrap-right-content">
+                                <img class="tmp-scroll-trigger tmp-zoom-in animation-order-1" src="{{ asset('assets/images/experiences/expert-img.jpg') }}" alt="expert-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Tpm Education Experience Area End -->
+
+
+        <!-- Tpm Our Supported Company Area Start -->
+        <div class="our-supported-company-area tmp-section-gapTop" id="clients">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                        <div class="support-company-logo tmp-scroll-trigger tmp-fade-in animation-order-1">
+                            <img src="{{ asset('assets/images/our-supported-company/company-logo-1.svg') }}" alt="Mostafa Saeed Portfolio">
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                        <div class="support-company-logo tmp-scroll-trigger tmp-fade-in animation-order-2">
+                            <img src="{{ asset('assets/images/our-supported-company/company-logo-2.svg') }}" alt="Mostafa Saeed Portfolio">
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                        <div class="support-company-logo tmp-scroll-trigger tmp-fade-in animation-order-3">
+                            <img src="{{ asset('assets/images/our-supported-company/company-logo-3.svg') }}" alt="Mostafa Saeed Portfolio">
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                        <div class="support-company-logo tmp-scroll-trigger tmp-fade-in animation-order-4">
+                            <img src="{{ asset('assets/images/our-supported-company/company-logo-4.svg') }}" alt="Mostafa Saeed Portfolio">
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                        <div class="support-company-logo tmp-scroll-trigger tmp-fade-in animation-order-5">
+                            <img src="{{ asset('assets/images/our-supported-company/company-logo-5.svg') }}" alt="Mostafa Saeed Portfolio">
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                        <div class="support-company-logo tmp-scroll-trigger tmp-fade-in animation-order-6">
+                            <img src="{{ asset('assets/images/our-supported-company/company-logo-6.svg') }}" alt="Mostafa Saeed Portfolio">
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                        <div class="support-company-logo tmp-scroll-trigger tmp-fade-in animation-order-7">
+                            <img src="{{ asset('assets/images/our-supported-company/company-logo-7.svg') }}" alt="Mostafa Saeed Portfolio">
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                        <div class="support-company-logo tmp-scroll-trigger tmp-fade-in animation-order-8">
+                            <img src="{{ asset('assets/images/our-supported-company/company-logo-8.svg') }}" alt="Mostafa Saeed Portfolio">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Tpm Our Supported Company Area End -->
+
+        <!-- Tpm My Price plan Start -->
+        <section class="our-price-plan-area tmp-section-gapTop" id="pricing">
+            <div class="container">
+                <div class="section-head mb--60">
+                    <div class="section-sub-title center-title tmp-scroll-trigger tmp-fade-in animation-order-1">
+                        <span class="subtitle">My Price plan</span>
+                    </div>
+                    <h2 class="title split-collab tmp-scroll-trigger tmp-fade-in animation-order-2">Enhancing
+                        Collaboration
+                        <br> between Remote
+                    </h2>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="price-plan-card tmponhover blur-style-two tmp-scroll-trigger tmp-fade-in animation-order-1">
+                            <span class="price-sub-title">Starter</span>
+                            <h3 class="main-price">$ 5.00</h3>
+                            <p class="per-month">Per Month</p>
+                            <div class="check-box">
+                                <ul>
+                                    <li>
+                                        <div class="check-box-item">
+                                            <div class="box-icon">
+                                                <i class="fa-solid fa-circle-check"></i>
+                                            </div>
+                                            <p class="box-para">5 Social Media Account</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="check-box-item">
+                                            <div class="box-icon">
+                                                <i class="fa-solid fa-circle-check"></i>
+                                            </div>
+                                            <p class="box-para">Free Platform Access</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="check-box-item">
+                                            <div class="box-icon">
+                                                <i class="fa-solid fa-circle-check"></i>
+                                            </div>
+                                            <p class="box-para">24/7 Customer Support</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tmp-button-here">
+                                <a class="tmp-btn hover-icon-reverse btn-border btn-md radius-round" href="contact.html">
+                                    <span class="icon-reverse-wrapper">
+                    <span class="btn-text">Get Started</span>
+                                    <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 tmp-scroll-trigger tmp-fade-in animation-order-2">
+                        <div class="price-plan-card tmponhover blur-style-two active">
+                            <span class="price-sub-title">Basic</span>
+                            <h3 class="main-price">$ 230.00</h3>
+                            <p class="per-month">Per Month</p>
+                            <div class="check-box">
+                                <ul>
+                                    <li>
+                                        <div class="check-box-item">
+                                            <div class="box-icon">
+                                                <i class="fa-solid fa-circle-check"></i>
+                                            </div>
+                                            <p class="box-para">5 Social Media Account</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="check-box-item">
+                                            <div class="box-icon">
+                                                <i class="fa-solid fa-circle-check"></i>
+                                            </div>
+                                            <p class="box-para">Free Platform Access</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="check-box-item">
+                                            <div class="box-icon">
+                                                <i class="fa-solid fa-circle-check"></i>
+                                            </div>
+                                            <p class="box-para">Marketing Platform</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="check-box-item">
+                                            <div class="box-icon">
+                                                <i class="fa-solid fa-circle-check"></i>
+                                            </div>
+                                            <p class="box-para">24/7 Customer Support</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="check-box-item">
+                                            <div class="box-icon">
+                                                <i class="fa-solid fa-circle-check"></i>
+                                            </div>
+                                            <p class="box-para">Life time support</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tmp-button-here">
+                                <a class="tmp-btn hover-icon-reverse btn-md radius-round" href="contact.html">
+                                    <span class="icon-reverse-wrapper">
+                    <span class="btn-text">Get Started</span>
+                                    <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="price-plan-card tmponhover blur-style-two tmp-scroll-trigger tmp-fade-in animation-order-3">
+                            <span class="price-sub-title">Premium</span>
+                            <h3 class="main-price">$ 45.00</h3>
+                            <p class="per-month">Per Month</p>
+                            <div class="check-box">
+                                <ul>
+                                    <li>
+                                        <div class="check-box-item">
+                                            <div class="box-icon">
+                                                <i class="fa-solid fa-circle-check"></i>
+                                            </div>
+                                            <p class="box-para">5 Social Media Account</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="check-box-item">
+                                            <div class="box-icon">
+                                                <i class="fa-solid fa-circle-check"></i>
+                                            </div>
+                                            <p class="box-para">Free Platform Access</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="check-box-item">
+                                            <div class="box-icon">
+                                                <i class="fa-solid fa-circle-check"></i>
+                                            </div>
+                                            <p class="box-para">24/7 Customer Support</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tmp-button-here">
+                                <a class="tmp-btn hover-icon-reverse btn-border btn-md radius-round" href="contact.html">
+                                    <span class="icon-reverse-wrapper">
+                    <span class="btn-text">Get Started</span>
+                                    <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Tpm My Price plan End -->
+
+        <!-- Tpm Experience and news Area Start -->
+        <section class="experience-and-news-are tmp-section-gapTop" id="experience">
+            <div class="container">
+                <div class="section-head mb--40">
+                    <div class="section-sub-title center-title tmp-scroll-trigger tmp-fade-in animation-order-1">
+                        <span class="subtitle">Experience and News</span>
+                    </div>
+                    <h2 class="title split-collab tmp-scroll-trigger tmp-fade-in animation-order-2">Elevating Personal
+                        Branding the <br> through Powerful Projectss</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="experience-card tmp-hover-link tmp-scroll-trigger tmp-fade-in animation-order-1">
+                            <div class="img-box">
+                                <a href="experience-details.html">
+                                    <img class="img-primary hidden-on-mobile" src="{{ asset('assets/images/experience/experience-img-4.jpg') }}" alt="Experience Thumbnail">
+                                    <img class="img-secondary" src="{{ asset('assets/images/experience/experience-img-4.jpg') }}" alt="BLog Thumbnail">
+                                </a>
+                                <ul class="experience-tags">
+                                    <li><span class="tag-icon"><i class="fa-regular fa-user"></i></span>Mesbah</li>
+                                    <li><span class="tag-icon"><i class="fa-solid fa-calendar-days"></i></span>April 10</li>
+                                </ul>
+                            </div>
+                            <div class="experience-content-wrap">
+                                <h3 class="experience-title v2"><a class="link" href="experience-details.html">Let’s bring your ideas to life! Contact me, and let’s</a></h3>
+                                <a href="experience-details.html" class="read-more-btn v2">Read More <span
+                    class="read-more-icon"><i class="fa-solid fa-angle-right"></i></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="experience-card tmp-hover-link tmp-scroll-trigger tmp-fade-in animation-order-2">
+                            <div class="img-box">
+                                <a href="experience-details.html">
+                                    <img class="img-primary hidden-on-mobile" src="{{ asset('assets/images/experience/experience-img-5.jpg') }}" alt="Experience Thumbnail">
+                                    <img class="img-secondary" src="{{ asset('assets/images/experience/experience-img-5.jpg') }}" alt="BLog Thumbnail">
+                                </a>
+                                <ul class="experience-tags">
+                                    <li><span class="tag-icon"><i class="fa-regular fa-user"></i></span>Mesbah</li>
+                                    <li><span class="tag-icon"><i class="fa-solid fa-calendar-days"></i></span>April 10</li>
+                                </ul>
+                            </div>
+                            <div class="experience-content-wrap">
+                                <h3 class="experience-title v2"><a class="link" href="experience-details.html">Inspiring the World, One Project at a
+                                        Time for the
+                                        man</a></h3>
+                                <a href="experience-details.html" class="read-more-btn v2">Read More <span
+                    class="read-more-icon"><i class="fa-solid fa-angle-right"></i></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="experience-card tmp-hover-link tmp-scroll-trigger tmp-fade-in animation-order-3">
+                            <div class="img-box">
+                                <a href="experience-details.html">
+                                    <img class="img-primary hidden-on-mobile" src="{{ asset('assets/images/experience/experience-img-6.jpg') }}" alt="Experience Thumbnail">
+                                    <img class="img-secondary" src="{{ asset('assets/images/experience/experience-img-6.jpg') }}" alt="BLog Thumbnail">
+                                </a>
+                                <ul class="experience-tags">
+                                    <li><span class="tag-icon"><i class="fa-regular fa-user"></i></span>Mesbah</li>
+                                    <li><span class="tag-icon"><i class="fa-solid fa-calendar-days"></i></span>April 10</li>
+                                </ul>
+                            </div>
+                            <div class="experience-content-wrap">
+                                <h3 class="experience-title v2"><a class="link" href="experience-details.html">Each one showcases my approach and dedication man</a></h3>
+                                <a href="experience-details.html" class="read-more-btn v2">Read More <span
+                    class="read-more-icon"><i class="fa-solid fa-angle-right"></i></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Tpm Experience and news Area End -->
+
+        <!-- Tpm Get In touch start -->
+        <section class="get-in-touch-area tmp-section-gap" id="contacts">
+            <div class="container">
+                <div class="contact-get-in-touch-wrap">
+                    <div class="get-in-touch-wrapper tmponhover">
+                        <div class="row g-5 align-items-center">
+                            <div class="col-lg-5">
+                                <div class="section-head text-align-left">
+                                    <div class="section-sub-title tmp-scroll-trigger tmp-fade-in animation-order-1">
+                                        <span class="subtitle">GET IN TOUCH</span>
+                                    </div>
+                                    <h2 class="title split-collab tmp-scroll-trigger tmp-fade-in animation-order-2">Elevate your brand with Me </h2>
+                                    <p class="description tmp-scroll-trigger tmp-fade-in animation-order-3">ished fact that a reader will be
+                                        distrol acted bioiiy desig
+                                        ished fact that a reader will acted ished fact that a reader will be distrol
+                                        acted </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="contact-inner">
+                                    <div class="contact-form">
+                                        <div id="form-messages" class="error"></div>
+                                        <form class="tmp-dynamic-form" id="contact-form" method="POST" action="mailer.php">
+                                            <div class="contact-form-wrapper row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <input class="input-field" name="name" id="contact-name" placeholder="Your Name" type="text" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <input class="input-field" id="contact-phone" placeholder="Phone Number" type="tel" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <input class="input-field" id="contact-email" name="email" placeholder="Your Email" type="email" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <input class="input-field" type="text" id="subject" name="subject" placeholder="Subject">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <textarea class="input-field" placeholder="Your Message" name="message" id="contact-message" required></textarea>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-12">
+                                                    <div class="tmp-button-here">
+                                                        <button class="tmp-btn hover-icon-reverse radius-round w-100" name="submit" type="submit" id="submit">
+                                                            <span class="icon-reverse-wrapper">
+                                        <span class="btn-text">Appointment Now</span>
+                                                            <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
+                                                            <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Tpm Get In touch End -->
+
+        <!-- Start Footer Area  -->
+        <!-- Start Footer Area  -->
+        <footer class="footer-area footer-style-one-wrapper bg-color-footer bg_images tmp-section-gap">
+            <div class="container">
+                <div class="footer-main footer-style-one">
+                    <div class="row g-5">
+                        <div class="col-lg-5 col-md-6">
+                            <div class="single-footer-wrapper border-right mr--20">
+                                <div class="logo">
+                                    <a href="{{ route('home') }}">
+                                        <img src="{{ asset('assets/images/logo/white-logo-reeni.png') }}" alt="Mostafa Saeed Portfolio">
+                                    </a>
+                                </div>
+                                <p class="description"><span>Get Ready</span> To Create Great</p>
+                                <form action="#" class="newsletter-form-1 mt--40">
+                                    <input type="email" placeholder="Email Adress">
+                                    <span class="form-icon"><i class="fa-regular fa-envelope"></i></span>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-footer-wrapper quick-link-wrap">
+                                <h5 class="ft-title">Quick Link</h5>
+                                <ul class="ft-link tmp-link-animation">
+                                    <li>
+                                        <a href="about.html">About Me</a>
+                                    </li>
+                                    <li>
+                                        <a href="service.html">Service</a>
+                                    </li>
+                                    <li>
+                                        <a href="contact.html">Contact Me</a>
+                                    </li>
+                                    <li>
+                                        <a href="experience.html">Experience Post</a>
+                                    </li>
+                                    <li>
+                                        <a href="contact.html">Certificates</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="single-footer-wrapper contact-wrap">
+                                <h5 class="ft-title">Contact </h5>
+                                <ul class="ft-link tmp-link-animation">
+                                    <li><span class="ft-icon"><i class="fa-solid fa-envelope"></i></span><a href="#">mostafasaeed.developer@gmail.com</a></li>
+                                    <li><span class="ft-icon"><i class="fa-solid fa-location-dot"></i></span>3891 Ranchview Dr. Richardson</li>
+                                    <li><span class="ft-icon"><i class="fa-solid fa-phone"></i></span><a href="#">01245789321</a></li>
+                                </ul>
+                                <div class="social-link footer">
+                                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="copyright-area-one">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="main-wrapper">
+                            <p class="copy-right-para tmp-link-animation"> ©<a href="https://mostafasaeed.com" target="_blank">Mostafa Saeed </a>
+                                <script>
+                                    document.write(new Date().getFullYear())
+                                </script> | All Rights Reserved
+                            </p>
+                            <ul class="tmp-link-animation">
+                                <li><a href="#">Trams & Condition</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Footer Area  -->
+        <!-- End Footer Area  -->
+    </div>
+
+
+    <!-- ready chatting option via email -->
+    <div class="ready-chatting-option tmp-ready-chat">
+        <input type="checkbox" id="click">
+        <label for="click">
+            <i class="fab fa-facebook-messenger"></i>
+            <i class="fas fa-times"></i>
+        </label>
+        <div class="wrapper">
+            <div class="head-text">
+                Let's chat with me? - Online
+            </div>
+            <div class="chat-box">
+                <div class="desc-text">
+                    Please fill out the form below to start chatting with me directly.
+                </div>
+                <form class="tmp-dynamic-form" action="#">
+                    <div class="field">
+                        <input class="input-field" name="name" placeholder="Your Name" type="text" required>
+                    </div>
+                    <div class="field">
+                        <input class="input-field" name="email" placeholder="Your Email" type="email" required>
+                    </div>
+                    <div class="field textarea">
+                        <textarea class="input-field" placeholder="Your Message" name="message" required></textarea>
+                    </div>
+                    <div class="field">
+                        <button name="submit" type="submit">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- ready chatting option via email end -->
+    <!-- progress area start -->
+    <div class="scrollToTop" style="display: block;">
+        <div class="arrowUp">
+            <i class="fa-light fa-arrow-up"></i>
+        </div>
+        <div class="water" style="transform: translate(0px, 87%);">
+            <svg viewBox="0 0 560 20" class="water_wave water_wave_back">
+                <use xlink:href="#wave"></use>
+            </svg>
+            <svg viewBox="0 0 560 20" class="water_wave water_wave_front">
+                <use xlink:href="#wave"></use>
+            </svg>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 560 20" style="display: none;">
+                <symbol id="wave">
+                    <path d="M420,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C514,6.5,518,4.7,528.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H420z" fill="#"></path>
+                    <path d="M420,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C326,6.5,322,4.7,311.5,2.7C304.3,1.4,293.6-0.1,280,0c0,0,0,0,0,0v20H420z" fill="#"></path>
+                    <path d="M140,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C234,6.5,238,4.7,248.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H140z" fill="#"></path>
+                    <path d="M140,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C46,6.5,42,4.7,31.5,2.7C24.3,1.4,13.6-0.1,0,0c0,0,0,0,0,0l0,20H140z" fill="#"></path>
+                </symbol>
+            </svg>
+
+        </div>
+    </div>
+    <!-- progress area end -->
+    <!-- <div class="tmp-right-demo">
+    <button class="demo-button">
+        <p class="mb--0">48</p>
+        <span class="text">Demos</span>
+    </button>
+</div> -->
+
+
+    <div class="demo-button-wrapper">
+        <div class="buy-theme">
+            <a href="https://mostafasaeed.com" target="_blank">
+                <div class="theme-wrapper">
+                    <div>
+                        <svg width="22" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.9854 19.9999C11.479 19.9999 11.8791 19.5998 11.8791 19.1063C11.8791 18.6127 11.479 18.2126 10.9854 18.2126C10.4919 18.2126 10.0918 18.6127 10.0918 19.1063C10.0918 19.5998 10.4919 19.9999 10.9854 19.9999Z" fill="white">
+                            </path>
+                            <path d="M16.1233 13.0134L11.0833 13.5539C10.9895 13.5633 10.9427 13.4477 11.0177 13.3883L15.9483 9.54819C16.267 9.28572 16.4732 8.87952 16.3857 8.44208C16.2983 7.77341 15.7452 7.33597 15.0453 7.42346L9.68658 8.20773C9.59284 8.22023 9.54285 8.1015 9.61784 8.04213L14.9297 3.98639C15.9764 3.17087 16.0639 1.57107 15.1047 0.639933C14.2329 -0.231832 12.8331 -0.203711 11.9613 0.668055L3.403 9.37634C3.08429 9.72629 2.93743 10.1919 3.02492 10.6855C3.17178 11.4729 3.95605 11.9948 4.74345 11.851L9.3585 10.9105C9.45849 10.8886 9.5116 11.023 9.42724 11.0792L4.30913 14.357C3.66859 14.7632 3.378 15.4912 3.5811 16.2192C3.7842 17.1785 4.74658 17.7315 5.67771 17.5003L13.3299 15.6162C13.4174 15.5943 13.4799 15.6943 13.4236 15.763L12.23 17.2378C11.9113 17.644 12.4331 18.1971 12.8706 17.8784L16.8013 14.6475C17.5012 14.0664 17.0357 12.929 16.1326 13.0165L16.1233 13.0134Z" fill="white"></path>
+                        </svg>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="all-demo show-demo">
+            <div class="demos">
+                <div class="theme-wrapper">
+                    <div>48 Pre-built sites</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="demo-modal-area">
+        <div class="wrapper">
+            <div class="tmp-modal-inner">
+                <div class="close-icon">
+                    <button class="demo-close-btn"><span><i class="fa-sharp fa-light fa-xmark"></i></span></button>
+                </div>
+                <div class="demo-top text-center">
+                    <h4 class="title">Mostafa Saeed</h4>
+                    <p class="subtitle">Full Stack Web Developer | WordPress Developer | SEO Specialist | Media Buyer.
+                        skills, and achievements.</p>
+                </div>
+                <ul class="popuptab-area nav nav-tabs" id="popuptab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active demo-dark" id="demodark-tab" data-bs-toggle="tab" href="#demodark" role="tab" aria-controls="demodark" aria-selected="true">Dark Demo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link demo-light" id="demolight-tab" data-bs-toggle="tab" href="#demolight" role="tab" aria-controls="demolight" aria-selected="false">Light Demo</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="popuptabContent">
+                    <div class="tab-pane show active" id="demodark" role="tabpanel" aria-labelledby="demodark-tab">
+                        <div class="content">
+                            <div class="row">
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="{{ route('home') }}">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-1.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="{{ route('home') }}">Main Demo</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-02.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-2.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-02.html">Demo 02</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-03.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-3.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-03.html">Demo 03</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-04.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-4.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-04.html">Demo 04</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-05.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-5.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-05.html">Demo 05</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-06.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-6.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-06.html">Demo 06</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-07.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-7.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-07.html">Demo 07</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-08.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-8.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-08.html">Demo 08</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-09.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-9.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-09.html">Demo 09</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-10.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-10.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-10.html">Demo 10</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-11.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-11.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-11.html">Demo 11</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-12.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-12.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-12.html">Demo 12</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-13.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-13.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-13.html">Demo 13</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-14.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-14.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-14.html">Demo 14</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-15.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-15.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-15.html">Demo 15</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-16.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-16.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-16.html">Demo 16</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-17.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-17.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-17.html">Demo 17</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-18.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-18.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-18.html">Demo 18</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-19.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-19.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-19.html">Demo 19</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-20.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-20.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-20.html">Demo 20</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-21.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-21.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-21.html">Demo 21</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-22.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-22.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-22.html">Demo 22</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-23.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-23.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-23.html">Demo 23</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-24.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-24.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-24.html">Demo 24</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="#">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/coming-soon.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="#">Demo 25</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="#">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/coming-soon.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="#">Demo 26</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="#">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/coming-soon.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="#">Demo 27</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="tab-pane" id="demolight" role="tabpanel" aria-labelledby="demolight-tab">
+                        <div class="content">
+                            <div class="row">
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-1-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-white.html">Main Demo</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-02-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-2-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-02-white.html">Demo 02</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-03-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-3-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-03-white.html">Demo 03</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-04-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-4-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-04-white.html">Demo 04</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-05-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-5-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-05-white.html">Demo 05</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-06-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-6-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-06-white.html">Demo 06</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-07-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-7-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-07-white.html">Demo 07</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-08-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-8-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-08-white.html">Demo 08</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-09-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-9-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-09-white.html">Demo 09</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-10-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-10-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-10-white.html">Demo 10</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-11-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-11-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-11-white.html">Demo 11</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-12-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-12-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-12-white.html">Demo 12</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-13-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-13-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-13-white.html">Demo 13</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-14-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-14-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-14-white.html">Demo 14</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-15-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-15-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-15-white.html">Demo 15</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-16-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-16-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-16-white.html">Demo 16</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-17-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-17-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                    <span class="overlay-text">View Demo <i
+                                                            class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-17-white.html">Demo 17</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-18-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-18-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                <span class="overlay-text">View Demo <i
+                                                        class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-18-white.html">Demo 18</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-19-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-19-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                <span class="overlay-text">View Demo <i
+                                                        class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-19-white.html">Demo 19</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-20-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-20-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                <span class="overlay-text">View Demo <i
+                                                        class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-20-white.html">Demo 20</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-21-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-21-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                <span class="overlay-text">View Demo <i
+                                                        class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-21-white.html">Demo 21</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-22-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-22-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                <span class="overlay-text">View Demo <i
+                                                        class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-22-white.html">Demo 22</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-23-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-23-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                <span class="overlay-text">View Demo <i
+                                                        class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-23-white.html">Demo 23</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="index-24-white.html">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/home-24-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                <span class="overlay-text">View Demo <i
+                                                        class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="index-24-white.html">Demo 24</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="#">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/coming-soon-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                <span class="overlay-text">View Demo <i
+                                                        class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="#">Demo 25</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="#">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/coming-soon-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                <span class="overlay-text">View Demo <i
+                                                        class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="#">Demo 26</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+                                <!-- Start Single Content  -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-demo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <a href="#">
+                                                    <img class="w-100" src="{{ asset('assets/images/demo/coming-soon-white.png') }}" alt="Personal Projects">
+                                                    <span class="overlay-content">
+                                                <span class="overlay-text">View Demo <i
+                                                        class="feather-external-link"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="inner">
+                                                <h3 class="title"><a href="#">Demo 27</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Content  -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ asset('assets/js/vendor/jquery.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/waypoints.min.js') }}"></script>
+
+    <script src="{{ asset('assets/js/plugins/odometer.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/appear.js') }}"></script>
+
+
+    <script src="{{ asset('assets/js/vendor/jquery-one-page-nav.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/swiper.js') }}"></script>
+
+    <script src="{{ asset('assets/js/plugins/gsap.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/splittext.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/scrolltigger.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/scrolltoplugins.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/smoothscroll.js') }}"></script>
+    <!-- bootstrap Js-->
+    <script src="{{ asset('assets/js/vendor/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/waw.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/isotop.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/animation.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/contact.form.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/backtop.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/particle.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/text-type.js') }}"></script>
+    <!-- custom Js -->
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+
+    <script>
+        particlesJS('particles-js',
+
+            {
+                "particles": {
+                    "number": {
+                        "value": 10,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": ["#ffffff", ]
+                    },
+                    "shape": {
+                        "type": "edge",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 4
+                        },
+                        "image": {
+                            "src": "img/github.svg",
+                            "width": 100,
+                            "height": 100
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.8,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 4,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": false,
+                        "distance": 150,
+                        "color": "#ffffff",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 6,
+                        "direction": "bounce",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "repulse"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 400,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 800,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true,
+                "config_demo": {
+                    "hide_card": false,
+                    "background_color": "#b61924",
+                    "background_image": "",
+                    "background_position": "50% 50%",
+                    "background_repeat": "no-repeat",
+                    "background_size": "cover"
+                }
+            }
+
+        );
+    </script>
+</body>
+
+</html>
