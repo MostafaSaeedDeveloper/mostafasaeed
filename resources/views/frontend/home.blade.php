@@ -16,6 +16,13 @@
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/bootstrap.min.css') }}">
     <!-- custom css -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <style>
+        :root { --mostafa-brand: #CFE7FF; }
+        .theme-gradient, .subtitle, .ex-subtitle, .custom-title span, .ft-title, .service-card-num span { color: var(--mostafa-brand) !important; }
+        .tmp-btn, .tmp-btn:hover, .newsletter-form-1 .form-icon { background: var(--mostafa-brand) !important; color: #0f172a !important; }
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link, .social-link a:hover, .tmp-arrow-icon-btn, .contact-get-in-touch-wrap, .education-experience-card:hover { border-color: var(--mostafa-brand) !important; }
+        .social-link a, .primary-menu .nav-link.current, .copy-right-para a, .ft-link a:hover { color: var(--mostafa-brand) !important; }
+    </style>
 </head>
 
 <body class="index-seven">
@@ -73,7 +80,7 @@
                 </nav>
                 <div class="footer">
                     <div class="social-share-style-1">
-                        <span class="title">Contact Me</span>
+                        <span class="title">Contact</span>
                         <div class="social-link">
                             <a href="mailto:mostafasaeed.developer@gmail.com"><i class="fa-regular fa-envelope"></i></a>
                             <a href="https://mostafasaeed.com" target="_blank"><i class="fa-solid fa-globe"></i></a>
@@ -225,7 +232,7 @@
                         </a>
                         <a href="service-details.html" class="service-card-v2 tmponhover tmp-scroll-trigger tmp-fade-in animation-order-5">
                             <h2 class="service-card-num"><span>05.</span>Experience Timeline</h2>
-                            <p class="service-para">Bishop Integrated Solutions (2021 – Present), Emtiaz Soft (Nov 2024 – Apr 2025), Withaq (2019 – 2022).</p>
+                            <p class="service-para">Full Stack Web Developer (2021 – Present), Emtiaz Soft (Nov 2024 – Apr 2025), Withaq (2019 – 2022).</p>
                         </a>
                         <a href="service-details.html" class="service-card-v2 tmponhover tmp-scroll-trigger tmp-fade-in animation-order-6">
                             <h2 class="service-card-num"><span>06.</span>Education & Certificates</h2>
@@ -370,30 +377,30 @@
                 <div class="row g-5">
                     <div class="col-lg-6 col-sm-6">
                         <div class="education-experience-card tmponhover tmp-scroll-trigger tmp-fade-in animation-order-1">
-                            <h4 class="edu-sub-title">Trainer Marketing</h4>
-                            <h2 class="edu-title">2005-2009</h2>
+                            <h4 class="edu-sub-title">Alexandria University</h4>
+                            <h2 class="edu-title">2013-2017</h2>
                             <p class="edu-para">Bachelor's in Geographic Information System (GIS), Faculty of Arts, Alexandria University (2013 – 2017).</p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="education-experience-card tmponhover tmp-scroll-trigger tmp-fade-in animation-order-2">
-                            <h4 class="edu-sub-title">Assistant Director</h4>
-                            <h2 class="edu-title">2010-2014</h2>
-                            <p class="edu-para">Each project here showcases my commitment to excellence and adaptability, tailored to meet each client’s unique needs.</p>
+                            <h4 class="edu-sub-title">Smouha Academy</h4>
+                            <h2 class="edu-title">2016</h2>
+                            <p class="edu-para">Computer Hardware & Software Certificate.</p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="education-experience-card tmponhover tmp-scroll-trigger tmp-fade-in animation-order-3">
-                            <h4 class="edu-sub-title">Design Assistant</h4>
-                            <h2 class="edu-title">2008-2012</h2>
-                            <p class="edu-para">Media Buying Funnel clients, from startups to established companies, helping bring their visions to life.</p>
+                            <h4 class="edu-sub-title">MOZ / Eduonix / Route</h4>
+                            <h2 class="edu-title">2018-2021</h2>
+                            <p class="edu-para">SEO Training Course (2018), PHP & MySQL Development (2019), Backend Development Diploma (2021).</p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="education-experience-card tmponhover tmp-scroll-trigger tmp-fade-in animation-order-4">
-                            <h4 class="edu-sub-title">Design Assistant</h4>
-                            <h2 class="edu-title">2008-2012</h2>
-                            <p class="edu-para">Each project here showcases my commitment to excellence and adaptability, tailored to meet each client’s unique needs a personal.</p>
+                            <h4 class="edu-sub-title">MOZ / Eduonix / Route</h4>
+                            <h2 class="edu-title">2018-2021</h2>
+                            <p class="edu-para">Continuous learning across SEO, backend development, and business-driven web delivery.</p>
                         </div>
                     </div>
                 </div>
@@ -406,16 +413,15 @@
 
                                 <div class="experience-content tmp-scroll-trigger tmp-fade-in animation-order-1">
                                     <p class="ex-subtitle">experience</p>
-                                    <h2 class="ex-name">Soft Tech (2 Years)</h2>
-                                    <h3 class="ex-title">Bishop Integrated Solutions</h3>
-                                    <p class="ex-para">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                        desi dolore eu fugiat nulla pariatu Duis aute irure.</p>
+                                    <h2 class="ex-name">Bishop Integrated Solutions</h2>
+                                    <h3 class="ex-title">Full Stack Web Developer</h3>
+                                    <p class="ex-para">2021 – Present | Building Laravel systems, WordPress websites, SEO-ready projects, and client-focused digital solutions.</p>
                                 </div>
                                 <div class="experience-content tmp-scroll-trigger tmp-fade-in animation-order-2">
                                     <p class="ex-subtitle">experience</p>
-                                    <h2 class="ex-name">ModernTech (3 Years)</h2>
-                                    <h3 class="ex-title">App Developer</h3>
-                                    <p class="ex-para">SEO Growth Campaign of projects that highlight my skills in [Main Areas, e.g., responsive web design.</p>
+                                    <h2 class="ex-name">Emtiaz Soft, UAE (Remote)</h2>
+                                    <h3 class="ex-title">Full Stack Web Developer</h3>
+                                    <p class="ex-para">Nov 2024 – Apr 2025 | Delivered remote full stack solutions and business websites for Gulf-region clients.</p>
                                 </div>
                             </div>
                         </div>
@@ -527,7 +533,7 @@
                                 </ul>
                             </div>
                             <div class="tmp-button-here">
-                                <a class="tmp-btn hover-icon-reverse btn-border btn-md radius-round" href="contact.html">
+                                <a class="tmp-btn hover-icon-reverse btn-border btn-md radius-round" href="{{ route('contact') }}">
                                     <span class="icon-reverse-wrapper">
                     <span class="btn-text">Get Started</span>
                                     <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
@@ -587,7 +593,7 @@
                                 </ul>
                             </div>
                             <div class="tmp-button-here">
-                                <a class="tmp-btn hover-icon-reverse btn-md radius-round" href="contact.html">
+                                <a class="tmp-btn hover-icon-reverse btn-md radius-round" href="{{ route('contact') }}">
                                     <span class="icon-reverse-wrapper">
                     <span class="btn-text">Get Started</span>
                                     <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
@@ -631,7 +637,7 @@
                                 </ul>
                             </div>
                             <div class="tmp-button-here">
-                                <a class="tmp-btn hover-icon-reverse btn-border btn-md radius-round" href="contact.html">
+                                <a class="tmp-btn hover-icon-reverse btn-border btn-md radius-round" href="{{ route('contact') }}">
                                     <span class="icon-reverse-wrapper">
                     <span class="btn-text">Get Started</span>
                                     <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
@@ -732,18 +738,16 @@
                                     <div class="section-sub-title tmp-scroll-trigger tmp-fade-in animation-order-1">
                                         <span class="subtitle">GET IN TOUCH</span>
                                     </div>
-                                    <h2 class="title split-collab tmp-scroll-trigger tmp-fade-in animation-order-2">Elevate your brand with Me </h2>
-                                    <p class="description tmp-scroll-trigger tmp-fade-in animation-order-3">ished fact that a reader will be
-                                        distrol acted bioiiy desig
-                                        ished fact that a reader will acted ished fact that a reader will be distrol
-                                        acted </p>
+                                    <h2 class="title split-collab tmp-scroll-trigger tmp-fade-in animation-order-2">Let’s build your next project</h2>
+                                    <p class="description tmp-scroll-trigger tmp-fade-in animation-order-3">Email: mostafasaeed.developer@gmail.com / info@mostafasaeed.com | Phone: 01003770730 | Location: Alexandria, Egypt</p>
                                 </div>
                             </div>
                             <div class="col-lg-7">
                                 <div class="contact-inner">
                                     <div class="contact-form">
                                         <div id="form-messages" class="error"></div>
-                                        <form class="tmp-dynamic-form" id="contact-form" method="POST" action="mailer.php">
+                                        <form class="tmp-dynamic-form" id="contact-form" method="POST" action="{{ route('contact.store') }}">
+                                            @csrf
                                             <div class="contact-form-wrapper row">
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
@@ -753,7 +757,7 @@
 
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
-                                                        <input class="input-field" id="contact-phone" placeholder="Phone Number" type="tel" required>
+                                                        <input class="input-field" id="contact-phone" name="phone" placeholder="Phone Number" type="tel" value="01003770730">
                                                     </div>
                                                 </div>
 
@@ -765,7 +769,7 @@
 
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
-                                                        <input class="input-field" type="text" id="subject" name="subject" placeholder="Subject">
+                                                        <input class="input-field" type="text" id="subject" name="service" placeholder="Service Needed">
                                                     </div>
                                                 </div>
 
@@ -779,7 +783,7 @@
                                                     <div class="tmp-button-here">
                                                         <button class="tmp-btn hover-icon-reverse radius-round w-100" name="submit" type="submit" id="submit">
                                                             <span class="icon-reverse-wrapper">
-                                        <span class="btn-text">Appointment Now</span>
+                                        <span class="btn-text">Send Message</span>
                                                             <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
                                                             <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
                                                             </span>
@@ -811,9 +815,9 @@
                                         <img src="{{ asset('assets/images/logo/white-logo-reeni.png') }}" alt="Mostafa Saeed Portfolio">
                                     </a>
                                 </div>
-                                <p class="description"><span>Get Ready</span> To Create Great</p>
+                                <p class="description"><span>Ready</span> to Build Great Digital Work</p>
                                 <form action="#" class="newsletter-form-1 mt--40">
-                                    <input type="email" placeholder="Email Adress">
+                                    <input type="email" placeholder="Your Email Address">
                                     <span class="form-icon"><i class="fa-regular fa-envelope"></i></span>
                                 </form>
                             </div>
@@ -823,19 +827,19 @@
                                 <h5 class="ft-title">Quick Link</h5>
                                 <ul class="ft-link tmp-link-animation">
                                     <li>
-                                        <a href="about.html">About Me</a>
+                                        <a href="{{ route('about') }}">About Mostafa</a>
                                     </li>
                                     <li>
-                                        <a href="service.html">Service</a>
+                                        <a href="{{ route('services') }}">Services</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html">Contact Me</a>
+                                        <a href="{{ route('contact') }}">Contact</a>
                                     </li>
                                     <li>
-                                        <a href="experience.html">Experience Post</a>
+                                        <a href="#experience">Experience</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html">Certificates</a>
+                                        <a href="#pricing">Certificates</a>
                                     </li>
                                 </ul>
                             </div>
@@ -844,15 +848,15 @@
                             <div class="single-footer-wrapper contact-wrap">
                                 <h5 class="ft-title">Contact </h5>
                                 <ul class="ft-link tmp-link-animation">
-                                    <li><span class="ft-icon"><i class="fa-solid fa-envelope"></i></span><a href="#">mostafasaeed.developer@gmail.com</a></li>
-                                    <li><span class="ft-icon"><i class="fa-solid fa-location-dot"></i></span>3891 Ranchview Dr. Richardson</li>
-                                    <li><span class="ft-icon"><i class="fa-solid fa-phone"></i></span><a href="#">01245789321</a></li>
+                                    <li><span class="ft-icon"><i class="fa-solid fa-envelope"></i></span><a href="mailto:mostafasaeed.developer@gmail.com">mostafasaeed.developer@gmail.com</a></li>
+                                    <li><span class="ft-icon"><i class="fa-solid fa-location-dot"></i></span>Alexandria, Egypt</li>
+                                    <li><span class="ft-icon"><i class="fa-solid fa-phone"></i></span><a href="#">01003770730</a></li>
                                 </ul>
                                 <div class="social-link footer">
-                                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                    <a href="mailto:info@mostafasaeed.com"><i class="fa-regular fa-envelope"></i></a>
+                                    <a href="https://mostafasaeed.com" target="_blank"><i class="fa-solid fa-globe"></i></a>
+                                    <a href="tel:01003770730"><i class="fa-solid fa-phone"></i></a>
+                                    <a href="#contacts"><i class="fa-solid fa-location-dot"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -871,9 +875,9 @@
                                 </script> | All Rights Reserved
                             </p>
                             <ul class="tmp-link-animation">
-                                <li><a href="#">Trams & Condition</a></li>
+                                <li><a href="#">Terms & Conditions</a></li>
                                 <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
+                                <li><a href="{{ route('contact') }}">Contact Me</a></li>
                             </ul>
                         </div>
                     </div>
