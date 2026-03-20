@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Activity;
 use App\Models\Client;
 use App\Models\Currency;
+use App\Models\Customer;
 use App\Models\Expense;
 use App\Models\Invoice;
 use App\Models\InvoiceItem;
@@ -78,6 +79,23 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Yasmine Samir', 'email' => 'yasmine@fashionhouse.eg', 'phone' => '01055555555', 'company' => 'Fashion House', 'country' => 'Egypt', 'address' => 'Stanley, Alexandria', 'notes' => 'Brand website and Meta ads.'],
         ];
         $clients = collect($clientsData)->map(fn ($data, $i) => Client::updateOrCreate(['email' => $data['email']], $data + ['featured' => $i < 4, 'order' => $i + 1]));
+        $customers = $clients->mapWithKeys(function ($client) use ($egp) {
+            $customer = Customer::updateOrCreate(
+                ['email' => $client->email ?: 'client-'.$client->id.'@mostafasaeed.test'],
+                [
+                    'name' => $client->name,
+                    'company_name' => $client->company,
+                    'phone' => $client->phone,
+                    'address' => $client->address,
+                    'country' => $client->country,
+                    'notes' => $client->notes,
+                    'default_currency_id' => $egp->id,
+                    'status' => 'active',
+                ]
+            );
+
+            return [$client->id => $customer];
+        });
 
         $projects = [
             ['client_id' => $clients[0]->id, 'title' => 'Custom Laravel Ordering Platform', 'slug' => 'custom-laravel-ordering-platform', 'description' => 'Laravel based ordering and operations dashboard.', 'category' => 'laravel', 'status' => 'completed', 'budget' => 35000, 'start_date' => now()->subMonths(5), 'end_date' => now()->subMonths(3)],
@@ -85,9 +103,10 @@ class DatabaseSeeder extends Seeder
             ['client_id' => $clients[2]->id, 'title' => 'SEO Growth Campaign', 'slug' => 'seo-growth-campaign', 'description' => 'Technical SEO and keyword expansion campaign.', 'category' => 'seo', 'status' => 'pending', 'budget' => 12000, 'start_date' => now()->startOfMonth(), 'end_date' => now()->addMonths(2)],
             ['client_id' => $clients[4]->id, 'title' => 'Media Buying Funnel', 'slug' => 'media-buying-funnel', 'description' => 'Paid media landing pages and conversion tracking.', 'category' => 'media_buying', 'status' => 'completed', 'budget' => 22000, 'start_date' => now()->subMonths(4), 'end_date' => now()->subMonths(2)],
         ];
-        $projectModels = collect($projects)->map(function ($project) {
+        $projectModels = collect($projects)->map(function ($project) use ($customers) {
             return Project::updateOrCreate(['slug' => $project['slug']], [
                 'client_id' => $project['client_id'],
+                'customer_id' => $customers[$project['client_id']]->id,
                 'title' => ['en' => $project['title'], 'ar' => $project['title']],
                 'summary' => ['en' => $project['description'], 'ar' => $project['description']],
                 'case_study' => ['en' => $project['description'], 'ar' => $project['description']],
@@ -117,6 +136,7 @@ class DatabaseSeeder extends Seeder
             $paid = in_array($payload['status'], ['paid']) ? $total : 0;
 
             $invoice = Invoice::updateOrCreate(['invoice_number' => $payload['invoice_number']], $payload + [
+                'customer_id' => $customers[$payload['client_id']]->id,
                 'currency' => 'EGP',
                 'subtotal' => $subtotal,
                 'tax_percent' => $taxPercent,
@@ -136,6 +156,7 @@ class DatabaseSeeder extends Seeder
 
             if ($payload['status'] === 'paid') {
                 Payment::updateOrCreate(['invoice_id' => $invoice->id], [
+                    'customer_id' => $customers[$payload['client_id']]->id,
                     'amount' => $total,
                     'payment_date' => now()->subDays(1),
                     'date' => now()->subDays(1),

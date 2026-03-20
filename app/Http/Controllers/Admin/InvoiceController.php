@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Activity;
 use App\Models\Client;
+use App\Models\Customer;
 use App\Models\Invoice;
 use App\Models\InvoiceItem;
 use App\Models\Project;
@@ -60,7 +61,7 @@ class InvoiceController extends Controller
         DB::transaction(function () use ($data, $request): void {
             $invoice = Invoice::create(array_merge($data, [
                 'invoice_number' => $this->generateInvoiceNumber(),
-                'customer_id' => null,
+                'customer_id' => $this->resolveCustomerId((int) $data['client_id']),
             ]));
             $this->syncItems($invoice, $request);
             $this->refreshTotals($invoice);
@@ -89,7 +90,9 @@ class InvoiceController extends Controller
         $data = $this->validateInvoice($request);
 
         DB::transaction(function () use ($invoice, $data, $request): void {
-            $invoice->update($data);
+            $invoice->update(array_merge($data, [
+                'customer_id' => $this->resolveCustomerId((int) $data['client_id']),
+            ]));
             $invoice->items()->delete();
             $this->syncItems($invoice, $request);
             $this->refreshTotals($invoice);
@@ -128,6 +131,7 @@ class InvoiceController extends Controller
         $clone = DB::transaction(function () use ($invoice) {
             $clone = $invoice->replicate(['status', 'paid_amount', 'due_amount', 'invoice_number']);
             $clone->invoice_number = $this->generateInvoiceNumber();
+            $clone->customer_id = $this->resolveCustomerId((int) $clone->client_id);
             $clone->status = 'draft';
             $clone->paid_amount = 0;
             $clone->due_amount = $invoice->total;
@@ -211,6 +215,25 @@ class InvoiceController extends Controller
             'paid_amount' => $paidAmount,
             'due_amount' => max($total - $paidAmount, 0),
         ]);
+    }
+
+
+    private function resolveCustomerId(int $clientId): int
+    {
+        $client = Client::findOrFail($clientId);
+
+        return Customer::firstOrCreate(
+            ['email' => $client->email ?: 'client-'.$client->id.'@mostafasaeed.test'],
+            [
+                'name' => $client->name,
+                'company_name' => $client->company,
+                'phone' => $client->phone,
+                'address' => $client->address,
+                'country' => $client->country,
+                'notes' => $client->notes,
+                'status' => 'active',
+            ]
+        )->id;
     }
 
     private function generateInvoiceNumber(): string
